@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\TambahbukuController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PenerbitController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,3 +20,4 @@ Route::get('/', function () {
 });
 
 Route::resource('/tambahbuku', TambahbukuController::class);
+Route::resource('penerbit', PenerbitController::class);
