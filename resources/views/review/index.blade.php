@@ -44,11 +44,19 @@
                         <td>
                             <div class="d-flex">
                                 {{-- <a href="{{route( 'pegawai.destroy',$row->id) }}"class="btn btn-danger">Delete</a> --}}
+<<<<<<< Updated upstream
                                 <a href=" {{ route('review.edit', $row->id) }}" class="btn btn-outline-primary mr-1">Edit</a>
                                 <form action="{{ route('review.destroy', $row->id) }}" method="post">
                                     @method('DELETE')
                                     @csrf
                                     <button type="button" class="btn btn-outline-danger delete-btn" style="margin-left: 10px;"
+=======
+                                <a href=" {{ route('review.edit', $row->id) }}" class="btn btn-primary mr-1">Edit</a>
+                                <form action="{{ route('review.destroy', $row->id) }}" method="post">
+                                    @method('DELETE')
+                                    @csrf
+                                    <button type="button" class="btn btn-danger delete-btn"
+>>>>>>> Stashed changes
                                         data-id="{{ $row->id }}">Hapus</button>
                                 </form>
                             </div>

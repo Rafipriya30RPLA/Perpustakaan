@@ -62,53 +62,46 @@
               <!-- Dashboard -->
               <!-- =================== -->
               <li class="sidebar-item">
-                <a class="sidebar-link" href="index.html" aria-expanded="false">
+                <a class="sidebar-link" href="{{route('peminjam.index')}}" aria-expanded="false">
                   <span>
                     <i class="ti ti-aperture"></i>
                   </span>
-                  <span class="hide-menu">Modern</span>
+                  <span class="hide-menu">Peminjam</span>
                 </a>
               </li>
               <li class="sidebar-item">
-                <a class="sidebar-link" href="index2.html" aria-expanded="false">
+                <a class="sidebar-link" href="{{route('penerbit.index')}}" aria-expanded="false">
                   <span>
                     <i class="ti ti-shopping-cart"></i>
                   </span>
-                  <span class="hide-menu">eCommerce</span>
+                  <span class="hide-menu">Penerbit</span>
                 </a>
               </li>
               <li class="sidebar-item">
-                <a class="sidebar-link" href="index3.html" aria-expanded="false">
+                <a class="sidebar-link" href="{{route('penulis.index')}}" aria-expanded="false">
                   <span>
                     <i class="ti ti-currency-dollar"></i>
                   </span>
-                  <span class="hide-menu">NFT</span>
+                  <span class="hide-menu">Penulis</span>
                 </a>
               </li>
               <li class="sidebar-item">
-                <a class="sidebar-link" href="index4.html" aria-expanded="false">
+                <a class="sidebar-link" href="{{route('review.index')}}" aria-expanded="false">
                   <span>
                     <i class="ti ti-cpu"></i>
                   </span>
-                  <span class="hide-menu">Crypto</span>
+                  <span class="hide-menu">Review</span>
                 </a>
               </li>
               <li class="sidebar-item">
-                <a class="sidebar-link" href="index5.html" aria-expanded="false">
+                <a class="sidebar-link" href="{{route('tambahbuku.index')}}" aria-expanded="false">
                   <span>
                     <i class="ti ti-activity-heartbeat"></i>
                   </span>
-                  <span class="hide-menu">General</span>
+                  <span class="hide-menu">Tambah Buku</span>
                 </a>
               </li>
-              <li class="sidebar-item">
-                <a class="sidebar-link" href="index6.html" aria-expanded="false">
-                  <span>
-                    <i class="ti ti-playlist"></i>
-                  </span>
-                  <span class="hide-menu">Music</span>
-                </a>
-              </li>
+
             </ul>
           </nav>
           <div class="fixed-profile p-3 bg-light-secondary rounded sidebar-ad mt-3">
