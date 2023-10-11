@@ -21,9 +21,9 @@
                               <thead>
                                   <tr>
                                       <th scope="col">#</th>
-                                      <th scope="col">Nama Penulis</th>
                                       <th scope="col">Nama Penerbit</th>
                                       <th scope="col">No Telepon</th>
+                                      <th scope="col">Alamat</th>
                                       <th scope="col">Tanggal Dibuat</th>
                                       <th scope="col">Aksi</th>
                                   </tr>

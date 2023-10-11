@@ -18,7 +18,8 @@ return new class extends Migration
             $table->integer('kode_buku');
             $table->string('nama_penulis');
             $table->string('nama_penerbit');
-            $table->integer('tanggal_terbit');
+            $table->string('tanggal_terbit');
+            $table->string('foto');
             $table->timestamps();
         });
     }

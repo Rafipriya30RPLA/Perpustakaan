@@ -22,6 +22,11 @@ class PenerbitController extends Controller
         return view('penerbit.create');
     }
 
+    public function shop()
+    {
+        return view('shop');
+    }
+
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
