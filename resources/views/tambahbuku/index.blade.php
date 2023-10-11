@@ -1,10 +1,20 @@
+@extends('nav-side')
+@section('sidebar')
+@section('header')
+
+@endsection
+
+@endsection
+
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Bootstrap demo</title>
+    @section('css')
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    @endsection
   </head>
   <body>
   <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
@@ -27,14 +37,13 @@
             @endif
         </script>
 
+        @section('content')
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-10 " >
                     <a href="{{ route('tambahbuku.create') }}" type="button" class="mb-3 btn btn-success">Tambah +</a>
                     <div class="card">
                         <div class="card-body">
-
-
                             <div class="row" style="padding-top:10px;">
                                 <table class="table">
                                     <thead>
@@ -63,17 +72,15 @@
                                                 <td>
                                                     <img src="{{ asset('storage/tambahbuku/' . $row->foto) }}" alt="" style="width: 40px">
                                                 </td>
-
-                                                <td>{{ $row->created_at->diffForHumans() }} </td>
                                                 <td>
                                                     <div class="d-flex">
                                                     {{-- <a href="{{route( 'pegawai.destroy',$row->id) }}"class="btn btn-danger">Delete</a> --}}
                                                     <a href=" {{route('tambahbuku.edit', $row->id) }}"
-                                                        class="btn btn-primary mr-1">Edit</a>
+                                                        class="btn btn-outline-primary mr-1">Edit</a>
                                                         <form action="{{ route('tambahbuku.destroy',$row->id) }}" method="post">
                                                             @method('DELETE')
                                                             @csrf
-                                                            <button type="button" class="btn btn-danger delete-btn" data-id="{{ $row->id }}">Hapus</button>
+                                                            <button type="button"  class="btn btn-outline-danger delete-btn" style="margin-left: 10px;" data-id="{{ $row->id }}">Hapus</button>
                                                         </form>
                                                     </div>
                                                 </td>
@@ -88,6 +95,7 @@
                 </div>
             </div>
         </div>
+        @endsection
         <script src="
                     https://cdn.jsdelivr.net/npm/sweetalert2@11.7.28/dist/sweetalert2.all.min.js
                     "></script>
