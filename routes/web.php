@@ -20,7 +20,7 @@ use App\Http\Controllers\ReviewController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('nav-side');
 });
 
 
@@ -35,4 +35,5 @@ Route::resource('penerbit', PenerbitController::class);
 Route::resource('penulis', PenulisController::class);
 Route::resource('review', ReviewController::class);
 Route::resource('peminjam', PeminjamController::class);
+
 

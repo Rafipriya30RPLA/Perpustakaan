@@ -94,7 +94,10 @@ class ReviewController extends Controller
         $data->delete();
         return redirect()->route('review.index')->with('success', 'Data Berhasil Di Delete');
     }
-
+public function index2()
+{
+    return view('review.index2');
+}
 }
 
 

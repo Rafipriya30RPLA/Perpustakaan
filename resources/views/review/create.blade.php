@@ -28,10 +28,10 @@
 
                     <div class="mb-3">
                         <label for="exampleInputText" class="form-label">Review</label>
-                        <input type="text" name="Review" value="{{old('Review')}}" class="form-control @error('Review')is-invalid
+                        <input type="text" name="review" value="{{old('review')}}" class="form-control @error('review')is-invalid
                         @enderror" id="">
                     </div>
-                    @error('Review')
+                    @error('review')
                     <script>
                         Swal.fire({
                             icon: 'error',
