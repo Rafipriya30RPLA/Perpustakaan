@@ -59,34 +59,7 @@
         </tbody>
     </table>
 </div>
-  <div class="container">
-      <div class="row justify-content-center">
-          <div class="col-10 " >
-              <div class="card">
-                  <div class="card-body">
 
-                      <div class="row" style="padding-top:10px;">
-                          <table class="table">
-                              <thead>
-                                  <tr>
-
-                                  </tr>
-                              </thead>
-                              <tbody>
-
-                                  <tr>
-
-
-
-                                     </tr>
-                              </tbody>
-                          </table>
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </div>
   @endsection
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.28/dist/sweetalert2.all.min.js"></script>
               <script>
