@@ -11,15 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tambahbukus', function (Blueprint $table) {
+        Schema::create('penulis', function (Blueprint $table) {
             $table->id();
-            $table->string('nama_buku');
-            $table->string('deskripsi');
-            $table->integer('kode_buku');
             $table->string('nama_penulis');
             $table->string('nama_penerbit');
+<<<<<<< Updated upstream:database/migrations/2023_10_09_022220_create_tambahbukus_table.php
             $table->string('tanggal_terbit');
             $table->string('foto');
+=======
+>>>>>>> Stashed changes:database/migrations/2023_10_10_014305_create_penulis_table.php
             $table->timestamps();
         });
     }
@@ -29,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tambahbukus');
+        Schema::dropIfExists('penulis');
     }
 };

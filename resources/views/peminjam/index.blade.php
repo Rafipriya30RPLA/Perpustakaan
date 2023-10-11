@@ -15,16 +15,17 @@
               <div class="card">
                   <div class="card-body">
 
-                      <a href="{{ route('penerbit.create') }}" type="button" class="btn btn-success">Tambah +</a>
+                      <a href="{{ route('peminjam.create') }}" type="button" class="btn btn-success">Tambah +</a>
                       <div class="row" style="padding-top:10px;">
                           <table class="table">
                               <thead>
                                   <tr>
                                       <th scope="col">#</th>
-                                      <th scope="col">Nama Penerbit</th>
-                                      <th scope="col">No Telepon</th>
-                                      <th scope="col">Alamat</th>
-                                      <th scope="col">Tanggal Dibuat</th>
+                                      <th scope="col">Nama Peminjam</th>
+                                      <th scope="col">Nama Buku</th>
+                                      <th scope="col">Kode Buku</th>
+                                      <th scope="col">Tanggal Pinjam</th>
+                                      <th scope="col">Tenggat</th>
                                       <th scope="col">Aksi</th>
                                   </tr>
                               </thead>
@@ -32,17 +33,18 @@
                                   @foreach ($data as $key => $row)
                                   <tr>
                                       <td>{{ $key + 1 }}</td>
-                                          <td>{{ $row->nama_penerbit }} </td>
-                                          <td>{{ $row->no_telepon }} </td>
-                                          <td>{{ $row->alamat }} </td>
+                                          <td>{{ $row->nama_peminjam }} </td>
+                                          <td>{{ $row->nama_buku }} </td>
+                                          <td>{{ $row->kode_buku }} </td>
+                                          <td>{{ $row->tanggal_pinjam }} </td>
+                                          <td>{{ $row->tenggat }} </td>
 
-                                          <td>{{ $row->created_at->diffForHumans() }} </td>
                                           <td>
                                               <div class="d-flex">
                                               {{-- <a href="{{route( 'pegawai.destroy',$row->id) }}"class="btn btn-danger">Delete</a> --}}
-                                              <a href=" {{route('penerbit.edit', $row->id) }}"
+                                              <a href=" {{route('peminjam.edit', $row->id) }}"
                                                   class="btn btn-primary mr-1">Edit</a>
-                                                  <form action="{{ route('penerbit.destroy',$row->id) }}" method="post">
+                                                  <form action="{{ route('peminjam.destroy',$row->id) }}" method="post">
                                                       @method('DELETE')
                                                       @csrf
                                                       <button type="button" class="btn btn-danger delete-btn" data-id="{{ $row->id }}">Hapus</button>

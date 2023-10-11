@@ -14,17 +14,14 @@
           <div class="col-10 " >
               <div class="card">
                   <div class="card-body">
-
-                      <a href="{{ route('penerbit.create') }}" type="button" class="btn btn-success">Tambah +</a>
+                      <a href="{{ route('review.create') }}" type="button" class="btn btn-success">Tambah +</a>
                       <div class="row" style="padding-top:10px;">
                           <table class="table">
                               <thead>
                                   <tr>
                                       <th scope="col">#</th>
-                                      <th scope="col">Nama Penerbit</th>
-                                      <th scope="col">No Telepon</th>
-                                      <th scope="col">Alamat</th>
-                                      <th scope="col">Tanggal Dibuat</th>
+                                      <th scope="col">Nama Peminjam</th>
+                                      <th scope="col">Review</th>
                                       <th scope="col">Aksi</th>
                                   </tr>
                               </thead>
@@ -32,26 +29,22 @@
                                   @foreach ($data as $key => $row)
                                   <tr>
                                       <td>{{ $key + 1 }}</td>
-                                          <td>{{ $row->nama_penerbit }} </td>
-                                          <td>{{ $row->no_telepon }} </td>
-                                          <td>{{ $row->alamat }} </td>
+                                          <td>{{ $row->nama_peminjam }} </td>
+                                          <td>{{ $row->review }} </td>
 
                                           <td>{{ $row->created_at->diffForHumans() }} </td>
                                           <td>
                                               <div class="d-flex">
                                               {{-- <a href="{{route( 'pegawai.destroy',$row->id) }}"class="btn btn-danger">Delete</a> --}}
-                                              <a href=" {{route('penerbit.edit', $row->id) }}"
-                                                  class="btn btn-primary mr-1">Edit</a>
-                                                  <form action="{{ route('penerbit.destroy',$row->id) }}" method="post">
+                                              <a href=" {{route('review.edit', $row->id) }}" class="btn btn-primary mr-1">Edit</a>
+                                                  <form action="{{ route('review.destroy',$row->id) }}" method="post">
                                                       @method('DELETE')
                                                       @csrf
                                                       <button type="button" class="btn btn-danger delete-btn" data-id="{{ $row->id }}">Hapus</button>
                                                   </form>
-
                                                   @endforeach  </div>
                                           </td>
-
-                                      </tr>
+                                     </tr>
                               </tbody>
                           </table>
                       </div>
@@ -60,9 +53,7 @@
           </div>
       </div>
   </div>
-  <script src="
-              https://cdn.jsdelivr.net/npm/sweetalert2@11.7.28/dist/sweetalert2.all.min.js
-              "></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.28/dist/sweetalert2.all.min.js"></script>
               <script>
                   $(document).ready(function () {
                       $('.delete-btn').click(function () {
