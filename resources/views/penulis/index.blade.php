@@ -40,12 +40,12 @@
                                         <!-- end row -->
                                     </thead>
                                     <tbody>
-                                        @foreach ($data as $key => $row)
+                                        @foreach ($datapenulis as $key => $row)
                                             <!-- start row -->
                                             <tr>
                                                 <td>{{ $key + 1 }}</td>
                                                 <td>{{ $row->nama_penulis }} </td>
-                                                <td>{{ $row->nama_penerbit }} </td>
+                                                <td>{{ $row->penerbit->nama_penerbit }} </td>
 
                                                 <td>
                                                     <div class="d-flex">

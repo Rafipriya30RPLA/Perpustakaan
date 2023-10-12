@@ -71,8 +71,8 @@ integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2
                                 })
                                 </script>
                             @enderror
-                            <button type="submit" class="btn btn-primary">Submit</button>
-                            <a href="{{ route('penerbit.index') }}" type="button" class="btn btn-secondary">Kembali</a>
+                            <button type="submit" class="btn btn-outline-primary">Simpan</button>
+                            <a href="{{ route('penerbit.index') }}"  style="margin-left: 10px;" type="button" class="btn btn-outline-secondary">Kembali</a>
                         </form>
                     </div>
                 </div>

@@ -29,7 +29,7 @@
                     <div class="card">
                         <div class="card-body">
 
-                            <form action="{{ route('penulis.update', $data->id) }}"method="POST"
+                            <form action="{{ route('penulis.update', $datapenulis->id) }}"method="POST"
                                 enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
@@ -38,18 +38,21 @@
                                     <label for="exampleInputText" class="form-label">Nama Penulis</label>
                                     <input type="text" name="nama_penulis"
                                         class="form-control @error('nama_penulis')is-invalid @enderror"
-                                        id=""value="{{ $data->nama_penulis }}">
+                                        id=""value="{{ $datapenulis->nama_penulis }}">
                                 </div>
                                 @error('nama_penulis')
                                 @enderror
 
                                 <div class="mb-3">
                                     <label for="exampleInputText" class="form-label">Nama Penerbit</label>
-                                    <input type="text" name="nama_penerbit"
-                                        class="form-control @error('nama_penerbit')is-invalid @enderror"
-                                        id=""value="{{ $data->nama_penerbit }}">
-                                    </div>
-                                @error('nama_penerbit')
+                                    <select name="nama_penerbit_id" id="" class="form-select">
+                                        <option value=""disabled selected>Pilih Nama Penerbit</option>
+                                        @foreach($datapenulis as $penulis)
+                                           <option value="{{ $penulis->id_penerbit }}">{{ $penulis->nama_penerbit }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                @error('penerbit_id')
                                 @enderror
 
                                 <button type="submit" class="btn btn-outline-info">Simpan</button>

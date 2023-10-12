@@ -9,4 +9,9 @@ class penulis extends Model
 {
     use HasFactory;
     protected $guarded=[];
+
+    public function penerbit(){
+        return $this->belongsTo(penerbit::class, 'id_penerbit');
+    }
 }
+
