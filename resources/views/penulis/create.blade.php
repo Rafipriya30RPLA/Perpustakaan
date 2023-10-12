@@ -36,14 +36,14 @@
 
                             <div class="mb-3">
                                 <label for="exampleInputText" class="form-label">Nama Penerbit</label>
-                                <select name="penerbit_id" id="" class="form-select">
+                                <select name="id_penerbit" id="" class="form-select">
                                     <option value=""disabled selected>Pilih Nama Penerbit</option>
                                     @foreach ($datapenerbit as $penerbit)
                                         <option value="{{ $penerbit->id }}">{{ $penerbit->nama_penerbit }}</option>
                                     @endforeach
                                 </select>
                             </div>
-                            @error('penerbit_id')
+                            @error('id_penerbit')
                                 <script>
                                     Swal.fire({
                                         icon: 'error',

@@ -29,7 +29,7 @@
                     <div class="card">
                         <div class="card-body">
 
-                            <form action="{{ route('penulis.update', $datapenulis->id) }}"method="POST"
+                            <form action="{{ route('penulis.update', $data->id) }}"method="POST"
                                 enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
@@ -38,21 +38,24 @@
                                     <label for="exampleInputText" class="form-label">Nama Penulis</label>
                                     <input type="text" name="nama_penulis"
                                         class="form-control @error('nama_penulis')is-invalid @enderror"
-                                        id=""value="{{ $datapenulis->nama_penulis }}">
+                                        id=""value="{{ $data->nama_penulis }}">
                                 </div>
                                 @error('nama_penulis')
                                 @enderror
 
                                 <div class="mb-3">
-                                    <label for="exampleInputText" class="form-label">Nama Penerbit</label>
-                                    <select name="nama_penerbit_id" id="" class="form-select">
-                                        <option value=""disabled selected>Pilih Nama Penerbit</option>
+                                    <label for="id_penerbit" class="form-label">Nama Penerbit</label>
+                                    <select name="id_penerbit" id="id_penerbit" class="form-select">
+                                        <option value="" disabled>Pilih Nama Penerbit</option>
                                         @foreach($datapenulis as $penulis)
-                                           <option value="{{ $penulis->id_penerbit }}">{{ $penulis->nama_penerbit }}</option>
+                                            <option value="{{ $penulis->id }}" {{ $penulis->id == $data->id_penerbit ? 'selected' : '' }}>
+                                                {{ $penulis->nama_penerbit }}
+                                            </option>
                                         @endforeach
                                     </select>
                                 </div>
-                                @error('penerbit_id')
+
+                                @error('id_penerbit')
                                 @enderror
 
                                 <button type="submit" class="btn btn-outline-info">Simpan</button>

@@ -30,12 +30,10 @@ class PenulisController extends Controller
             'penerbit_id' => 'required'
 
 
-
         ], [
             'nama_penulis.required' => 'Nama Penulis harus diisi',
-            'penerbit_id.required' => 'Nama Penerbit harus diisi'
+            'id_penerbit.required' => 'Nama Penerbit harus diisi'
         ]);
-
 
 
         if ($validator->fails()) {
@@ -44,7 +42,7 @@ class PenulisController extends Controller
 
         $datapenulis = new penulis();
         $datapenulis->nama_penulis = $request->input('nama_penulis');
-        $datapenulis->id_penerbit = $request->input('penerbit_id');
+        $datapenulis->id_penerbit = $request->input('id_penerbit');
 
         $datapenulis->save();
 
@@ -52,18 +50,19 @@ class PenulisController extends Controller
     }
             public function edit($id)
         {
-            $datapenulis = penulis::find($id);
-            return view('penulis.edit', compact('datapenulis'));
+            $data = penulis::find($id);
+            $datapenulis = penerbit::all();
+            return view('penulis.edit', compact('datapenulis','data'));
         }
     public function update(Request $request, $id)
     {
         $validator = Validator::make($request->all(), [
             'nama_penulis' => 'required',
-            'nama_penerbit' => 'required'
+            'id_penerbit' => 'required'
 
         ], [
             'nama_penulis.required' => ' Nama Penulis harus diisi',
-            'nama_penerbit.required' => 'Nama Penerbit harus diisi'
+            'id_penerbit.required' => 'Nama Penerbit harus diisi'
 
         ]);
 
@@ -75,7 +74,7 @@ class PenulisController extends Controller
 
         // Update data lainnya
         $datapenulis->nama_penulis = $request->input('nama_penulis');
-        $datapenulis->nama_penerbit = $request->input('nama_penerbit');
+        $datapenulis->id_penerbit = $request->input('id_penerbit');
 
 
 
