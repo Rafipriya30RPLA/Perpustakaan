@@ -41,9 +41,9 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-10 " >
-                    <a href="{{ route('tambahbuku.create') }}" type="button" class="mb-3 btn btn-success">Tambah +</a>
                     <div class="card">
                         <div class="card-body">
+                            <a href="{{ route('tambahbuku.create') }}" type="button" class="mb-3 btn btn-success">Tambah +</a>
                             <div class="row" style="padding-top:10px;">
                                 <table class="table">
                                     <thead>
