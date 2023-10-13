@@ -27,7 +27,7 @@ class PenulisController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'nama_penulis' => 'required',
-            'penerbit_id' => 'required'
+            'id_penerbit' => 'required'
 
 
         ], [
