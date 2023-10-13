@@ -20,21 +20,27 @@ use App\Http\Controllers\ReviewController;
 */
 
 Route::get('/', function () {
-    return view('nav-side');
+    return view('login');
 });
 
 
-Route::resource('tambahbuku', TambahbukuController::class);
-Route::resource('penerbit', PenerbitController::class);
+
 Route::get('/login',[SesiController::class,'login'])->name('login');
 Route::get('/register',[SesiController::class,'register'])->name('register');
 Route::post('registeruser',[SesiController::class,'registeruser'])->name('registeruser');
 Route::post('loginproses',[SesiController::class,'loginproses'])->name('loginproses');
+Route::get('logout',[SesiController::class,'logout'])->name('logout');
 
+
+Route::middleware(['Admin'])->group(function () {
+Route::resource('tambahbuku', TambahbukuController::class);
 Route::resource('penerbit', PenerbitController::class);
 Route::resource('penulis', PenulisController::class);
-Route::resource('review', ReviewController::class);
 Route::resource('peminjam', PeminjamController::class);
+});
 
-
-
+Route::middleware(['User'])->group(function () {
+Route::resource('review', ReviewController::class);
+Route::get('/daftarbuku',[TambahbukuController::class,'daftarbuku']);
+Route::get('/daftarbuku/preview/{id}',[TambahbukuController::class,'preview']);
+});

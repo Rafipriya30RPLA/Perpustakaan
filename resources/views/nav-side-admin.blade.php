@@ -18,8 +18,8 @@
     <!--  Favicon -->
     <link rel="shortcut icon" type="image/png" href="https://demos.adminmart.com/premium/bootstrap/modernize-bootstrap/package/dist/images/logos/favicon.ico" />
     <!-- Owl Carousel  -->
-    <link rel="stylesheet" href="../../dist/libs/owl.carousel/dist/assets/owl.carousel.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="../../dist/libs/owl.carousel/dist/assets/owl.carousel.min.css">
 
     <!-- Core Css -->
     <link  id="themeColors"  rel="stylesheet" href="../../dist/css/style.min.css" />
@@ -63,27 +63,11 @@
               <!-- Dashboard -->
               <!-- =================== -->
               <li class="sidebar-item">
-                <a class="sidebar-link" href="{{route('peminjam.index')}}" aria-expanded="false">
+                <a class="sidebar-link" href="/daftarbuku" aria-expanded="false">
                   <span>
                     <i class="ti ti-aperture"></i>
                   </span>
-                  <span class="hide-menu">Peminjam</span>
-                </a>
-              </li>
-              <li class="sidebar-item">
-                <a class="sidebar-link" href="{{route('penerbit.index')}}" aria-expanded="false">
-                  <span>
-                    <i class="fa-solid fa-users"></i>
-                  </span>
-                  <span class="hide-menu">Penerbit</span>
-                </a>
-              </li>
-              <li class="sidebar-item">
-                <a class="sidebar-link" href="{{route('penulis.index')}}" aria-expanded="false">
-                  <span>
-                    <i class="ti ti-currency-dollar"></i>
-                  </span>
-                  <span class="hide-menu">Penulis</span>
+                  <span class="hide-menu">Daftar Buku</span>
                 </a>
               </li>
               <li class="sidebar-item">
@@ -95,19 +79,11 @@
                 </a>
               </li>
               <li class="sidebar-item">
-                <a class="sidebar-link" href="{{route('tambahbuku.index')}}" aria-expanded="false">
-                  <span>
-                    <i class="ti ti-activity-heartbeat"></i>
-                  </span>
-                  <span class="hide-menu">Tambah Buku</span>
-                </a>
-              </li>
-              <li class="sidebar-item">
                 <a class="sidebar-link" href="{{route('logout')}}" aria-expanded="false">
                   <span>
                     <i class="fa-solid fa-right-from-bracket"></i>
                   </span>
-                  <span class="hide-menu">Tambah Buku</span>
+                  <span class="hide-menu">Logout</span>
                 </a>
               </li>
             </ul>
@@ -244,6 +220,9 @@
                 <!--  Owl carousel -->
              @yield('content')
                 <!--  Row 1 -->
+
+
+
         </div>
       </div>
 
@@ -251,7 +230,17 @@
     <!--  Shopping Cart -->
 
     <!--  Search Bar -->
-
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-scrollable modal-lg">
+        <div class="modal-content rounded-1">
+          <div class="modal-header border-bottom">
+            <input type="search" class="form-control fs-3" placeholder="Search here" id="search" />
+            <span data-bs-dismiss="modal" class="lh-1 cursor-pointer">
+              <i class="ti ti-x fs-5 ms-3"></i>
+            </span>
+          </div>
+        </div>
+    </div>
    <!--  Customizer -->
 
    <button class="btn btn-primary p-3 rounded-circle d-flex align-items-center justify-content-center customizer-btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">

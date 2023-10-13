@@ -22,7 +22,8 @@
                             @csrf
                             <div class="mb-3">
                                 <label for="exampleInputText" class="form-label">Nama Penulis</label>
-                                <input type="text" name="nama_penulis" value="{{ old('nama_penulis') }}" class="form-control @error('nama_penulis')is-invalid  @enderror"id="">
+                                <input type="text" name="nama_penulis" value="{{ old('nama_penulis') }}" class="form-control @error('nama_penulis') is-invalid @enderror" id="">
+
                             </div>
                             @error('nama_penulis')
                                 <script>

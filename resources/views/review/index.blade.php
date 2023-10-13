@@ -1,4 +1,4 @@
-@extends('nav-side')
+@extends('nav-side-admin')
 @section('sidebar')
 
 @endsection
@@ -19,6 +19,55 @@
 </head>
 
 <body>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"
+    integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+@section('content')
+    <a href="{{ route('review.create') }}" type="button" class="btn btn-success">Tambah +</a>
+    <div class="table-responsive">
+        <table id="zero_config" class="table border table-striped table-bordered text-nowrap">
+            <thead>
+                <!-- start row -->
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nama Peminjam</th>
+                    <th scope="col">Review</th>
+                    <th scope="col">Aksi</th>
+                </tr>
+                <!-- end row -->
+            </thead>
+            <tbody>
+                @foreach ($data as $key => $row)
+                    <!-- start row -->
+                    <tr>
+                        <td>{{ $key + 1 }}</td>
+                        <td>{{ $row->nama_peminjam }} </td>
+                        <td>{{ $row->review }} </td>
+
+                        <td>
+                            <div class="d-flex">
+                                {{-- <a href="{{route( 'pegawai.destroy',$row->id) }}"class="btn btn-danger">Delete</a> --}}
+                                <a href=" {{ route('review.edit', $row->id) }}" class="btn btn-primary mr-1">Edit</a>
+                                <form action="{{ route('review.destroy', $row->id) }}" method="post">
+                                    @method('DELETE')
+                                    @csrf
+                                    <button type="button" class="btn btn-danger delete-btn"
+                                        data-id="{{ $row->id }}">Hapus</button>
+                                </form>
+                            </div>
+                        </td>
+                    </tr>
+                @endforeach
+                <!-- end row -->
+
+            </tbody>
+        </table>
+    </div>
+@endsection
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.28/dist/sweetalert2.all.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('.delete-btn').click(function() {
+            let id = $(this).data('id');
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"
         integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     @section('content')

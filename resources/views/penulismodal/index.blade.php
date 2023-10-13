@@ -26,7 +26,7 @@
                 <div class="col-10">
                     <div class="card">
                         <div class="card-body">
-                            <a href="{{ route('penulis.create') }}" type="button" class="btn btn-success">Tambah +</a>
+                            <button type="button" data-bs-toggle="modal" data-bs-target="#modaltambah" class="btn btn-success">Tambah +</button>
                             <div class="row" style="padding-top:10px;">
                                 <table class="table">
                                     <thead>
@@ -40,19 +40,20 @@
                                         <!-- end row -->
                                     </thead>
                                     <tbody>
-                                        @foreach ($datapenulis as $key => $row)
+                                        @foreach ($data as $key => $row)
                                             <!-- start row -->
                                             <tr>
                                                 <td>{{ $key + 1 }}</td>
                                                 <td>{{ $row->nama_penulis }} </td>
-                                                <td>{{ $row->penerbit->nama_penerbit }} </td>
+                                                <td>{{ $row->nama_penerbit }} </td>
 
                                                 <td>
                                                     <div class="d-flex">
                                                         {{-- <a href="{{route( 'pegawai.destroy',$row->id) }}"class="btn btn-danger">Delete</a> --}}
                                                         {{-- <a href=" {{ route('penulis.edit', $row->id) }}"
                                                             class="btn btn-outline-primary mr-1">Edit</a> --}}
-                                                            <button type="button" data-bs-toggle="modal" data-bs-target="#raffi{{ $row->id }}" class="btn btn-outline-primary mr-1">Edit</button>
+                                                            <button type="button" data-bs-toggle="modal"
+                                                             data-bs-target="#raffi{{ $row->id }}" class="btn btn-outline-primary mr-1">Edit</button>
                                                         <form action="{{ route('penulis.destroy', $row->id) }}"
                                                             method="post">
                                                             @method('DELETE')
@@ -102,13 +103,49 @@
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
     </script>
 </body>
-<!-- Button trigger modal -->
-{{-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-    Launch demo modal
-  </button> --}}
 
-  <!-- Modal -->
-  {{-- <div class="modal fade" id="raffi{{ $row->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <!-- Modal Edit -->
+  @foreach ($data as $key => $row)
+  <form action="{{ route('penulis.update', $row->id) }}"method="POST"
+      enctype="multipart/form-data">
+      @csrf
+      @method('PUT')
+  <div class="modal fade" id="raffi{{ $row->id }}" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Edit</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+                <div class="mb-3">
+                    <label for="" class="form-label">Nama Penulis</label>
+                    <input type="text" name="nama_penulis"
+                        class="form-control @error('nama_penulis')is-invalid @enderror"
+                        id=""value="{{ $row->nama_penulis }}">
+                </div>
+                @error('nama_penulis')
+                @enderror
+                <div class="mb-3">
+                    <label for="" class="form-label">Nama Penerbit</label>
+                    <input type="text" name="nama_penerbit"
+                        class="form-control @error('nama_penerbit')is-invalid @enderror"
+                        id=""value="{{ $row->nama_penerbit }}">
+                    </div>
+                @error('nama_penerbit')
+                @enderror
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kembali</button>
+          <button type="submit" class="btn btn-primary" >Simpan</button>
+        </div>
+    </div>
+</div>
+</div>
+</form>
+ @endforeach
+{{-- Modal Tambah --}}
+<div class="modal fade" id="modaltambah" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -116,38 +153,47 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-            <form action="{{ route('penulis.update', $data->id) }}"method="POST"
-                enctype="multipart/form-data">
-                @csrf
-                @method('PUT')
 
+            <form action="{{route('penulis.store')}}"method="POST" enctype="multipart/form-data">
+                @csrf
                 <div class="mb-3">
                     <label for="exampleInputText" class="form-label">Nama Penulis</label>
-                    <input type="text" name="nama_penulis"
-                        class="form-control @error('nama_penulis')is-invalid @enderror"
-                        id=""value="{{ $data->nama_penulis }}">
+                    <input type="text" name="nama_penulis" value="{{old('nama_penulis')}}" class="form-control @error('nama_penulis')is-invalid
+                    @enderror" id="">
                 </div>
                 @error('nama_penulis')
-                @enderror
+                <script>
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: '{{$message}}',
+                    })
+                    </script>
+                  @enderror
 
                 <div class="mb-3">
                     <label for="exampleInputText" class="form-label">Nama Penerbit</label>
-                    <input type="text" name="nama_penerbit"
-                        class="form-control @error('nama_penerbit')is-invalid @enderror"
-                        id=""value="{{ $data->nama_penerbit }}">
-                    </div>
+                    <input type="text" name="nama_penerbit" value="{{old('nama_penerbit')}}" class="form-control @error('nama_penerbit')is-invalid
+                    @enderror" id="">
+                </div>
                 @error('nama_penerbit')
-                @enderror
+                <script>
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: '{{$message}}',
+                    })
+                    </script>
+                  @enderror
 
-                <button type="submit" class="btn btn-outline-info">Simpan</button>
-                <a href="{{ route('penulis.index') }}" type="button"
-                style="margin-left: 10px;" class="btn btn-outline-secondary">Kembali</a>
-            </form>
+
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
+
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kembali</button>
+            <button type="submit" class="btn btn-primary" >Simpan</button>
         </div>
+    </form>
       </div>
     </div>
-  </div> --}}
+  </div>

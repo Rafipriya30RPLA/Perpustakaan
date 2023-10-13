@@ -20,6 +20,7 @@
     <link  id="themeColors"  rel="stylesheet" href="../../dist/css/style.min.css" />
   </head>
   <body>
+    @include('swal')
     <!-- Preloader -->
     <div class="preloader">
       <img src="https://demos.adminmart.com/premium/bootstrap/modernize-bootstrap/package/dist/images/logos/favicon.ico" alt="loader" class="lds-ripple img-fluid" />
@@ -82,6 +83,12 @@
 
       </div>
     </div>
+
+    @error('error')
+        <script>
+            alert(session('error'));
+        </script>
+    @enderror
 
     <!--  Import Js Files -->
     <script src="../../dist/libs/jquery/dist/jquery.min.js"></script>

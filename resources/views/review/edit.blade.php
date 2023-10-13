@@ -1,4 +1,4 @@
-@extends('nav-side')
+@extends('nav-side-admin')
 @section('sidebar')
 @section('header')
 

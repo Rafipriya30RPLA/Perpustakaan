@@ -150,4 +150,12 @@ public function update(Request $request, $id)
 
         return redirect()->route('tambahbuku.index')->with('success', 'Data buku berhasil dihapus.');
     }
+    public function daftarbuku(){
+        $Buku = tambahbuku::all();
+        return view('daftarbuku.index', compact('Buku'));
+    }
+    public function preview($id){
+        $Buku = tambahbuku::findOrFail($id);
+        return view('daftarbuku.preview', compact('Buku'));
+    }
 }

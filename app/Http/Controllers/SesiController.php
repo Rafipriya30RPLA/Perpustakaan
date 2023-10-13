@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Notifications\Registerpengguna;
 
 class SesiController extends Controller
 {
@@ -13,11 +14,19 @@ class SesiController extends Controller
     public function login(){
         return view('login');
     }
+
     public function loginproses(Request $request){
         $credentials = $request->only('email', 'password');
 
         if (Auth::attempt($credentials)) {
-            return redirect('penerbit')->with('success', 'Berhasil Login');
+
+            if (Auth::user()->role === 'user') {
+                return redirect('/daftarbuku')->with('success', 'Berhasil Login');
+            } elseif (Auth::user()->role === 'admin') {
+                return redirect('penerbit')->with('success','Berhasil Login');
+            }
+
+
         } else {
             return redirect('login')->with('error', 'Email atau password salah. Silakan coba lagi.');
         }
@@ -28,6 +37,7 @@ class SesiController extends Controller
     public function registeruser(Request $request){
         // Check if the email already exists
         $existingUser = User::where('email', $request->email)->first();
+
 
         if ($existingUser) {
             return redirect('/register')
@@ -46,12 +56,13 @@ class SesiController extends Controller
                 ->with('error', 'Konfirmasi password tidak cocok. Silakan coba lagi.');
         }
 
-        User::create([
+        $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => bcrypt($request->password),
             'remember_token' => Str::random(60),
         ]);
+
 
         return redirect('/login')->with('success', 'Berhasil Register, Harap Login terlebih dahulu');
     }
