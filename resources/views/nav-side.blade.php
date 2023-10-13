@@ -86,15 +86,8 @@
                   <span class="hide-menu">Penulis</span>
                 </a>
               </li>
-              <li class="sidebar-item">
-                <a class="sidebar-link" href="{{route('review.index')}}" aria-expanded="false">
-                  <span>
-                    <i class="ti ti-cpu"></i>
-                  </span>
-                  <span class="hide-menu">Review</span>
-                </a>
-              </li>
-              <li class="sidebar-item">
+
+             <li class="sidebar-item">
                 <a class="sidebar-link" href="{{route('tambahbuku.index')}}" aria-expanded="false">
                   <span>
                     <i class="ti ti-activity-heartbeat"></i>
