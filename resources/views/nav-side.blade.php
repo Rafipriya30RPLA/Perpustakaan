@@ -107,7 +107,7 @@
                   <span>
                     <i class="fa-solid fa-right-from-bracket"></i>
                   </span>
-                  <span class="hide-menu">Tambah Buku</span>
+                  <span class="hide-menu">Logout</span>
                 </a>
               </li>
             </ul>
