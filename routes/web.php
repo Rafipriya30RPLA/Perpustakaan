@@ -1,6 +1,7 @@
 <?php
 use App\Http\Controllers\PeminjamController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\SesiController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PenerbitController;
@@ -20,16 +21,16 @@ use App\Http\Controllers\ReviewController;
 */
 
 Route::get('/', function () {
-    return view('login');
+    return view('home');
 });
 
 
 
-Route::get('/login',[SesiController::class,'login'])->name('login');
-Route::get('/register',[SesiController::class,'register'])->name('register');
-Route::post('registeruser',[SesiController::class,'registeruser'])->name('registeruser');
-Route::post('loginproses',[SesiController::class,'loginproses'])->name('loginproses');
-Route::get('logout',[SesiController::class,'logout'])->name('logout');
+// Route::get('/login',[SesiController::class,'login'])->name('login');
+// Route::get('/register',[SesiController::class,'register'])->name('register');
+// Route::post('registeruser',[SesiController::class,'registeruser'])->name('registeruser');
+// Route::post('loginproses',[SesiController::class,'loginproses'])->name('loginproses');
+// Route::get('logout',[SesiController::class,'logout'])->name('logout');
 
 
 Route::middleware(['Admin'])->group(function () {
@@ -44,3 +45,7 @@ Route::resource('review', ReviewController::class);
 Route::get('/daftarbuku',[TambahbukuController::class,'daftarbuku']);
 Route::get('/daftarbuku/preview/{id}',[TambahbukuController::class,'preview']);
 });
+
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('verified');
+Auth::routes(['verify'=>true]);
