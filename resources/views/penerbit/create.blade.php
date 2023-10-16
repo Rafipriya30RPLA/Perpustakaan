@@ -43,7 +43,7 @@ integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2
                             <div class="mb-3">
                                 <label for="exampleInputText" class="form-label">No Telepon</label>
                                 <input type="number" name="no_telepon"
-                                value="{{ old('no_telepon') }}"class="form-control @error('no_telepon')is-invalid
+                                value="{{ old('no_telepon') }}"  min="0" class="form-control @error('no_telepon')is-invalid
                                 @enderror"
                                 id="">
                             </div>
@@ -58,10 +58,9 @@ integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2
                             @enderror
                             <div class="mb-3">
                                 <label for="exampleInputText" class="form-label">Alamat</label>
-                                <textarea type="text" name="alamat" value="{{ old('alamat') }}"
-                                class="form-control @error('alamat')is-invalid
-                                @enderror" id=""></textarea>
+                                <textarea type="text" name="alamat" class="form-control @error('alamat') is-invalid @enderror" id="exampleInputText">{{ old('alamat') }}</textarea>
                             </div>
+
                             @error('alamat')
                             <script>
                                 Swal.fire({

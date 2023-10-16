@@ -52,7 +52,7 @@
                                                         {{-- <a href="{{route( 'pegawai.destroy',$row->id) }}"class="btn btn-danger">Delete</a> --}}
                                                         {{-- <a href=" {{ route('penulis.edit', $row->id) }}"
                                                             class="btn btn-outline-primary mr-1">Edit</a> --}}
-                                                            <button type="button" data-bs-toggle="modal" data-bs-target="#raffi{{ $row->id }}" class="btn btn-outline-primary mr-1">Edit</button>
+                                                            <a href="{{ route('penulis.edit', $row->id) }}" class="btn btn-outline-primary mr-1">Edit</a>
                                                         <form action="{{ route('penulis.destroy', $row->id) }}"
                                                             method="post">
                                                             @method('DELETE')

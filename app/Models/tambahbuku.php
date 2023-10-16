@@ -11,4 +11,8 @@ class tambahbuku extends Model
     protected $guarded =[
 
     ];
+
+    public function penulis(){
+        return $this->belongsTo(penulis::class, 'id_penulis');
+    }
 }

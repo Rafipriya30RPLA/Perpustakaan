@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Requests\StorepenerbitRequest;
 use App\Http\Requests\UpdatepenerbitRequest;
+use App\Models\penulis;
 
 class PenerbitController extends Controller
 {
@@ -107,6 +108,11 @@ class PenerbitController extends Controller
 
     public function destroy($id)
     {
+        $penulis = penerbit::where('id', $id)->firstOrFail();
+        if (penulis::where('id_penerbit', $id)->exists()) {
+            return redirect()->route('penerbit.index')->with('error', "Data " . $penulis->nama_penerbit . " Masih di gunakan di tabel penulis!" );
+        }
+
         $data = penerbit::find($id);
         $data->delete();
         return redirect()->route('penerbit.index')->with('success', 'Data Berhasil Di Delete');

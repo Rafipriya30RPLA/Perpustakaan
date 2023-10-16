@@ -45,21 +45,6 @@
                             })
                             </script>
                           @enderror
-
-                          <div class="mb-3">
-                              <label for="exampleInputText" class="form-label">Deskripsi</label>
-                              <input type="text" name="deskripsi"  value="{{old('deskripsi')}}"class="form-control @error('deskripsi')is-invalid
-                              @enderror" id="">
-                            </div>
-                            @error('deskripsi')
-                            <script>
-                                Swal.fire({
-                                    icon: 'error',
-                                    title: 'Oops...',
-                                    text: '{{$message}}',
-                                })
-                                </script>
-                          @enderror
                           <div class="mb-3">
                               <label for="exampleInputText" class="form-label" >Kode Buku</label>
                               <input type="number"name="kode_buku" value="{{old('kode_buku')}}" class="form-control" id="">
@@ -75,10 +60,14 @@
                           @enderror
                           <div class="mb-3">
                               <label for="exampleInputText" class="form-label">Nama penulis</label>
-                              <input type="text" name="nama_penulis" value="{{old('nama_penulis')}}" class="form-control @error('nama_penulis')is-invalid
-                              @enderror" id="">
+                              <select name="id_penulis" id="" class="form-select">
+                                <option value=""disabled selected>Pilih Nama Penulis</option>
+                                @foreach ($datapenulis as $penulis)
+                                    <option value="{{ $penulis->id }}">{{ $penulis->nama_penulis }}</option>
+                                @endforeach
+                            </select>
                             </div>
-                            @error('nama_penulis')
+                            @error('id_penulis')
                             <script>
                                 Swal.fire({
                                     icon: 'error',
@@ -116,6 +105,20 @@
                                 </script>
                           @enderror
                           <div class="mb-3">
+                            <label for="exampleInputText" class="form-label">Deskripsi</label>
+                            <textarea name="deskripsi" class="form-control @error('deskripsi') is-invalid @enderror" rows="4" id="exampleInputText">{{ old('deskripsi') }}</textarea>
+                        </div>
+
+                          @error('deskripsi')
+                          <script>
+                              Swal.fire({
+                                  icon: 'error',
+                                  title: 'Oops...',
+                                  text: '{{$message}}',
+                              })
+                              </script>
+                        @enderror
+                          <div class="mb-3">
                               <label for="exampleInputText" class="form-label" >Masukkan Foto</label>
                               <input type="file"name="foto" value="{{old('foto')}}" class="form-control" id="">
                             </div>
@@ -137,7 +140,7 @@
         </div>
     </div>
     @endsection
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
+
 </html>

@@ -3,25 +3,27 @@
 namespace App\Http\Controllers;
 
 
+use App\Models\penulis;
 use App\Models\tambahbuku;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
-use App\Http\Requests\StoretambahbukuRequest;
-use App\Http\Requests\UpdatetambahbukuRequest;
 
 class TambahbukuController extends Controller
 {
     public function index()
     {
-        $data = tambahbuku::all();
-        return view('tambahbuku.index', compact('data'));
+        $datapenulis = penulis::all();
+        $datatambahbuku = tambahbuku::all();
+        return view('tambahbuku.index', compact('datatambahbuku','datapenulis'))-> with('row');
     }
 
     public function create()
     {
-        return view('tambahbuku.create');
+        $datapenulis = penulis::all();
+        $datatambahbuku = tambahbuku::all();
+        return view('tambahbuku.create', compact('datatambahbuku','datapenulis'))-> with('row');
     }
 
     public function store(Request $request)
@@ -30,16 +32,16 @@ class TambahbukuController extends Controller
             'nama_buku' => 'required',
             'deskripsi' => 'required',
             'kode_buku' => 'required|unique:tambahbukus,kode_buku|gt:-0',
-            'nama_penulis' => 'required',
+            'id_penulis' => 'required',
             'nama_penerbit' => 'required',
             'tanggal_terbit' => 'required',
-            'foto' => 'image|mimes:jpeg,png,gif|max:2048', // Sesuaikan dengan kebutuhan Anda
+            'foto' =>  'required|image|mimes:jpeg,png,gif|max:2048', // Sesuaikan dengan kebutuhan Anda
         ], [
             'nama_buku.required' => 'Nama harus diisi',
             'deskripsi.required' => 'Deskripsi harus diisi',
             'kode_buku.unique' => 'Kode Buku Telah digunakan',
             'kode_buku.gt' => 'Kode Buku tidak boleh minus',
-            'nama_penulis.required' => 'Nama Penulis harus diisi',
+            'id_penulis.required' => 'Nama Penulis harus diisi',
             'nama_penerbit.required' => 'Nama Penerbit harus diisi',
             'tanggal_terbit.required' => 'Tanggal Terbit harus diisi',
             'foto.required' => 'Foto harus diisi',
@@ -52,45 +54,48 @@ class TambahbukuController extends Controller
             return redirect()->back()->withErrors($validator)->withInput();
         }
 
-        $data = new tambahbuku();
-        $data->nama_buku = $request->input('nama_buku');
-        $data->deskripsi = $request->input('deskripsi');
-        $data->kode_buku = $request->input('kode_buku');
-        $data->nama_penulis = $request->input('nama_penulis');
-        $data->nama_penerbit = $request->input('nama_penerbit');
-        $data->tanggal_terbit = $request->input('tanggal_terbit');
+        $datatambahbuku = new tambahbuku();
+        $datatambahbuku->nama_buku = $request->input('nama_buku');
+        $datatambahbuku->deskripsi = $request->input('deskripsi');
+        $datatambahbuku->kode_buku = $request->input('kode_buku');
+        $datatambahbuku->id_penulis = $request->input('id_penulis');
+        $datatambahbuku->nama_penerbit = $request->input('nama_penerbit');
+        $datatambahbuku->tanggal_terbit = $request->input('tanggal_terbit');
+
+
         if ($request->hasFile('foto')) {
             $file = $request->file('foto');
             $fileName = Str::random(20) . '.' . $file->getClientOriginalExtension(); // Menggunakan Str::random() untuk nama random
             Storage::disk('public')->putFileAs('tambahbuku', $file, $fileName);
-            $data->foto = $fileName;
+            $datatambahbuku->foto = $fileName;
         }
 
-        $data->save();
+        $datatambahbuku->save();
 
         return redirect()->route('tambahbuku.index')->with('success', 'Data Berhasil Ditambahkan');
     }
     public function edit($id)
 {
     $data = tambahbuku::find($id);
-    return view('tambahbuku.edit', compact('data'));
+    $datatambahbuku = penulis::all();
+    return view('tambahbuku.edit', compact('datatambahbuku','data'));
 }
 public function update(Request $request, $id)
 {
     $validator = Validator::make($request->all(), [
-        'nama_buku' => 'required',
+           'nama_buku' => 'required',
             'deskripsi' => 'required',
             'kode_buku' => 'required|gt:-0',
-            'nama_penulis' => 'required',
+            'id_penulis' => 'required',
             'nama_penerbit' => 'required',
             'tanggal_terbit' => 'required',
-            'foto' => 'image|mimes:jpeg,png,gif|max:2048', // Sesuaikan dengan kebutuhan Anda
+            'foto' => 'required|image|mimes:jpeg,png,gif|max:2048', // Sesuaikan dengan kebutuhan Anda
         ], [
             'nama_buku.required' => 'Nama harus diisi',
             'deskripsi.required' => 'Deskripsi harus diisi',
             'kode_buku.unique' => 'Kode Buku Telah digunakan',
             'kode_buku.gt' => 'Kode Buku tidak boleh minus',
-            'nama_penulis.required' => 'Nama Penulis harus diisi',
+            'id_penulis.required' => 'Nama Penulis harus diisi',
             'nama_penerbit.required' => 'Nama Penerbit harus diisi',
             'tanggal_terbit.required' => 'Tanggal Terbit harus diisi',
             'foto.required' => 'Foto harus diisi',
@@ -102,35 +107,37 @@ public function update(Request $request, $id)
         return redirect()->back()->withErrors($validator)->withInput();
     }
 
-    $data = tambahbuku::find($id);
+    $datatambahbuku = tambahbuku::find($id);
 
     // Update data lainnya
-    $data->nama_buku = $request->input('nama_buku');
-    $data->deskripsi = $request->input('deskripsi');
-    $data->kode_buku = $request->input('kode_buku');
-    $data->nama_penulis = $request->input('nama_penulis');
-    $data->nama_penerbit = $request->input('nama_penerbit');
-    $data->tanggal_terbit = $request->input('tanggal_terbit');
+    $datatambahbuku->nama_buku = $request->input('nama_buku');
+    $datatambahbuku->deskripsi = $request->input('deskripsi');
+    $datatambahbuku->kode_buku = $request->input('kode_buku');
+    $datatambahbuku->id_penulis = $request->input('id_penulis');
+    $datatambahbuku->nama_penerbit = $request->input('nama_penerbit');
+    $datatambahbuku->tanggal_terbit = $request->input('tanggal_terbit');
+
+
     if ($request->hasFile('foto')) {
         // Hapus foto lama jika ada
-        if ($data->foto) {
-            Storage::disk('public')->delete('tambahbuku/' . $data->foto);
+        if ($datatambahbuku->foto) {
+            Storage::disk('public')->delete('tambahbuku/' . $datatambahbuku->foto);
         }
 
         // Upload foto yang baru
         $file = $request->file('foto');
         $fileName = time() . '.' . $file->getClientOriginalExtension();
         Storage::disk('public')->putFileAs('tambahbuku', $file, $fileName);
-        $data->foto = $fileName;
+        $datatambahbuku->foto = $fileName;
     }
 
-    $data->save();
+    $datatambahbuku->save();
 
     return redirect()->route('tambahbuku.index')->with('success', 'Data daftar berhasil diupdate.');
 }
     public function show($id)
     {
-        $data = tambahbuku::find($id);
+        $datatambahbuku = tambahbuku::find($id);
         return view('tambahbuku.edit', compact('data'));
     }
 

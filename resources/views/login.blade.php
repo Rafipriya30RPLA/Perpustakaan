@@ -64,14 +64,14 @@
                       <div class="form-check">
                         <input class="form-check-input primary" type="checkbox" value="" id="flexCheckChecked" checked>
                         <label class="form-check-label text-dark" for="flexCheckChecked">
-                          Remeber this Device
+                        Ingat Perangkat ini
                         </label>
                       </div>
-                      <a class="text-primary fw-medium" href="authentication-forgot-password.html">Forgot Password ?</a>
+                      {{-- <a class="text-primary fw-medium" href="authentication-forgot-password.html">Forgot Password ?</a> --}}
                     </div>
                     <button type="submit" class="btn btn-primary w-100 py-8 mb-4 rounded-2">Sign In</button>
                     <div class="d-flex align-items-center justify-content-center">
-                      <p class="fs-4 mb-0 fw-medium">New to Modernize?</p>
+                      <p class="fs-4 mb-0 fw-medium">Apa Anda ingin Bergabung</p>
                       <a class="text-primary fw-medium ms-2" href="/register">Create an account</a>
                     </div>
                   </form>

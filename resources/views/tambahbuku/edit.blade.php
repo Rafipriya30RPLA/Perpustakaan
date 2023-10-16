@@ -39,20 +39,6 @@
                                 </script>
                           @enderror
                           <div class="mb-3">
-                              <label for="exampleInputText" class="form-label">Deskripsi</label>
-                              <input type="text" name="deskripsi" class="form-control @error('deskripsi')is-invalid
-                              @enderror" id=""value="{{$data->deskripsi}}">
-                            </div>
-                            @error('deskripsi')
-                            <script>
-                                Swal.fire({
-                                    icon: 'error',
-                                    title: 'Oops...',
-                                    text: '{{$message}}',
-                                })
-                                </script>
-                          @enderror
-                          <div class="mb-3">
                               <label for="exampleInputText" class="form-label" >Kode Buku</label>
                               <input type="number"name="kode_buku"value="{{$data->kode_buku}}" class="form-control @error('kode_buku')is-invalid
                               @enderror" id="">
@@ -68,10 +54,16 @@
                           @enderror
                           <div class="mb-3">
                               <label for="exampleInputText" class="form-label">Nama Penulis</label>
-                              <input type="text" name="nama_penulis" class="form-control @error('nama_penulis')is-invalid
-                              @enderror" id=""value="{{$data->nama_penulis}}">
+                              <select name="id_penulis" id="id_penulis" class="form-select">
+                                <option value="" disabled>Pilih Nama Penulis</option>
+                                @foreach ($datatambahbuku as $tambahbuku)
+                                    <option value="{{ $tambahbuku->id }}" {{ $tambahbuku->id == $data->id_penulis ? 'selected' : '' }}>
+                                        {{ $tambahbuku->nama_penulis }}
+                                    </option>
+                                @endforeach
+                            </select>
                             </div>
-                            @error('namapenerbit')
+                            @error('id_penulis')
                             <script>
                                 Swal.fire({
                                     icon: 'error',
@@ -96,7 +88,7 @@
                           @enderror
                           <div class="mb-3">
                               <label for="exampleInputText" class="form-label">Tanggal Terbit</label>
-                              <input type="text" name="tanggal_terbit" class="form-control @error('tanggal_terbit')is-invalid
+                              <input type="date" name="tanggal_terbit" class="form-control @error('tanggal_terbit')is-invalid
                               @enderror" id=""value="{{$data->tanggal_terbit}}">
                             </div>
                             @error('tanggal_terbit')
@@ -108,6 +100,19 @@
                                 })
                                 </script>
                           @enderror
+                          <div class="mb-3">
+                            <label for="exampleInputText" class="form-label">Deskripsi</label>
+                            <textarea name="deskripsi" class="form-control @error('deskripsi') is-invalid @enderror" id="exampleInputText" rows="5">{{ $data->deskripsi }}</textarea>
+                        </div>
+                          @error('deskripsi')
+                          <script>
+                              Swal.fire({
+                                  icon: 'error',
+                                  title: 'Oops...',
+                                  text: '{{$message}}',
+                              })
+                              </script>
+                        @enderror
                           <div class="mb-3">
                               <label for="exampleInputText" class="form-label">Masukkan Foto</label>
                               <input type="file" name="foto" class="form-control @error('foto') is-invalid @enderror" id="inputFoto">

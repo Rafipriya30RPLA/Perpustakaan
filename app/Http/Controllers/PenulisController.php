@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\penerbit;
+use App\Models\tambahbuku;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Models\penulis;
@@ -92,6 +93,11 @@ class PenulisController extends Controller
 
     public function destroy($id)
     {
+        $tambahbuku = penulis::where('id', $id)->firstOrFail();
+        if (tambahbuku::where('id_penulis', $id)->exists()) {
+            return redirect()->route('penulis.index')->with('error', "Data" . $tambahbuku->nama_penulis . " Masih di gunakan di tabel tambah buku!" );
+        }
+
         $datapenulis = penulis::find($id);
         $datapenulis->delete();
         return redirect()->route('penulis.index')->with('success', 'Data Berhasil Di Delete');

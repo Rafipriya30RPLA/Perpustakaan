@@ -14,13 +14,15 @@ return new class extends Migration
         Schema::create('tambahbukus', function (Blueprint $table) {
             $table->id();
             $table->string('nama_buku');
-            $table->string('deskripsi');
             $table->string('kode_buku');
-            $table->string('nama_penulis');
+            $table->unsignedBigInteger('id_penulis');
             $table->string('nama_penerbit');
             $table->string('tanggal_terbit');
+            $table->string('deskripsi');
             $table->string('foto');
             $table->timestamps();
+
+            $table->foreign('id_penulis')->references('id')->on('penulis')->onDelete('restrict');
         });
     }
 

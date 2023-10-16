@@ -50,25 +50,25 @@
                                         <tr>
                                             <th scope="col">#</th>
                                             <th scope="col">Nama Buku</th>
-                                            <th scope="col">Deskripsi</th>
                                             <th scope="col">Kode Buku</th>
                                             <th scope="col">Nama Penulis</th>
                                             <th scope="col">Nama Penerbit</th>
                                             <th scope="col">Tanggal Dibuat</th>
+                                            <th scope="col">Deskripsi</th>
                                             <th scope="col">Foto</th>
                                             <th scope="col">Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($data as $key => $row)
+                                        @foreach ($datatambahbuku as $key => $row)
                                         <tr>
                                             <td>{{ $key + 1 }}</td>
                                                 <td>{{ $row->nama_buku }} </td>
-                                                <td>{{ $row->deskripsi }} </td>
                                                 <td>{{ $row->kode_buku }} </td>
-                                                <td>{{ $row->nama_penulis }} </td>
-                                                <td>{{ $row->nama_penerbit }} </td>
+                                                <td>{{ $row->penulis->nama_penulis }} </td>
+                                                <td>{{ $row->penulis->penerbit->nama_penerbit }} </td>
                                                 <td>{{ $row->tanggal_terbit }} </td>
+                                                <td>{{ $row->deskripsi }} </td>
                                                 <td>
                                                     <img src="{{ asset('storage/tambahbuku/' . $row->foto) }}" alt="" style="width: 40px">
                                                 </td>
