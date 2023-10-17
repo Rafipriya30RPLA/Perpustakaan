@@ -33,7 +33,6 @@
                                 enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
-
                                 <div class="mb-3">
                                     <label for="exampleInputText" class="form-label">Nama Penulis</label>
                                     <input type="text" name="nama_penulis"
@@ -42,7 +41,6 @@
                                 </div>
                                 @error('nama_penulis')
                                 @enderror
-
                                 <div class="mb-3">
                                     <label for="id_penerbit" class="form-label">Nama Penerbit</label>
                                     <select name="id_penerbit" id="id_penerbit" class="form-select">

@@ -79,12 +79,16 @@
                 </a>
               </li>
               <li class="sidebar-item">
-                <a class="sidebar-link" href="{{route('logout')}}" aria-expanded="false">
-                  <span>
-                    <i class="fa-solid fa-right-from-bracket"></i>
-                  </span>
-                  <span class="hide-menu">Logout</span>
-                </a>
+                <a class="sidebar-link" href="{{ route('logout') }}"
+                onclick="event.preventDefault();
+                              document.getElementById('logout-form').submit();">
+                               <i class="fa-solid fa-right-from-bracket"></i>
+                 {{ __('Logout') }}
+             </a>
+
+             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                 @csrf
+             </form>
               </li>
             </ul>
           </nav>

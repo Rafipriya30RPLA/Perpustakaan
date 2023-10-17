@@ -21,7 +21,7 @@ use App\Http\Controllers\ReviewController;
 */
 
 Route::get('/', function () {
-    return view('home');
+    return view('auth/login');
 });
 
 
