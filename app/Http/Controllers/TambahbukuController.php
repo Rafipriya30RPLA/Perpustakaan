@@ -32,6 +32,7 @@ class TambahbukuController extends Controller
             'nama_buku' => 'required',
             'deskripsi' => 'required',
             'kode_buku' => 'required|unique:tambahbukus,kode_buku|gt:-0',
+            'stok' => 'required|gt:-0',
             'id_penulis' => 'required',
             'tanggal_terbit' => 'required|date|after_or_equal:'.now()->format('Y-m-d'),
             'foto' =>  'required|image|mimes:jpeg,png,gif|max:2048', // Sesuaikan dengan kebutuhan Anda
@@ -40,6 +41,8 @@ class TambahbukuController extends Controller
             'deskripsi.required' => 'Deskripsi harus diisi',
             'kode_buku.unique' => 'Kode Buku Telah digunakan',
             'kode_buku.gt' => 'Kode Buku tidak boleh minus',
+            'stok.required' => 'stok harus di isi',
+            'stok.gt' => 'stok tidak boleh minus',
             'id_penulis.required' => 'Nama Penulis harus diisi',
             'tanggal_terbit.required' => 'Tanggal Terbit harus diisi',
             'foto.required' => 'Foto harus diisi',
@@ -56,6 +59,7 @@ class TambahbukuController extends Controller
         $datatambahbuku->nama_buku = $request->input('nama_buku');
         $datatambahbuku->deskripsi = $request->input('deskripsi');
         $datatambahbuku->kode_buku = $request->input('kode_buku');
+        $datatambahbuku->stok = $request->input('stok');
         $datatambahbuku->id_penulis = $request->input('id_penulis');
         $datatambahbuku->tanggal_terbit = $request->input('tanggal_terbit');
 
@@ -83,6 +87,7 @@ public function update(Request $request, $id)
            'nama_buku' => 'required',
             'deskripsi' => 'required',
             'kode_buku' => 'required|gt:-0',
+            'stok' => 'required|gt:-0',
             'id_penulis' => 'required',
             'tanggal_terbit' => 'required',
             'foto' => 'required|image|mimes:jpeg,png,gif|max:2048', // Sesuaikan dengan kebutuhan Anda
@@ -91,6 +96,8 @@ public function update(Request $request, $id)
             'deskripsi.required' => 'Deskripsi harus diisi',
             'kode_buku.unique' => 'Kode Buku Telah digunakan',
             'kode_buku.gt' => 'Kode Buku tidak boleh minus',
+            'stok.required' => 'stok harus di isi',
+            'stok.gt' => 'stok tidak boleh minus',
             'id_penulis.required' => 'Nama Penulis harus diisi',
             'tanggal_terbit.required' => 'Tanggal Terbit harus diisi',
             'foto.required' => 'Foto harus diisi',
@@ -108,6 +115,7 @@ public function update(Request $request, $id)
     $datatambahbuku->nama_buku = $request->input('nama_buku');
     $datatambahbuku->deskripsi = $request->input('deskripsi');
     $datatambahbuku->kode_buku = $request->input('kode_buku');
+    $datatambahbuku->stok = $request->input('stok');
     $datatambahbuku->id_penulis = $request->input('id_penulis');
     $datatambahbuku->tanggal_terbit = $request->input('tanggal_terbit');
 

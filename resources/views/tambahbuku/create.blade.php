@@ -59,6 +59,19 @@
                                 </script>
                           @enderror
                           <div class="mb-3">
+                            <label for="exampleInputText" class="form-label" >Stok</label>
+                            <input type="number"name="stok" value="{{old('stok')}}" class="form-control" id="">
+                          </div>
+                          @error('stok')
+                          <script>
+                              Swal.fire({
+                                  icon: 'error',
+                                  title: 'Oops...',
+                                  text: '{{$message}}',
+                              })
+                              </script>
+                        @enderror
+                          <div class="mb-3">
                               <label for="exampleInputText" class="form-label">Nama penulis</label>
                               <select name="id_penulis" id="" class="form-select">
                                 <option value=""disabled selected>Pilih Nama Penulis</option>

@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('nama_buku');
             $table->string('kode_buku');
+            $table->string('stok');
             $table->unsignedBigInteger('id_penulis');
             $table->string('tanggal_terbit');
             $table->string('deskripsi');

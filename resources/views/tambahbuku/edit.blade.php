@@ -53,6 +53,20 @@
                                 </script>
                           @enderror
                           <div class="mb-3">
+                            <label for="exampleInputText" class="form-label" >Stok</label>
+                            <input type="number"name="stok"value="{{$data->stok}}" class="form-control @error('stok')is-invalid
+                            @enderror" id="">
+                          </div>
+                          @error('stok')
+                          <script>
+                              Swal.fire({
+                                  icon: 'error',
+                                  title: 'Oops...',
+                                  text: '{{$message}}',
+                              })
+                              </script>
+                        @enderror
+                          <div class="mb-3">
                               <label for="exampleInputText" class="form-label">Nama Penulis</label>
                               <select name="id_penulis" id="id_penulis" class="form-select">
                                 <option value="" disabled>Pilih Nama Penulis</option>

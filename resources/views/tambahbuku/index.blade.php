@@ -51,6 +51,7 @@
                                             <th scope="col">#</th>
                                             <th scope="col">Nama Buku</th>
                                             <th scope="col">Kode Buku</th>
+                                            <th scope="col">Stok</th>
                                             <th scope="col">Nama Penulis</th>
                                             <th scope="col">Nama Penerbit</th>
                                             <th scope="col">Tanggal Dibuat</th>
@@ -65,6 +66,7 @@
                                             <td>{{ $key + 1 }}</td>
                                                 <td>{{ $row->nama_buku }} </td>
                                                 <td>{{ $row->kode_buku }} </td>
+                                                <td>{{ $row->stok }} </td>
                                                 <td>{{ $row->penulis->nama_penulis }} </td>
                                                 <td>{{ $row->penulis->penerbit->nama_penerbit }} </td>
                                                 <td>{{Carbon\Carbon::parse($row->tanggal_terbit)->translatedFormat('d F Y') }} </td>
