@@ -33,7 +33,6 @@ class TambahbukuController extends Controller
             'deskripsi' => 'required',
             'kode_buku' => 'required|unique:tambahbukus,kode_buku|gt:-0',
             'id_penulis' => 'required',
-            'nama_penerbit' => 'required',
             'tanggal_terbit' => 'required',
             'foto' =>  'required|image|mimes:jpeg,png,gif|max:2048', // Sesuaikan dengan kebutuhan Anda
         ], [
@@ -42,7 +41,6 @@ class TambahbukuController extends Controller
             'kode_buku.unique' => 'Kode Buku Telah digunakan',
             'kode_buku.gt' => 'Kode Buku tidak boleh minus',
             'id_penulis.required' => 'Nama Penulis harus diisi',
-            'nama_penerbit.required' => 'Nama Penerbit harus diisi',
             'tanggal_terbit.required' => 'Tanggal Terbit harus diisi',
             'foto.required' => 'Foto harus diisi',
             'foto.image' => 'File harus berupa gambar',
@@ -59,7 +57,6 @@ class TambahbukuController extends Controller
         $datatambahbuku->deskripsi = $request->input('deskripsi');
         $datatambahbuku->kode_buku = $request->input('kode_buku');
         $datatambahbuku->id_penulis = $request->input('id_penulis');
-        $datatambahbuku->nama_penerbit = $request->input('nama_penerbit');
         $datatambahbuku->tanggal_terbit = $request->input('tanggal_terbit');
 
 
@@ -87,7 +84,6 @@ public function update(Request $request, $id)
             'deskripsi' => 'required',
             'kode_buku' => 'required|gt:-0',
             'id_penulis' => 'required',
-            'nama_penerbit' => 'required',
             'tanggal_terbit' => 'required',
             'foto' => 'required|image|mimes:jpeg,png,gif|max:2048', // Sesuaikan dengan kebutuhan Anda
         ], [
@@ -96,7 +92,6 @@ public function update(Request $request, $id)
             'kode_buku.unique' => 'Kode Buku Telah digunakan',
             'kode_buku.gt' => 'Kode Buku tidak boleh minus',
             'id_penulis.required' => 'Nama Penulis harus diisi',
-            'nama_penerbit.required' => 'Nama Penerbit harus diisi',
             'tanggal_terbit.required' => 'Tanggal Terbit harus diisi',
             'foto.required' => 'Foto harus diisi',
             'foto.image' => 'File harus berupa gambar',
@@ -114,7 +109,6 @@ public function update(Request $request, $id)
     $datatambahbuku->deskripsi = $request->input('deskripsi');
     $datatambahbuku->kode_buku = $request->input('kode_buku');
     $datatambahbuku->id_penulis = $request->input('id_penulis');
-    $datatambahbuku->nama_penerbit = $request->input('nama_penerbit');
     $datatambahbuku->tanggal_terbit = $request->input('tanggal_terbit');
 
 

@@ -63,14 +63,6 @@
               <!-- Dashboard -->
               <!-- =================== -->
               <li class="sidebar-item">
-                <a class="sidebar-link {{ request()->routeIs('peminjam.edit') || request()->routeIs('peminjam.create') ? 'active' : '' }}" href="{{route('peminjam.index')}}" aria-expanded="false">
-                  <span>
-                    <i class="ti ti-aperture"></i>
-                  </span>
-                  <span class="hide-menu">Peminjam</span>
-                </a>
-              </li>
-              <li class="sidebar-item">
                 <a class="sidebar-link  {{ request()->routeIs('penerbit.edit') || request()->routeIs('penerbit.create') ? 'active' : ''}}" href="{{route('penerbit.index')}}" aria-expanded="false">
                   <span>
                     <i class="fa-solid fa-users"></i>

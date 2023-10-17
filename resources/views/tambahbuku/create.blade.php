@@ -77,20 +77,6 @@
                                 </script>
                           @enderror
                           <div class="mb-3">
-                              <label for="exampleInputText" class="form-label">Nama Penerbit</label>
-                              <input type="text" name="nama_penerbit" value="{{old('nama_penerbit')}}" class="form-control @error('nama_penerbit')is-invalid
-                              @enderror" id="">
-                            </div>
-                            @error('nama_penerbit')
-                            <script>
-                                Swal.fire({
-                                    icon: 'error',
-                                    title: 'Oops...',
-                                    text: '{{$message}}',
-                                })
-                                </script>
-                          @enderror
-                          <div class="mb-3">
                               <label for="exampleInputText" class="form-label">Tanggal Terbit</label>
                               <input type="date" name="tanggal_terbit" value="{{old('tanggal_terbit')}}" class="form-control @error('tanggal_terbit')is-invalid
                               @enderror" id="">

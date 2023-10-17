@@ -63,7 +63,7 @@
               <!-- Dashboard -->
               <!-- =================== -->
               <li class="sidebar-item">
-                <a class="sidebar-link" href="/daftarbuku" aria-expanded="false">
+                <a class="sidebar-link " href="/daftarbuku" aria-expanded="false">
                   <span>
                     <i class="ti ti-aperture"></i>
                   </span>
@@ -71,7 +71,15 @@
                 </a>
               </li>
               <li class="sidebar-item">
-                <a class="sidebar-link" href="{{route('review.index')}}" aria-expanded="false">
+                <a class="sidebar-link {{ request()->routeIs('peminjam.edit') || request()->routeIs('peminjam.create') ? 'active' : '' }}" href="{{route('peminjam.index')}}" aria-expanded="false">
+                  <span>
+                    <i class="ti ti-aperture"></i>
+                  </span>
+                  <span class="hide-menu">Peminjam</span>
+                </a>
+              </li>
+              <li class="sidebar-item">
+                <a class="sidebar-link {{ request()->routeIs('review.edit') || request()->routeIs('review.create') ? 'active' : '' }}" href="{{route('review.index')}}" aria-expanded="false">
                   <span>
                     <i class="ti ti-cpu"></i>
                   </span>

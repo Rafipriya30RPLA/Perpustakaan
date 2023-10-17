@@ -16,7 +16,6 @@ return new class extends Migration
             $table->string('nama_buku');
             $table->string('kode_buku');
             $table->unsignedBigInteger('id_penulis');
-            $table->string('nama_penerbit');
             $table->string('tanggal_terbit');
             $table->string('deskripsi');
             $table->string('foto');
