@@ -67,7 +67,7 @@
                                                 <td>{{ $row->kode_buku }} </td>
                                                 <td>{{ $row->penulis->nama_penulis }} </td>
                                                 <td>{{ $row->penulis->penerbit->nama_penerbit }} </td>
-                                                <td>{{ $row->tanggal_terbit }} </td>
+                                                <td>{{Carbon\Carbon::parse($row->tanggal_terbit)->translatedFormat('d F Y') }} </td>
                                                 <td>{{ $row->deskripsi }} </td>
                                                 <td>
                                                     <img src="{{ asset('storage/tambahbuku/' . $row->foto) }}" alt="" style="width: 40px">

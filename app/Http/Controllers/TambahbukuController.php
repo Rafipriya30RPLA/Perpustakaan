@@ -33,7 +33,7 @@ class TambahbukuController extends Controller
             'deskripsi' => 'required',
             'kode_buku' => 'required|unique:tambahbukus,kode_buku|gt:-0',
             'id_penulis' => 'required',
-            'tanggal_terbit' => 'required',
+            'tanggal_terbit' => 'required|date|after_or_equal:'.now()->format('Y-m-d'),
             'foto' =>  'required|image|mimes:jpeg,png,gif|max:2048', // Sesuaikan dengan kebutuhan Anda
         ], [
             'nama_buku.required' => 'Nama harus diisi',
