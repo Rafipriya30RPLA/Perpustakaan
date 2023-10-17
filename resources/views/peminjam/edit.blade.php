@@ -39,10 +39,16 @@
 
                             <div class="mb-3">
                                 <label for="exampleInputText" class="form-label">Nama Buku</label>
-                                <input type="text" name="nama_buku" class="form-control @error('nama_buku')is-invalid
-                                @enderror" id=""value="{{$data->nama_buku}}">
+                                <select name="id_penerbit" id="id_penerbit" class="form-select">
+                                    <option value="" disabled>Pilih Nama Penerbit</option>
+                                    @foreach($datapeminjam as $peminjam)
+                                        <option value="{{ $peminjam->id }}" {{ $peminjam->id == $data->id_tambahbuku ? 'selected' : '' }}>
+                                            {{ $peminjam->nama_buku }}
+                                        </option>
+                                    @endforeach
+                                </select>
                             </div>
-                            @error('nama_buku')
+                            @error('id_tambahbuku')
 
                             @enderror
 

@@ -14,11 +14,13 @@ return new class extends Migration
         Schema::create('peminjams', function (Blueprint $table) {
             $table->id();
             $table->string('nama_peminjam');
-            $table->string('nama_buku');
+            $table->unsignedBigInteger('id_tambahbuku');
             $table->string('kode_buku');
             $table->string('tanggal_pinjam');
             $table->string('tenggat');
             $table->timestamps();
+
+            $table->foreign('id_tambahbuku')->references('id')->on('tambahbukus')->onDelete('restrict');
         });
     }
 

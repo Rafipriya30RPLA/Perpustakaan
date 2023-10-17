@@ -38,10 +38,14 @@
                       @enderror
                       <div class="mb-3">
                           <label for="exampleInputText" class="form-label">Nama Buku</label>
-                          <input type="text" name="nama_buku" value="{{old('nama_buku')}}" class="form-control @error('nama_buku')is-invalid
-                          @enderror" id="">
-                        </div>
-                        @error('nama_buku')
+                          <select name="id_penerbit" id="" class="form-select">
+                            <option value=""disabled selected>Pilih Nama Buku</option>
+                            @foreach ($datatambahbuku as $tambahbuku)
+                                <option value="{{ $tambahbuku->id }}">{{ $tambahbuku->nama_buku }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                        @error('id_tambahbuku')
                         <script>
                             Swal.fire({
                                 icon: 'error',

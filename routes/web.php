@@ -43,7 +43,7 @@ Route::middleware(['User'])->group(function () {
 Route::resource('review', ReviewController::class);
 Route::resource('peminjam', PeminjamController::class);
 Route::get('/daftarbuku',[TambahbukuController::class,'daftarbuku']);
-Route::get('/daftarbuku/preview/{id}',[TambahbukuController::class,'preview']);
+Route::get('/daftarbuku/preview/{id}',[TambahbukuController::class,'preview'])->name('daftarbuku.preview');
 });
 
 

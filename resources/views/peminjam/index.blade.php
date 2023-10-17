@@ -43,11 +43,11 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($data as $key => $row)
+                                    @foreach ($datapeminjam as $key => $row)
                                         <tr>
                                             <td>{{ $key + 1 }}</td>
                                             <td>{{ $row->nama_peminjam }} </td>
-                                            <td>{{ $row->nama_buku }} </td>
+                                            <td>{{ $row->tambahbuku->nama_buku }} </td>
                                             <td>{{ $row->kode_buku }} </td>
                                             <td>{{ $row->tanggal_pinjam }} </td>
                                             <td>{{ $row->tenggat }} </td>
@@ -138,12 +138,14 @@
                     @enderror
                     <div class="mb-3">
                         <label for="exampleInputText" class="form-label">Nama Buku</label>
-                        <input type="text" name="nama_buku" value="{{ old('nama_buku') }}"
-                            class="form-control @error('nama_buku')is-invalid
-              @enderror"
-                            id="">
+                        <select name="id_tambahbuku" id="" class="form-select">
+                            <option value=""disabled selected>Pilih Nama Buku</option>
+                            @foreach ($datatambahbuku as $tambahbuku)
+                                <option value="{{ $tambahbuku->id }}">{{ $tambahbuku->nama_buku }}</option>
+                            @endforeach
+                        </select>
                     </div>
-                    @error('nama_buku')
+                    @error('id_tambahbuku')
                         <script>
                             Swal.fire({
                                 icon: 'error',
@@ -212,7 +214,7 @@
     </div>
 </div>
 <!-- Modal Edit -->
-@foreach ($data as $key => $row)
+@foreach ($datapeminjam as $key => $row)
     <form action="{{ route('peminjam.update', $row->id) }}"method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')
@@ -238,12 +240,14 @@
 
                         <div class="mb-3">
                             <label for="exampleInputText" class="form-label">Nama Buku</label>
-                            <input type="text" name="nama_buku"
-                                class="form-control @error('nama_buku')is-invalid
-        @enderror"
-                                id=""value="{{ $row->nama_buku }}">
+                            <select name="id_tambahbuku" id="" class="form-select">
+                                <option value=""disabled selected>Pilih Nama Buku</option>
+                                @foreach ($datatambahbuku as $tambahbuku)
+                                    <option value="{{ $tambahbuku->id }}">{{ $tambahbuku->nama_buku }}</option>
+                                @endforeach
+                            </select>
                         </div>
-                        @error('nama_buku')
+                        @error('id_tambahbuku')
                         @enderror
 
                         <div class="mb-3">

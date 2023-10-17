@@ -63,7 +63,7 @@
               <!-- Dashboard -->
               <!-- =================== -->
               <li class="sidebar-item">
-                <a class="sidebar-link " href="/daftarbuku" aria-expanded="false">
+                <a class="sidebar-link {{ request()->routeIs('daftarbuku.index') || request()->routeIs('daftarbuku.preview') ? 'active' : '' }}" href="/daftarbuku" aria-expanded="false">
                   <span>
                     <i class="ti ti-aperture"></i>
                   </span>

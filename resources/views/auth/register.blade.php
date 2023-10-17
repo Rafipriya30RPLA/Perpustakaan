@@ -44,16 +44,16 @@
             <div class="col-xl-5 col-xxl-4">
               <div class="authentication-login min-vh-100 bg-body row justify-content-center align-items-center p-4">
                 <div class="col-sm-8 col-md-6 col-xl-9">
-                  <h2 class="mb-3 fs-7 fw-bolder">Welcome to Modernize</h2>
-                  <p class=" mb-9">Your Admin Dashboard</p>
+                    <h2 class="mb-3 fs-6 fw-bolder">Selamat Datang Di Blue-Book</h2>
+                    <p class=" mb-9">Web Perpustakaan Terbaik Se Indonesia</p>
                   <div class="row">
 
 
                     <form method="POST" action="{{ route('register') }}">
                     @csrf
                     <div class="mb-2">
-                        <label for="exampleInputEmail1" class="form-label">Username</label>
-                        <input type="text" name="name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                        <label for="exampleInputname" class="form-label">Username</label>
+                        <input type="text" name="name" class="form-control" id="exampleInputname" aria-describedby="exampleInputname">
                       </div>
                     <div class="mb-3">
                       <label for="exampleInputEmail1" class="form-label">Email</label>
@@ -64,21 +64,21 @@
                       <input type="password" name="password" class="form-control" id="exampleInputPassword1">
                     </div>
                     <div class="mb-5">
-                        <label for="exampleInputPassword1" class="form-label">Password</label>
+                        <label for="exampleInputPassword1" class="form-label">Confirmasi Password</label>
                         <input type="password" name="password_confirmation" class="form-control" id="exampleInputPassword1">
                       </div>
-                    <div class="d-flex align-items-center justify-content-between mb-4">
+                    {{-- <div class="d-flex align-items-center justify-content-between mb-4">
                       <div class="form-check">
                         <input class="form-check-input primary" type="checkbox" value="" id="flexCheckChecked" checked>
                         <label class="form-check-label text-dark" for="flexCheckChecked">
-                          Remeber this Device
+                            Ingat Perangkat ini
                         </label>
-                      </div>
+                      </div> --}}
 
                     </div>
-                    <button type="submit" class="btn btn-primary w-100 py-8 mb-4 rounded-2">Sign In</button>
+                    <button type="submit" class="btn btn-primary w-100 py-8 mb-4 rounded-2">Daftar</button>
                     <div class="d-flex align-items-center justify-content-center">
-                      <a class="text-primary fw-medium ms-2" href="/login">Already Have a Acoount?</a>
+                      <a class="text-primary fw-medium ms-2" href="/login">Sudah Memiliki Akun ?</a>
                     </div>
                   </form>
                 </div>

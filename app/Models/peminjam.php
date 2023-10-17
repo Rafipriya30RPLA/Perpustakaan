@@ -9,4 +9,8 @@ class peminjam extends Model
 {
     use HasFactory;
     protected $guarded=[];
+
+    public function tambahbuku(){
+        return $this->belongsTo(tambahbuku::class, 'id_tambahbuku');
+    }
 }
