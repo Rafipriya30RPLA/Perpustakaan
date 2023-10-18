@@ -19,7 +19,7 @@
                 <div class="card">
                     <div class="card-body">
 
-                        <form action="{{route('peminjam.store')}}"method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('tambahbuku.borrow', ['id' => $Buku->id]) }}" method="post"> enctype="multipart/form-data">
                             @csrf
 
                             <div class="mb-3">
@@ -68,35 +68,6 @@
                             })
                             </script>
                       @enderror
-                      <div class="mb-3">
-                          <label for="exampleInputText" class="form-label">Tanggal Pinjam</label>
-                          <input type="date" name="tanggal_pinjam"  value="{{old('tanggal_pinjam')}}"class="form-control @error('tanggal_pinjam')is-invalid
-                          @enderror" id="">
-                        </div>
-                        @error('tanggal_pinjam')
-                        <script>
-                            Swal.fire({
-                                icon: 'error',
-                                title: 'Oops...',
-                                text: '{{$message}}',
-                            })
-                            </script>
-                    @enderror
-                    <div class="mb-3">
-                        <label for="exampleInputText" class="form-label">Tenggat</label>
-                        <input type="date" name="tenggat" value="{{old('tenggat')}}"class="form-control @error('tenggat')is-invalid
-                        @enderror" id="">
-                    </div>
-                    @error('tenggat')
-                    <script>
-                        Swal.fire({
-                            icon: 'error',
-                            title: 'Oops...',
-                            text: '{{$message}}',
-                        })
-                        </script>
-                    @enderror
-
                     <button type="submit" class="btn btn-outline-primary">Simpan</button>
                     <a href="{{route('penerbit.index')}}" style="margin-left: 10px;" type="button" class="btn btn-outline-secondary">Kembali</a>
                 </form>

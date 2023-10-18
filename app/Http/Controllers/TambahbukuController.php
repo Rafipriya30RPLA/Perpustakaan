@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use App\Models\penulis;
 use App\Models\Komentar;
+use App\Models\peminjam;
 use App\Models\tambahbuku;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
@@ -179,7 +180,7 @@ public function update(Request $request, $id)
             'review' => 'required|max:5000'
         ],[
             'review.required' => 'Woy kosong njir',
-            'review.max' => 'Woy kebanyakan cok, max nya 5000',
+            'review.max' => 'Review Maksimal 5000 Kata',
         ]);
 
         $Buku = tambahbuku::findOrFail($request->id_buku);
@@ -192,4 +193,37 @@ public function update(Request $request, $id)
 
         return redirect()->back()->with('success', 'Berhasil menambahkan review pada buku yang bernama ' . $Buku->nama_buku);
     }
+    public function borrowBook(Request $request, $id)
+    {
+        $buku = tambahbuku::findOrFail($id);
+
+        // Di sini, Anda dapat menambahkan logika untuk memeriksa apakah buku masih tersedia untuk dipinjam.
+        // Misalnya, Anda dapat memeriksa stok buku.
+
+        // Jika buku tersedia untuk dipinjam, Anda dapat menambahkan logika untuk menyimpan peminjaman di tabel peminjam.
+        // Anda harus menyesuaikan logika ini sesuai dengan kebutuhan Anda.
+
+        // Contoh: Memeriksa apakah stok buku cukup
+        if ($buku->stok > 0) {
+            // Kurangi stok buku
+            $buku->stok--;
+
+            // Simpan perubahan stok buku
+            $buku->save();
+
+            // Tambahkan peminjaman ke tabel peminjam
+            $datapeminjam = new peminjam();
+            $datapeminjam->nama_peminjam = Auth::user()->name; // Menggunakan nama peminjam dari pengguna yang login
+            $datapeminjam->id_tambahbuku = $buku->id;
+            $datapeminjam->kode_buku = $buku->kode_buku;
+            $datapeminjam->tanggal_pinjam = now();
+            $datapeminjam->tenggat = now()->addDays(7); // Tenggat seminggu kemudian
+            $datapeminjam->save();
+
+            return redirect()->back()->with('success', 'Buku ' . $buku->nama_buku . ' berhasil dipinjam.');
+        } else {
+            return redirect()->back()->with('error', 'Stok buku ' . $buku->nama_buku . ' sudah habis.');
+        }
+    }
+
 }

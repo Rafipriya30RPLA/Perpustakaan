@@ -45,6 +45,9 @@ Route::resource('review', ReviewController::class);
 Route::get('/daftarbuku',[TambahbukuController::class,'daftarbuku']);
 Route::get('/daftarbuku/preview/{id}',[TambahbukuController::class,'preview']);
 Route::post('/preview/post/review', [TambahBukuController::class, 'postreview']);
+Route::post('/tambahbuku/borrow/{id}', [TambahbukuController::class,'borrowBook'])->name('tambahbuku.borrow');
+// Route::get('/daftarbuku/preview/{id}', 'TambahbukuController@preview')->name('daftarbuku.preview');
+
 // peminjam
 Route::get('/peminjam', [PeminjamController::class, 'index'])->name('peminjam.index');
 Route::get('/peminjam/create', [PeminjamController::class, 'create'])->name('peminjam.create');
@@ -52,7 +55,7 @@ Route::post('/peminjam', [PeminjamController::class, 'store'])->name('peminjam.s
 Route::get('/peminjam/{peminjam}', [PeminjamController::class, 'show'])->name('peminjam.show');
 Route::get('/peminjam/{peminjam}/edit', [PeminjamController::class, 'edit'])->name('peminjam.edit');
 Route::post('/peminjam/{peminjam}', [PeminjamController::class, 'update'])->name('peminjam.update');
-Route::post('/peminjam/{peminjam}/destroy', [PeminjamController::class, 'destroy'])->name('peminjam.destroy');
+Route::delete('/peminjam/{peminjam}/destroy', [PeminjamController::class, 'destroy'])->name('peminjam.destroy');
 
 });
 

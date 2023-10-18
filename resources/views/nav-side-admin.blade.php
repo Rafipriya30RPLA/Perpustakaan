@@ -71,7 +71,7 @@
                   <span class="hide-menu">Daftar Buku</span>
                 </a>
               </li>
-              <li class="sidebar-item">
+              {{-- <li class="sidebar-item">
                 <a class="sidebar-link {{ request()->routeIs('peminjam.edit') || request()->routeIs('peminjam.create') ? 'active' : '' }}" href="{{route('peminjam.index')}}" aria-expanded="false">
                   <span>
                     <i class="ti ti-aperture"></i>
@@ -86,7 +86,7 @@
                   </span>
                   <span class="hide-menu">Review</span>
                 </a>
-              </li>
+              </li> --}}
               <li class="sidebar-item">
                 <a class="sidebar-link" href="{{ route('logout') }}"
                 onclick="event.preventDefault();

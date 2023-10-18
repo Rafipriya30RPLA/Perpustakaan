@@ -25,43 +25,36 @@ class PeminjamController extends Controller
     }
 
     public function store(Request $request)
-    {
-        $validator = Validator::make($request->all(), [
-            'nama_peminjam' => 'required',
-            'id_tambahbuku' => 'required',
-            'kode_buku' => 'required',
-            'tanggal_pinjam' => 'required',
-            'tenggat' => 'required'
+{
+    $validator = Validator::make($request->all(), [
+        'nama_peminjam' => 'required',
+        'id_tambahbuku' => 'required',
+        'kode_buku' => 'required',
+    ], [
+        'nama_peminjam.required' => 'Nama Peminjam harus diisi',
+        'id_tambahbuku.required' => 'Nama buku harus diisi',
+        'kode_buku.required' => 'kode_buku harus diisi',
+    ]);
 
-
-
-        ], [
-            'nama_peminjam.required' => 'Nama Peminjam harus diisi',
-            'id_tambahbuku.required' => 'Nama buku harus diisi',
-            'kode_buku.required' => 'kode_buku harus diisi',
-            'tanggal_pinjam.required' => 'tanggal_pinjam harus diisi',
-            'tenggat.required' => 'tenggat harus diisi'
-
-
-        ]);
-
-
-
-        if ($validator->fails()) {
-            return redirect()->back()->withErrors($validator)->withInput();
-        }
-
-        $datapeminjam  = new peminjam();
-        $datapeminjam ->nama_peminjam = $request->input('nama_peminjam');
-        $datapeminjam ->id_tambahbuku = $request->input('id_tambahbuku');
-        $datapeminjam ->kode_buku = $request->input('kode_buku');
-        $datapeminjam ->tanggal_pinjam = $request->input('tanggal_pinjam');
-        $datapeminjam ->tenggat = $request->input('tenggat');
-
-        $datapeminjam->save();
-
-        return redirect()->route('peminjam.index')->with('success', 'Data Berhasil Ditambahkan');
+    if ($validator->fails()) {
+        return redirect()->back()->withErrors($validator)->withInput();
     }
+
+    $datapeminjam = new peminjam();
+    $datapeminjam->nama_peminjam = $request->input('nama_peminjam');
+    $datapeminjam->id_tambahbuku = $request->input('id_tambahbuku');
+    $datapeminjam->kode_buku = $request->input('kode_buku');
+
+    // Isi tanggal_pinjam dengan hari ini
+    $datapeminjam->tanggal_pinjam = now();
+
+    // Isi tenggat dengan sehari setelah tanggal_pinjam
+    $datapeminjam->tenggat = now()->addDays(7);
+
+    $datapeminjam->save();
+
+    return redirect()->route('peminjam.index')->with('success', 'Data Berhasil Ditambahkan');
+}
             public function edit($id)
         {
             $data = peminjam::find($id);
@@ -121,7 +114,7 @@ class PeminjamController extends Controller
     {
 
         $datapeminjam = tambahbuku::where('id', $id)->firstOrFail();
-        if (peminjam::where('id_penulis', $id)->exists()) {
+        if (peminjam::where('id_tambahbuku', $id)->exists()) {
             return redirect()->route('peminjam.index')->with('error', "Data" . $datapeminjam->nama_buku . " Masih di gunakan di tabel tambah buku!" );
         }
 
