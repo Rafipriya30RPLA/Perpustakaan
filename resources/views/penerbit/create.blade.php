@@ -27,18 +27,12 @@ integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2
                             <div class="mb-3">
                                 <label for="exampleInputText" class="form-label">Nama Penerbit</label>
                                 <input type="text" name="nama_penerbit" value="{{ old('nama_penerbit') }}"
-                                    class="form-control @error('nama_penerbit')is-invalid
-                        @enderror"
-                                    id="">
+                                    class="form-control @error('nama_penerbit')is-invalid @enderror"  id="">
                             </div>
                             @error('nama_penerbit')
-                                <script>
-                                    Swal.fire({
-                                        icon: 'error',
-                                        title: 'Oops...',
-                                        text: '{{ $message }}',
-                                    })
-                                    </script>
+                                <div class="alert alert-danger mt-2">
+                                   {{ $message }}
+                                </div>
                             @enderror
                             <div class="mb-3">
                                 <label for="exampleInputText" class="form-label">No Telepon</label>
@@ -48,13 +42,9 @@ integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2
                                 id="">
                             </div>
                             @error('no_telepon')
-                            <script>
-                                Swal.fire({
-                                    icon: 'error',
-                                    title: 'Oops...',
-                                    text: '{{ $message }}',
-                                })
-                                </script>
+                                <div class="alert alert-danger mt-2">
+                                   {{ $message }}
+                                </div>
                             @enderror
                             <div class="mb-3">
                                 <label for="exampleInputText" class="form-label">Alamat</label>
@@ -62,13 +52,9 @@ integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2
                             </div>
 
                             @error('alamat')
-                            <script>
-                                Swal.fire({
-                                    icon: 'error',
-                                    title: 'Oops...',
-                                    text: '{{ $message }}',
-                                })
-                                </script>
+                                <div class="alert alert-danger mt-2">
+                                    {{ $message }}
+                                </div>
                             @enderror
                             <button type="submit" class="btn btn-outline-primary">Simpan</button>
                             <a href="{{ route('penerbit.index') }}"  style="margin-left: 10px;" type="button" class="btn btn-outline-secondary">Kembali</a>

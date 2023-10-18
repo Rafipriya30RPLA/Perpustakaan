@@ -22,13 +22,9 @@
                             <label for="nama" class="form-label">Nama</label>
                             <input type="text" name="nama" value="{{ old('nama') }}" class="form-control @error('nama') is-invalid @enderror" id="nama">
                             @error('nama')
-                            <script>
-                                Swal.fire({
-                                    icon: 'error',
-                                    title: 'Oops...',
-                                    text: '{{ $message }}',
-                                })
-                            </script>
+                               <div class="alert alert-danger mt-2">
+                                   {{ $message }}
+                               </div>
                             @enderror
                         </div>
 
@@ -40,13 +36,9 @@
                                 <option value="Perempuan" {{ old('jenis_kelamin') == 'Perempuan' ? 'selected' : '' }}>Perempuan</option>
                             </select>
                             @error('jenis_kelamin')
-                            <script>
-                                Swal.fire({
-                                    icon: 'error',
-                                    title: 'Oops...',
-                                    text: '{{ $message }}',
-                                })
-                            </script>
+                               <div class="alert alert-danger mt-2">
+                                   {{ $message }}
+                               </div>
                             @enderror
                         </div>
 
@@ -54,13 +46,9 @@
                             <label for="no_telepon" class="form-label">No Telepon</label>
                             <input type="number" name="no_telepon" value="{{ old('no_telepon') }}" class="form-control @error('no_telepon') is-invalid @enderror" id="no_telepon">
                             @error('no_telepon')
-                            <script>
-                                Swal.fire({
-                                    icon: 'error',
-                                    title: 'Oops...',
-                                    text: '{{ $message }}',
-                                })
-                            </script>
+                                <div class="alert alert-danger mt-2">
+                                    {{ $message }}
+                                </div>
                             @enderror
                         </div>
 
@@ -68,13 +56,9 @@
                             <label for="alamat" class="form-label">Alamat</label>
                             <textarea name="alamat" class="form-control @error('alamat') is-invalid @enderror" id="alamat" rows="5">{{ old('alamat') }}</textarea>
                             @error('alamat')
-                            <script>
-                                Swal.fire({
-                                    icon: 'error',
-                                    title: 'Oops...',
-                                    text: '{{ $message }}',
-                                })
-                            </script>
+                                <div class="alert alert-danger mt-2">
+                                    {{ $message }}
+                                </div>
                             @enderror
                         </div>
 

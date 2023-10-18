@@ -40,6 +40,9 @@
                                         id=""value="{{ $data->nama }}">
                                 </div>
                                 @error('nama')
+                                    <div class="alert alert-danger mt-2">
+                                        {{ $message }}
+                                    </div>
                                 @enderror
                                 <div class="mb-3">
                                     <label for="exampleInputText" class="form-label">Jenis Kelamin</label>
@@ -48,22 +51,33 @@
                                         <option value="Laki-laki" {{ $data->jenis_kelamin == 'Laki-laki' ? 'selected' : '' }}>Laki-laki</option>
                                         <option value="Perempuan" {{ $data->jenis_kelamin == 'Perempuan' ? 'selected' : '' }}>Perempuan</option>
                                     </select>
+                                    @error('jenis_kelamin')
+                                    <div class="alert alert-danger mt-2">
+                                       {{ $message }}
+                                  </div>
+                                @enderror
                                 </div>
                                 <div class="mb-3">
                                     <label for="exampleInputText" class="form-label">No Telepon</label>
                                     <input type="number" name="no_telepon"
                                         class="form-control @error('no_telepon')is-invalid @enderror"
                                         id=""value="{{ $data->no_telepon }}">
+                                        @error('no_telepon')
+                                            <div class="alert alert-danger mt-2">
+                                               {{ $message }}
+                                          </div>
+                                        @enderror
                                 </div>
-                                @error('no_telepon')
-                                @enderror
                                 <div class="mb-3">
                                     <label for="exampleInputText" class="form-label">Alamat</label>
                                     <textarea name="alamat" class="form-control @error('alamat') is-invalid @enderror"
                                               id="exampleInputText" rows="5">{{ $data->alamat }}</textarea>
                                     @error('alamat')
-                                    {{ $message }}
+                                        <div class="alert alert-danger mt-2">
+                                            {{ $message }}
+                                        </div>
                                     @enderror
+
                                 </div>
                                 <button type="submit" class="btn btn-outline-primary">Simpan</button>
                                 <a href="{{ route('karyawan.index') }}" type="button" style="margin-left: 10px;"

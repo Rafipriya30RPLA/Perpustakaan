@@ -23,16 +23,11 @@
                             <div class="mb-3">
                                 <label for="exampleInputText" class="form-label">Nama Penulis</label>
                                 <input type="text" name="nama_penulis" value="{{ old('nama_penulis') }}" class="form-control @error('nama_penulis') is-invalid @enderror" id="">
-
                             </div>
                             @error('nama_penulis')
-                                <script>
-                                    Swal.fire({
-                                        icon: 'error',
-                                        title: 'Oops...',
-                                        text: '{{ $message }}',
-                                    })
-                                </script>
+                                <div class="alert alert-danger mt-2">
+                                    {{ $message }}
+                                </div>
                             @enderror
 
                             <div class="mb-3">
@@ -45,13 +40,9 @@
                                 </select>
                             </div>
                             @error('id_penerbit')
-                                <script>
-                                    Swal.fire({
-                                        icon: 'error',
-                                        title: 'Oops...',
-                                        text: '{{ $message }}',
-                                    })
-                                </script>
+                                <div class="alert alert-danger mt-2">
+                                   {{ $message }}
+                               </div>
                             @enderror
                             <div class="mb-3">
                                 <button type="submit" class="btn btn-outline-info">Simpan</button>

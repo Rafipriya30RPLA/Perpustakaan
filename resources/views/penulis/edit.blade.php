@@ -40,6 +40,9 @@
                                         id=""value="{{ $data->nama_penulis }}">
                                 </div>
                                 @error('nama_penulis')
+                                    <div class="alert alert-danger mt-2">
+                                        {{ $message }}
+                                    </div>
                                 @enderror
                                 <div class="mb-3">
                                     <label for="id_penerbit" class="form-label">Nama Penerbit</label>
@@ -54,6 +57,9 @@
                                 </div>
 
                                 @error('id_penerbit')
+                                    <div class="alert alert-danger mt-2">
+                                       {{ $message }}
+                                    </div>
                                 @enderror
 
                                 <button type="submit" class="btn btn-outline-info">Simpan</button>

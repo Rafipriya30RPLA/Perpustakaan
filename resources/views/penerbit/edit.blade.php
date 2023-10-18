@@ -41,6 +41,9 @@
                             id=""value="{{ $data->nama_penerbit }}">
                         </div>
                         @error('nama_penerbit')
+                            <div class="alert alert-danger mt-2">
+                               {{ $message }}
+                            </div>
                         @enderror
                         <div class="mb-3">
                             <label for="exampleInputText" class="form-label">No Telepon</label>
@@ -50,6 +53,9 @@
                             id=""value="{{ $data->no_telepon }}">
                         </div>
                         @error('no_telepon')
+                            <div class="alert alert-danger mt-2">
+                               {{ $message }}
+                            </div>
                         @enderror
                         <div class="mb-3">
                             <label for="exampleInputText" class="form-label">Alamat</label>
@@ -59,6 +65,9 @@
                             id=""value="{{ $data->alamat }}">
                         </div>
                         @error('alamat')
+                            <div class="alert alert-danger mt-2">
+                               {{ $message }}
+                            </div>
                         @enderror
 
                         <button type="submit" class="btn btn-outline-primary">Simpan</button>

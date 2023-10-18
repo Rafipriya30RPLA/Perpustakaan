@@ -37,39 +37,27 @@
                                 @enderror" id="">
                             </div>
                             @error('nama_buku')
-                            <script>
-                            Swal.fire({
-                                icon: 'error',
-                                title: 'Oops...',
-                                text: '{{$message}}',
-                            })
-                            </script>
+                                <div class="alert alert-danger mt-2">
+                                   {{ $message }}
+                                </div>
                           @enderror
                           <div class="mb-3">
                               <label for="exampleInputText" class="form-label" >Kode Buku</label>
                               <input type="number"name="kode_buku" value="{{old('kode_buku')}}" class="form-control" id="">
                             </div>
                             @error('kode_buku')
-                            <script>
-                                Swal.fire({
-                                    icon: 'error',
-                                    title: 'Oops...',
-                                    text: '{{$message}}',
-                                })
-                                </script>
+                                <div class="alert alert-danger mt-2">
+                                    {{ $message }}
+                                </div>
                           @enderror
                           <div class="mb-3">
                             <label for="exampleInputText" class="form-label" >Stok</label>
                             <input type="number"name="stok" value="{{old('stok')}}" class="form-control" id="">
                           </div>
                           @error('stok')
-                          <script>
-                              Swal.fire({
-                                  icon: 'error',
-                                  title: 'Oops...',
-                                  text: '{{$message}}',
-                              })
-                              </script>
+                            <div class="alert alert-danger mt-2">
+                               {{ $message }}
+                           </div>
                         @enderror
                           <div class="mb-3">
                               <label for="exampleInputText" class="form-label">Nama penulis</label>
@@ -81,13 +69,9 @@
                             </select>
                             </div>
                             @error('id_penulis')
-                            <script>
-                                Swal.fire({
-                                    icon: 'error',
-                                    title: 'Oops...',
-                                    text: '{{$message}}',
-                                })
-                                </script>
+                                <div class="alert alert-danger mt-2">
+                                    {{ $message }}
+                                </div>
                           @enderror
                           <div class="mb-3">
                               <label for="exampleInputText" class="form-label">Tanggal Terbit</label>
@@ -95,13 +79,9 @@
                               @enderror" id="">
                             </div>
                             @error('tanggal_terbit')
-                            <script>
-                                Swal.fire({
-                                    icon: 'error',
-                                    title: 'Oops...',
-                                    text: '{{$message}}',
-                                })
-                                </script>
+                                <div class="alert alert-danger mt-2">
+                                   {{ $message }}
+                                </div>
                           @enderror
                           <div class="mb-3">
                             <label for="exampleInputText" class="form-label">Deskripsi</label>
@@ -109,26 +89,18 @@
                         </div>
 
                           @error('deskripsi')
-                          <script>
-                              Swal.fire({
-                                  icon: 'error',
-                                  title: 'Oops...',
-                                  text: '{{$message}}',
-                              })
-                              </script>
+                            <div class="alert alert-danger mt-2">
+                               {{ $message }}
+                            </div>
                         @enderror
                           <div class="mb-3">
                               <label for="exampleInputText" class="form-label" >Masukkan Foto</label>
                               <input type="file"name="foto" value="{{old('foto')}}" class="form-control" id="">
                             </div>
                             @error('foto')
-                            <script>
-                                Swal.fire({
-                                    icon: 'error',
-                                    title: 'Oops...',
-                                    text: '{{$message}}',
-                                })
-                                </script>
+                                <div class="alert alert-danger mt-2">
+                                   {{ $message }}
+                                </div>
                           @enderror
                           <button type="submit" class="btn btn-outline-primary">Simpan</button>
                           <a href="{{route('tambahbuku.index')}}" style="margin-left: 10px;" type="button" class="btn btn-outline-secondary">Kembali</a>
