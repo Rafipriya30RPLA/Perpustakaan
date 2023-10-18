@@ -88,6 +88,14 @@
                 </a>
               </li>
               <li class="sidebar-item">
+                <a class="sidebar-link  {{ request()->routeIs('karyawan.edit') || request()->routeIs('karyawan.create') ? 'active' : ''}}" href="{{route('karyawan.index')}}" aria-expanded="false">
+                  <span>
+                    <i class="fa-solid fa-users"></i>
+                  </span>
+                  <span class="hide-menu">Karyawan</span>
+                </a>
+              </li>
+              <li class="sidebar-item">
                 <a class="sidebar-link" href="{{ route('logout') }}"
                 onclick="event.preventDefault();
                               document.getElementById('logout-form').submit();"><span>

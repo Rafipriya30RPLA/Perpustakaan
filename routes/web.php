@@ -1,4 +1,5 @@
 <?php
+use App\Http\Controllers\KaryawanController;
 use App\Http\Controllers\PeminjamController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -37,13 +38,14 @@ Route::middleware(['Admin'])->group(function () {
 Route::resource('tambahbuku', TambahbukuController::class);
 Route::resource('penerbit', PenerbitController::class);
 Route::resource('penulis', PenulisController::class);
+Route::resource('karyawan', KaryawanController::class);
 });
 
 Route::middleware(['User'])->group(function () {
 Route::resource('review', ReviewController::class);
 // daftarbuku
 Route::get('/daftarbuku',[TambahbukuController::class,'daftarbuku']);
-Route::get('/daftarbuku/preview/{id}',[TambahbukuController::class,'preview']);
+Route::get('/daftarbuku/preview/{id}',[TambahbukuController::class,'preview'])->name('daftarbuku');
 Route::post('/preview/post/review', [TambahBukuController::class, 'postreview']);
 Route::post('/tambahbuku/borrow/{id}', [TambahbukuController::class,'borrowBook'])->name('tambahbuku.borrow');
 // Route::get('/daftarbuku/preview/{id}', 'TambahbukuController@preview')->name('daftarbuku.preview');
