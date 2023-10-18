@@ -112,15 +112,24 @@ class PeminjamController extends Controller
 
     public function destroy($id)
     {
-
-        $datapeminjam = tambahbuku::where('id', $id)->firstOrFail();
-        // if (peminjam::where('id_tambahbuku', $id)->exists()) {
-        //     return redirect()->route('peminjam.index')->with('error', "Data" . $datapeminjam->nama_buku . " Masih di gunakan di tabel tambah buku!" );
-        // }
-
+        // Temukan data peminjam
         $datapeminjam = peminjam::find($id);
+
+        if (!$datapeminjam) {
+            return redirect()->route('peminjam.index')->with('error', 'Data Peminjam tidak ditemukan.');
+        }
+
+        // Temukan buku yang akan dikembalikan
+        $tambahbuku = tambahbuku::find($datapeminjam->id_tambahbuku);
+
+        // Tambahkan stok buku sesuai jumlah yang dikembalikan
+        $tambahbuku->stok += 1;
+        $tambahbuku->save();
+
+        // Hapus data peminjam
         $datapeminjam->delete();
-        return redirect()->route('peminjam.index')->with('success', 'Data Berhasil Di Delete');
+
+        return redirect()->route('peminjam.index')->with('success', 'Data Peminjam berhasil dihapus dan stok buku dikembalikan.');
     }
 
 }

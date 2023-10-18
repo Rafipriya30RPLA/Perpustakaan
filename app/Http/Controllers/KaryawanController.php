@@ -26,7 +26,7 @@ class KaryawanController extends Controller
             'nama' => 'required',
             'jenis_kelamin' => 'required',
             'no_telepon' => 'required|min:12|gt:-0',
-            'alamat' => 'required|max:255'
+            'alamat' => 'required|max:5000'
 
 
         ], [
@@ -36,7 +36,7 @@ class KaryawanController extends Controller
             'no_telepon.min' => 'No Telepon Minimal 12 digit',
             'no_telepon.gt' => 'No Telepon tidak boleh minus',
             'alamat.required' => 'Alamat harus diisi',
-            'alamat.max' => 'Alamat tidak boleh lebih dari 225 karakter'
+            'alamat.max' => 'Alamat tidak boleh lebih dari 5000 karakter'
 
         ]);
 
@@ -64,22 +64,24 @@ class KaryawanController extends Controller
     public function update(Request $request, $id)
     {
     //    dd($request);
-        $validator = Validator::make($request->all(), [
-            'nama' => 'required',
-            'jenis_kelamin' => 'required',
-            'no_telepon' => 'required|min:12|gt:-0',
-            'alamat' => 'required|max:225'
+    $validator = Validator::make($request->all(), [
+        'nama' => 'required',
+        'jenis_kelamin' => 'required',
+        'no_telepon' => 'required|min:12|gt:-0',
+        'alamat' => 'required|max:5000'
 
-        ], [
-            'nama.required' => 'Nama Peminjam harus diisi',
-            'jenis_kelamin.required' => 'Jenis Kelamin harus di isi',
-            'no_telepon.required' => 'Nomer Telpon harus di isi',
-            'no_telepon.min' => 'No Telepon Minimal 12 digit',
-            'no_telepon.gt' => 'No Telepon tidak boleh minus',
-            'alamat.required' => 'Alamat harus diisi',
-            'alamat.max' => 'Alamat tidak boleh lebih dari 225 karakter'
 
-        ]);
+    ], [
+        'nama.required' => 'Nama Peminjam harus diisi',
+        'jenis_kelamin.required' => 'Jenis Kelamin harus di isi',
+        'no_telepon.required' => 'Nomer Telpon harus di isi',
+        'no_telepon.min' => 'No Telepon Minimal 12 digit',
+        'no_telepon.gt' => 'No Telepon tidak boleh minus',
+        'alamat.required' => 'Alamat harus diisi',
+        'alamat.max' => 'Alamat tidak boleh lebih dari 5000 karakter'
+
+    ]);
+
 
 
 

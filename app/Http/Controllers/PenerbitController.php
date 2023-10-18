@@ -32,8 +32,8 @@ class PenerbitController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'nama_penerbit' => 'required',
-            'no_telepon'=>'required|numeric|digits:12|gt:-0', // Hanya angka dengan panjang tepat 12 digit
-            'alamat' => 'required|max:225',
+            'no_telepon' => 'required|min:12|gt:-0',
+            'alamat' => 'required|max:5000',
 
         ], [
             'nama_penerbit.required' => 'Nama Penerbit harus diisi',
@@ -42,7 +42,7 @@ class PenerbitController extends Controller
             'no_telepon.digits' => 'No Telepon Harus Memiliki 12 karakter',
             'no_telepon.gt' => 'No Telepon Tidak Boleh min',
             'alamat.required' => 'Alamat harus diisi',
-            'alamat.max' => 'Alamat tidak boleh lebih dari 225 karakter',
+            'alamat.max' => 'Alamat tidak boleh lebih dari 5000 karakter',
 
         ]);
 

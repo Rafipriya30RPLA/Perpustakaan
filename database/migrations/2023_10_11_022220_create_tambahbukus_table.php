@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('stok');
             $table->unsignedBigInteger('id_penulis');
             $table->string('tanggal_terbit');
-            $table->string('deskripsi');
+            $table->text('deskripsi');
             $table->string('foto');
             $table->timestamps();
 

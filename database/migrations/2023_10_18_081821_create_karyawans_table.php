@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('karyawans', function (Blueprint $table) {
             $table->id();
             $table->string('nama');
-            $table->string('alamat');
+            $table->text('alamat');
             $table->enum('jenis_kelamin', ['laki-laki','perempuan']);
             $table->string('no_telepon');
             $table->timestamps();

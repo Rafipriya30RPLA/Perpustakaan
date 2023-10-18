@@ -33,26 +33,27 @@ class TambahbukuController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'nama_buku' => 'required',
-            'deskripsi' => 'required',
-            'kode_buku' => 'required|unique:tambahbukus,kode_buku|gt:-0',
-            'stok' => 'required|gt:-0',
-            'id_penulis' => 'required',
-            'tanggal_terbit' => 'required|date|after_or_equal:'.now()->format('Y-m-d'),
-            'foto' =>  'required|image|mimes:jpeg,png,gif|max:2048', // Sesuaikan dengan kebutuhan Anda
-        ], [
-            'nama_buku.required' => 'Nama harus diisi',
-            'deskripsi.required' => 'Deskripsi harus diisi',
-            'kode_buku.unique' => 'Kode Buku Telah digunakan',
-            'kode_buku.gt' => 'Kode Buku tidak boleh minus',
-            'stok.required' => 'stok harus di isi',
-            'stok.gt' => 'stok tidak boleh minus',
-            'id_penulis.required' => 'Nama Penulis harus diisi',
-            'tanggal_terbit.required' => 'Tanggal Terbit harus diisi',
-            'foto.required' => 'Foto harus diisi',
-            'foto.image' => 'File harus berupa gambar',
-            'foto.mimes' => 'File harus berformat jpeg, png, atau gif',
-            'foto.max' => 'File gambar tidak boleh lebih dari 2MB',
-        ]);
+             'deskripsi' => 'required|max:5000',
+             'kode_buku' => 'required|gt:-0',
+             'stok' => 'required|gt:-0',
+             'id_penulis' => 'required',
+             'tanggal_terbit' => 'required',
+             'foto' => 'required|image|mimes:jpeg,png,gif|max:2048', // Sesuaikan dengan kebutuhan Anda
+         ], [
+             'nama_buku.required' => 'Nama harus diisi',
+             'deskripsi.required' => 'Deskripsi harus diisi',
+             'deskripsi.max' => 'Deskripsi Maksimal 5000',
+             'kode_buku.unique' => 'Kode Buku Telah digunakan',
+             'kode_buku.gt' => 'Kode Buku tidak boleh minus',
+             'stok.required' => 'stok harus di isi',
+             'stok.gt' => 'stok tidak boleh minus',
+             'id_penulis.required' => 'Nama Penulis harus diisi',
+             'tanggal_terbit.required' => 'Tanggal Terbit harus diisi',
+             'foto.required' => 'Foto harus diisi',
+             'foto.image' => 'File harus berupa gambar',
+             'foto.mimes' => 'File harus berformat jpeg, png, atau gif',
+             'foto.max' => 'File gambar tidak boleh lebih dari 2MB',
+         ]);
 
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
@@ -88,7 +89,7 @@ public function update(Request $request, $id)
 {
     $validator = Validator::make($request->all(), [
            'nama_buku' => 'required',
-            'deskripsi' => 'required',
+            'deskripsi' => 'required|max:5000',
             'kode_buku' => 'required|gt:-0',
             'stok' => 'required|gt:-0',
             'id_penulis' => 'required',
@@ -97,6 +98,7 @@ public function update(Request $request, $id)
         ], [
             'nama_buku.required' => 'Nama harus diisi',
             'deskripsi.required' => 'Deskripsi harus diisi',
+            'deskripsi.max' => 'Deskripsi Maksimal 5000',
             'kode_buku.unique' => 'Kode Buku Telah digunakan',
             'kode_buku.gt' => 'Kode Buku tidak boleh minus',
             'stok.required' => 'stok harus di isi',
@@ -179,7 +181,7 @@ public function update(Request $request, $id)
         $request->validate([
             'review' => 'required|max:5000'
         ],[
-            'review.required' => 'Woy kosong njir',
+            'review.required' => 'Review Harus di isi',
             'review.max' => 'Review Maksimal 5000 Kata',
         ]);
 
