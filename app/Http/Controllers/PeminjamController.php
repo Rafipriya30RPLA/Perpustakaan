@@ -114,9 +114,9 @@ class PeminjamController extends Controller
     {
 
         $datapeminjam = tambahbuku::where('id', $id)->firstOrFail();
-        if (peminjam::where('id_tambahbuku', $id)->exists()) {
-            return redirect()->route('peminjam.index')->with('error', "Data" . $datapeminjam->nama_buku . " Masih di gunakan di tabel tambah buku!" );
-        }
+        // if (peminjam::where('id_tambahbuku', $id)->exists()) {
+        //     return redirect()->route('peminjam.index')->with('error', "Data" . $datapeminjam->nama_buku . " Masih di gunakan di tabel tambah buku!" );
+        // }
 
         $datapeminjam = peminjam::find($id);
         $datapeminjam->delete();

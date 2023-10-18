@@ -1,4 +1,4 @@
-@extends('nav-side-admin')
+{{-- @extends('nav-side-admin')
 @section('sidebar')
 @section('header')
 
@@ -77,4 +77,4 @@
 </div>
 </div>
 @endsection
-
+ --}}

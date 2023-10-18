@@ -55,9 +55,9 @@
                                             <td>
                                                 <div class="d-flex">
                                                     {{-- <a href="{{route( 'pegawai.destroy',$row->id) }}"class="btn btn-danger">Delete</a> --}}
-                                                    <button type="button" data-bs-toggle="modal"
+                                                    {{-- <button type="button" data-bs-toggle="modal"
                                                         data-bs-target="#raffi{{ $row->id }}"
-                                                        class="btn btn-outline-primary mr-1">Edit</button>
+                                                        class="btn btn-outline-primary mr-1">Edit</button> --}}
                                                     <form action="{{ route('peminjam.destroy', $row->id) }}"
                                                         method="post">
                                                         @method('DELETE')
@@ -214,7 +214,7 @@
     </div>
 </div>
 <!-- Modal Edit -->
-@foreach ($datapeminjam as $key => $row)
+{{-- @foreach ($datapeminjam as $key => $row)
     <form action="{{ route('peminjam.update', $row->id) }}"method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')
@@ -281,14 +281,14 @@
                         @enderror
 
                     </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kembali</button>
+                       <button type="submit" class="btn btn-primary">Simpan</button>
                 </div>
-                < <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kembali</button>
-                    <button type="submit" class="btn btn-primary">Simpan</button>
-            </div>
+                </div>
         </div>
         </div>
         </div>
     </form>
-@endforeach
+@endforeach --}}
 </body>
