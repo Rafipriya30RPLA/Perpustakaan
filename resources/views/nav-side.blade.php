@@ -31,7 +31,7 @@
     </div>
     <!-- Preloader -->
     <div class="preloader">
-      <img src="https://demos.adminmart.com/premium/bootstrap/modernize-bootstrap/package/dist/images/logos/favicon.ico" alt="loader" class="lds-ripple img-fluid" />
+      <img src="{{asset('logo.jpg')}}" alt="loader" width="300" class="lds-ripple img-fluid" />
     </div>
     <!--  Body Wrapper -->
     <div class="page-wrapper" id="main-wrapper" data-theme="blue_theme"  data-layout="vertical" data-sidebartype="full" data-sidebar-position="fixed" data-header-position="fixed">
@@ -42,8 +42,8 @@
         <div>
           <div class="brand-logo d-flex align-items-center justify-content-between">
             <a href="index.html" class="text-nowrap logo-img">
-              <img src="https://demos.adminmart.com/premium/bootstrap/modernize-bootstrap/package/dist/images/logos/dark-logo.svg" class="dark-logo" width="180" alt="" />
-              <img src="https://demos.adminmart.com/premium/bootstrap/modernize-bootstrap/package/dist/images/logos/light-logo.svg" class="light-logo"  width="180" alt="" />
+                <img src="{{asset('blue-book.png')}}" class="dark-logo" width="180" alt="" />
+                <img src="{{asset('logo.jpg')}}" class="light-logo"  width="180" alt="" />
             </a>
             <div class="close-btn d-lg-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
               <i class="ti ti-x fs-8 text-muted"></i>
@@ -90,9 +90,10 @@
               <li class="sidebar-item">
                 <a class="sidebar-link" href="{{ route('logout') }}"
                 onclick="event.preventDefault();
-                              document.getElementById('logout-form').submit();">
+                              document.getElementById('logout-form').submit();"><span>
                                <i class="fa-solid fa-right-from-bracket"></i>
-                 {{ __('Logout') }}
+                               </span>
+                               <span class="hide-menu">Logout</span>
              </a>
 
              <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">

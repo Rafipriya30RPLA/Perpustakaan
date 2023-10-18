@@ -41,9 +41,19 @@ Route::resource('penulis', PenulisController::class);
 
 Route::middleware(['User'])->group(function () {
 Route::resource('review', ReviewController::class);
-Route::resource('peminjam', PeminjamController::class);
+// daftarbuku
 Route::get('/daftarbuku',[TambahbukuController::class,'daftarbuku']);
-Route::get('/daftarbuku/preview/{id}',[TambahbukuController::class,'preview'])->name('daftarbuku.preview');
+Route::get('/daftarbuku/preview/{id}',[TambahbukuController::class,'preview']);
+Route::post('/preview/post/review', [TambahBukuController::class, 'postreview']);
+// peminjam
+Route::get('/peminjam', [PeminjamController::class, 'index'])->name('peminjam.index');
+Route::get('/peminjam/create', [PeminjamController::class, 'create'])->name('peminjam.create');
+Route::post('/peminjam', [PeminjamController::class, 'store'])->name('peminjam.store');
+Route::get('/peminjam/{peminjam}', [PeminjamController::class, 'show'])->name('peminjam.show');
+Route::get('/peminjam/{peminjam}/edit', [PeminjamController::class, 'edit'])->name('peminjam.edit');
+Route::post('/peminjam/{peminjam}', [PeminjamController::class, 'update'])->name('peminjam.update');
+Route::post('/peminjam/{peminjam}/destroy', [PeminjamController::class, 'destroy'])->name('peminjam.destroy');
+
 });
 
 

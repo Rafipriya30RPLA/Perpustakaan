@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 
 use App\Models\penulis;
+use App\Models\Komentar;
 use App\Models\tambahbuku;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
@@ -148,16 +150,19 @@ public function update(Request $request, $id)
     {
         $tambahbuku = Tambahbuku::find($id);
 
-        // Periksa apakah data masih digunakan dalam tabel Pinjam
+        if ($tambahbuku) {
+            // Hapus foto jika ada
+            if ($tambahbuku->foto) {
+                Storage::disk('public')->delete('tambahbuku/' . $tambahbuku->foto);
+            }
 
+            // Hapus data buku
+            $tambahbuku->delete();
 
-        // Jika tidak digunakan dalam transaksi peminjaman, hapus data
-        if ($tambahbuku->foto) {
-            Storage::disk('public')->delete('fotodaftar/' . $tambahbuku->foto);
+            return redirect()->route('tambahbuku.index')->with('success', 'Data buku berhasil dihapus beserta fotonya.');
+        } else {
+            return redirect()->route('tambahbuku.index')->with('error', 'Data buku tidak ditemukan.');
         }
-        $tambahbuku->delete();
-
-        return redirect()->route('tambahbuku.index')->with('success', 'Data buku berhasil dihapus.');
     }
     public function daftarbuku(){
         $Buku = tambahbuku::all();
@@ -165,6 +170,26 @@ public function update(Request $request, $id)
     }
     public function preview($id){
         $Buku = tambahbuku::findOrFail($id);
-        return view('daftarbuku.preview', compact('Buku'));
+        $Komentar = Komentar::where('id_buku', $id)->orderBy('created_at', 'desc')->get();
+        return view('daftarbuku.preview', compact('Buku','Komentar'));
+    }
+    public function postreview(Request $request)
+    {
+        $request->validate([
+            'review' => 'required|max:5000'
+        ],[
+            'review.required' => 'Woy kosong njir',
+            'review.max' => 'Woy kebanyakan cok, max nya 5000',
+        ]);
+
+        $Buku = tambahbuku::findOrFail($request->id_buku);
+
+        Komentar::create([
+            'id_user' => Auth::id(),
+            'id_buku' => $Buku->id,
+            'review' => $request->review,
+        ]);
+
+        return redirect()->back()->with('success', 'Berhasil menambahkan review pada buku yang bernama ' . $Buku->nama_buku);
     }
 }
