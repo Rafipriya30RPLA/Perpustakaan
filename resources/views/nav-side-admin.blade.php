@@ -4,7 +4,7 @@
 <!-- Mirrored from demos.adminmart.com/premium/bootstrap/modernize-bootstrap/package/html/main/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 10 Oct 2023 04:57:26 GMT -->
 <head>
     <!--  Title -->
-    <title>Blue-Book</title>
+    <title>Mordenize</title>
     <!--  Required Meta Tag -->
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -16,7 +16,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     @yield('css')
     <!--  Favicon -->
-    <link rel="shortcut icon" type="image/png" href="{{asset('logo.jpg')}}" />
+    <link rel="shortcut icon" type="image/png" href="https://demos.adminmart.com/premium/bootstrap/modernize-bootstrap/package/dist/images/logos/favicon.ico" />
     <!-- Owl Carousel  -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="stylesheet" href="../../dist/libs/owl.carousel/dist/assets/owl.carousel.min.css">
@@ -66,7 +66,7 @@
               <li class="sidebar-item">
                 <a class="sidebar-link {{ request()->routeIs('daftarbuku.index') || request()->routeIs('daftarbuku.preview') ? 'active' : '' }}" href="/daftarbuku" aria-expanded="false">
                   <span>
-                    <i class="ti ti-aperture"></i>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="currentColor" d="M13 19c0 1.1.3 2.12.81 3H6c-1.11 0-2-.89-2-2V4a2 2 0 0 1 2-2h1v7l2.5-1.5L12 9V2h6a2 2 0 0 1 2 2v9.09c-.33-.05-.66-.09-1-.09c-3.31 0-6 2.69-6 6m7-1v-3h-2v3h-3v2h3v3h2v-3h3v-2h-3Z"/></svg>
                   </span>
                   <span class="hide-menu">Daftar Buku</span>
                 </a>

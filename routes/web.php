@@ -2,8 +2,6 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\SesiController;
-use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\PenulisController;
 use App\Http\Controllers\KaryawanController;
@@ -27,19 +25,12 @@ Route::get('/', function () {
 });
 
 
-
-// Route::get('/login',[SesiController::class,'login'])->name('login');
-// Route::get('/register',[SesiController::class,'register'])->name('register');
-// Route::post('registeruser',[SesiController::class,'registeruser'])->name('registeruser');
-// Route::post('loginproses',[SesiController::class,'loginproses'])->name('loginproses');
-// Route::get('logout',[SesiController::class,'logout'])->name('logout');
-
-
 Route::middleware(['Admin'])->group(function () {
 Route::resource('tambahbuku', TambahbukuController::class);
 Route::resource('penerbit', PenerbitController::class);
 Route::resource('penulis', PenulisController::class);
 Route::resource('karyawan', KaryawanController::class);
+Route::get('dashboard', [PenerbitController::class, 'dashboard'])->name('dashboard');
 });
 
 Route::middleware(['User'])->group(function () {
@@ -49,6 +40,7 @@ Route::get('/daftarbuku',[TambahbukuController::class,'daftarbuku']);
 Route::get('/daftarbuku/preview/{id}',[TambahbukuController::class,'preview'])->name('daftarbuku');
 Route::post('/preview/post/review', [TambahBukuController::class, 'postreview']);
 Route::get('profil', [HomeController::class, 'profil']);
+Route::post('simpanprofil/{id}', [HomeController::class, 'simpanprofil'])->name('simpanprofil');
 Route::post('/tambahbuku/borrow/{id}', [TambahbukuController::class,'borrowBook'])->name('tambahbuku.borrow');
 // Route::get('/daftarbuku/preview/{id}', 'TambahbukuController@preview')->name('daftarbuku.preview');
 

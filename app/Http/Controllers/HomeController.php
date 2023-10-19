@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use illuminate\Support\Str;
 
 class HomeController extends Controller
 {
@@ -28,7 +29,25 @@ class HomeController extends Controller
     }
     public function profil()
     {
-        $user =User::all();
+        $user = User::all();
         return view('profil');
+    }
+
+    public function simpanprofil(Request $request, $id)
+    {
+        $user = User::findOrFail($id);
+        $user->name = $request->name;
+        $user->email = $request->email;
+
+        if ($request->hasFile('fotoprofil')){
+            $file = $request->file('fotoprofil');
+            $filename = str::random(40) . '.' . $file->getClientOriginalExtension();
+            $path = $file->storeAs('public/img/fotoprofil',$filename);
+            $user->fotoprofil = $filename;
+        }
+
+        $user->save();
+
+        return redirect()->back();
     }
 }

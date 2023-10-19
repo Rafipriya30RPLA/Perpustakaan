@@ -97,7 +97,7 @@ class KaryawanController extends Controller
 
         $data->save();
 
-        return redirect()->route('karyawan.index')->with('success', 'Data karyawan berhasil diupdate.');
+        return redirect()->route('karyawan.index')->with('success', 'Data karyawan berhasil di perbarui.');
     }
     public function show($id)
     {
@@ -111,6 +111,6 @@ class KaryawanController extends Controller
     {
         $data = karyawan::find($id);
         $data->delete();
-        return redirect()->route('karyawan.index')->with('success', 'Data Berhasil Di Delete');
+        return redirect()->route('karyawan.index')->with('success', 'Data Berhasil Di Hapus');
     }
 }

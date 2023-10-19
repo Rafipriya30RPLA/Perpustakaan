@@ -99,7 +99,7 @@ class PeminjamController extends Controller
 
         $datapeminjam->save();
 
-        return redirect()->route('peminjam.index')->with('success', 'Data penerbit berhasil diupdate.');
+        return redirect()->route('peminjam.index')->with('success', 'Data penerbit berhasil di perbarui.');
     }
     public function show($id)
     {

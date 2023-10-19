@@ -81,7 +81,7 @@ class PenulisController extends Controller
 
         $datapenulis->save();
 
-        return redirect()->route('penulis.index')->with('success', 'Data penerbit berhasil diupdate.');
+        return redirect()->route('penulis.index')->with('success', 'Data penerbit berhasil diperbarui.');
     }
     public function show($id)
     {
@@ -100,7 +100,7 @@ class PenulisController extends Controller
 
         $datapenulis = penulis::find($id);
         $datapenulis->delete();
-        return redirect()->route('penulis.index')->with('success', 'Data Berhasil Di Delete');
+        return redirect()->route('penulis.index')->with('success', 'Data Berhasil Di Hapus');
     }
 
 }

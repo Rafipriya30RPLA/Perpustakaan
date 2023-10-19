@@ -1,6 +1,7 @@
 @extends('nav-side')
 @section('sidebar')
 @section('header')
+
 @endsection
 @endsection
 
@@ -18,7 +19,6 @@
     @include('swal')
 <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 @section('content')
-@include('swal')
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-10">

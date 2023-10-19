@@ -12,10 +12,11 @@ class SesiController extends Controller
 {
 
     public function login(){
-        return view('login');
+        return view('auth.login');
     }
 
     public function loginproses(Request $request){
+
         $credentials = $request->only('email', 'password');
 
         if (Auth::attempt($credentials)) {

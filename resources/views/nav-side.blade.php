@@ -63,9 +63,18 @@
               <!-- Dashboard -->
               <!-- =================== -->
               <li class="sidebar-item">
+                <a class="sidebar-link" href="{{route('dashboard')}}" aria-expanded="false">
+                  <span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="currentColor" d="M6.4 20q-1 0-1.7-.7T4 17.6v-1.175q0-.95.688-1.763q.687-.812 1.812-1.4q1.125-.587 2.538-.925Q10.45 12 11.9 12q1.45 0 2.9.337q1.45.338 2.6.938q1.15.6 1.875 1.413Q20 15.5 20 16.45v1.15q0 1-.7 1.7t-1.7.7Zm5.5-9q-1.45 0-2.475-1.025Q8.4 8.95 8.4 7.5q0-1.45 1.025-2.475Q10.45 4 11.9 4q1.475 0 2.487 1.025Q15.4 6.05 15.4 7.5q0 1.45-1.025 2.475Q13.35 11 11.9 11Z"/></svg>
+                  </span>
+                  <span class="hide-menu">Dashboard</span>
+                </a>
+              </li>
+
+              <li class="sidebar-item">
                 <a class="sidebar-link  {{ request()->routeIs('penerbit.edit') || request()->routeIs('penerbit.create') ? 'active' : ''}}" href="{{route('penerbit.index')}}" aria-expanded="false">
                   <span>
-                    <i class="fa-solid fa-users"></i>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="currentColor" d="M6.4 20q-1 0-1.7-.7T4 17.6v-1.175q0-.95.688-1.763q.687-.812 1.812-1.4q1.125-.587 2.538-.925Q10.45 12 11.9 12q1.45 0 2.9.337q1.45.338 2.6.938q1.15.6 1.875 1.413Q20 15.5 20 16.45v1.15q0 1-.7 1.7t-1.7.7Zm5.5-9q-1.45 0-2.475-1.025Q8.4 8.95 8.4 7.5q0-1.45 1.025-2.475Q10.45 4 11.9 4q1.475 0 2.487 1.025Q15.4 6.05 15.4 7.5q0 1.45-1.025 2.475Q13.35 11 11.9 11Z"/></svg>
                   </span>
                   <span class="hide-menu">Penerbit</span>
                 </a>
@@ -73,7 +82,7 @@
               <li class="sidebar-item">
                 <a class="sidebar-link {{ request()->routeIs('penulis.edit') || request()->routeIs('penulis.create') ? 'active' : ''  }}" href="{{route('penulis.index')}}" aria-expanded="false">
                   <span>
-                    <i class="ti ti-currency-dollar"></i>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="currentColor" d="M6.4 20q-1 0-1.7-.7T4 17.6v-1.175q0-.95.688-1.763q.687-.812 1.812-1.4q1.125-.587 2.538-.925Q10.45 12 11.9 12q1.45 0 2.9.337q1.45.338 2.6.938q1.15.6 1.875 1.413Q20 15.5 20 16.45v1.15q0 1-.7 1.7t-1.7.7Zm5.5-9q-1.45 0-2.475-1.025Q8.4 8.95 8.4 7.5q0-1.45 1.025-2.475Q10.45 4 11.9 4q1.475 0 2.487 1.025Q15.4 6.05 15.4 7.5q0 1.45-1.025 2.475Q13.35 11 11.9 11Z"/></svg>
                   </span>
                   <span class="hide-menu">Penulis</span>
                 </a>
@@ -82,15 +91,15 @@
              <li class="sidebar-item">
                 <a class="sidebar-link {{ request()->routeIs('tambahbuku.edit') || request()->routeIs('tambahbuku.create') ? 'active' : '' }}" href="{{route('tambahbuku.index')}}" aria-expanded="false">
                   <span>
-                    <i class="ti ti-activity-heartbeat"></i>
-                  </span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="currentColor" d="M13 19c0 1.1.3 2.12.81 3H6c-1.11 0-2-.89-2-2V4a2 2 0 0 1 2-2h1v7l2.5-1.5L12 9V2h6a2 2 0 0 1 2 2v9.09c-.33-.05-.66-.09-1-.09c-3.31 0-6 2.69-6 6m7-1v-3h-2v3h-3v2h3v3h2v-3h3v-2h-3Z"/></svg>
+                 </span>
                   <span class="hide-menu">Tambah Buku</span>
                 </a>
               </li>
               <li class="sidebar-item">
                 <a class="sidebar-link  {{ request()->routeIs('karyawan.edit') || request()->routeIs('karyawan.create') ? 'active' : ''}}" href="{{route('karyawan.index')}}" aria-expanded="false">
                   <span>
-                    <i class="fa-solid fa-users"></i>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="currentColor" d="M6.4 20q-1 0-1.7-.7T4 17.6v-1.175q0-.95.688-1.763q.687-.812 1.812-1.4q1.125-.587 2.538-.925Q10.45 12 11.9 12q1.45 0 2.9.337q1.45.338 2.6.938q1.15.6 1.875 1.413Q20 15.5 20 16.45v1.15q0 1-.7 1.7t-1.7.7Zm5.5-9q-1.45 0-2.475-1.025Q8.4 8.95 8.4 7.5q0-1.45 1.025-2.475Q10.45 4 11.9 4q1.475 0 2.487 1.025Q15.4 6.05 15.4 7.5q0 1.45-1.025 2.475Q13.35 11 11.9 11Z"/></svg>
                   </span>
                   <span class="hide-menu">Karyawan</span>
                 </a>

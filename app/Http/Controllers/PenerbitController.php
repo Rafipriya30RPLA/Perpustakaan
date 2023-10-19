@@ -12,6 +12,11 @@ use App\Models\penulis;
 
 class PenerbitController extends Controller
 {
+    public function dashboard()
+    {
+        return view('penerbit.dashboard');
+    }
+
     public function index()
     {
         $data = penerbit::all();
@@ -97,7 +102,7 @@ class PenerbitController extends Controller
 
         $data->save();
 
-        return redirect()->route('penerbit.index')->with('success', 'Data penerbit berhasil diupdate.');
+        return redirect()->route('penerbit.index')->with('success', 'Data penerbit berhasil di perbarui.');
     }
     public function show($id)
     {
@@ -116,7 +121,7 @@ class PenerbitController extends Controller
 
         $data = penerbit::find($id);
         $data->delete();
-        return redirect()->route('penerbit.index')->with('success', 'Data Berhasil Di Delete');
+        return redirect()->route('penerbit.index')->with('success', 'Data Berhasil Di Hapus');
     }
 
 }
