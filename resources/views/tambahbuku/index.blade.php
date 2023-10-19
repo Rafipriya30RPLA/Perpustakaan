@@ -41,7 +41,7 @@
         @section('content')
         <div class="container">
             <div class="row justify-content-center">
-                <div class="col-10 " >
+                <div class="col-15 " >
                     <div class="card">
                         <div class="card-body">
                             <a href="{{ route('tambahbuku.create') }}" type="button" class="mb-3 btn btn-success">Tambah +</a>

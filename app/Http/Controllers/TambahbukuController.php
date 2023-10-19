@@ -22,6 +22,7 @@ class TambahbukuController extends Controller
         return view('tambahbuku.index', compact('datatambahbuku','datapenulis'))-> with('row');
     }
 
+
     public function create()
     {
         $datapenulis = penulis::all();
@@ -167,8 +168,11 @@ public function update(Request $request, $id)
             return redirect()->route('tambahbuku.index')->with('error', 'Data buku tidak ditemukan.');
         }
     }
-    public function daftarbuku(){
-        $Buku = tambahbuku::all();
+
+    // controller daftar buku
+
+    public function daftarbuku() {
+        $Buku = tambahbuku::paginate(10); // Ubah angka (misalnya, 10) sesuai dengan jumlah item yang ingin ditampilkan per halaman.
         return view('daftarbuku.index', compact('Buku'));
     }
     public function preview($id){

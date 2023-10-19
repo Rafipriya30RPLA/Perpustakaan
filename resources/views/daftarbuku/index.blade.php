@@ -64,5 +64,7 @@
         </div>
         @endforelse
     </div>
+     <!-- Tautan paginasi -->
+     {{  $Buku->links() }}
 </div>
 @endsection
