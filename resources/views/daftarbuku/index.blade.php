@@ -31,9 +31,9 @@
             aria-controls="offcanvasExample">
             <i class="ti ti-menu-2 fs-6"></i>
         </a>
-        <h5 class="fs-5 fw-semibold mb-0 d-none d-lg-block">Products</h5>
-        <form class="position-relative">
-            <input type="text" class="form-control search-chat py-2 ps-5" id="text-srh" placeholder="Search Product">
+        <h5 class="fs-5 fw-semibold mb-0 d-none d-lg-block">Daftar Buku</h5>
+        <form action="/daftarbuku" class="position-relative" method="GET">
+            <input type="text" class="form-control search-chat py-2 ps-5"name="search" id="text-srh" placeholder="Search Product">
             <i class="ti ti-search position-absolute top-50 start-0 translate-middle-y fs-6 text-dark ms-3"></i>
         </form>
     </div>

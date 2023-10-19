@@ -56,7 +56,7 @@
                     @csrf
                     <button type="submit" class="btn btn-primary">Pinjam Buku</button>
                 </form>
-              <a href="javascript:void(0)" class="btn d-block btn-danger px-7 py-8">Add to Cart</a>
+
             </div>
             <p class="mb-0">batas waktu pinjam selama 7 hari</p>
           </div>

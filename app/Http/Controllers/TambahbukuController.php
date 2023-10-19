@@ -171,8 +171,15 @@ public function update(Request $request, $id)
 
     // controller daftar buku
 
-    public function daftarbuku() {
-        $Buku = tambahbuku::paginate(10); // Ubah angka (misalnya, 10) sesuai dengan jumlah item yang ingin ditampilkan per halaman.
+    public function daftarbuku(Request $request) {
+
+        if($request->has('search')){
+            $Buku = tambahbuku::where('nama_buku','LIKE','%'.$request->search.'%')->paginate(10);
+        }else{
+            $Buku = tambahbuku::paginate(10); // Ubah angka (misalnya, 10) sesuai dengan jumlah item yang ingin ditampilkan per halaman.
+        }
+
+
         return view('daftarbuku.index', compact('Buku'));
     }
     public function preview($id){
