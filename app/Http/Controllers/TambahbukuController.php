@@ -238,5 +238,5 @@ public function update(Request $request, $id)
             return redirect()->back()->with('error', 'Stok buku ' . $buku->nama_buku . ' sudah habis.');
         }
     }
-
+   
 }
