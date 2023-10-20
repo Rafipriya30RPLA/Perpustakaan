@@ -160,10 +160,10 @@
                         <div class="d-flex align-items-center py-9 mx-7 border-bottom">
                           <img src="{{ asset('storage/img/fotoprofil/' . Auth::user()->fotoprofil) }}"  class="rounded-circle" width="80" height="80" alt="" />
                           <div class="ms-3">
-                            <h5 class="mb-1 fs-3">Mathew Anderson</h5>
-                            <span class="mb-1 d-block text-dark">Designer</span>
+                            <h5 class="mb-1 fs-3">{{ Auth::user()->name}} </h5>
+                            <span class="mb-1 d-block text-dark">{{ Auth::user()->role}}</span>
                             <p class="mb-0 d-flex text-dark align-items-center gap-2">
-                              <i class="ti ti-mail fs-4" ></i> info@modernize.com
+                              <i class="ti ti-mail fs-4" ></i> {{ Auth::user()->email}}
                             </p>
                           </div>
                         </div>
@@ -200,8 +200,8 @@
                           <div class="upgrade-plan bg-light-primary position-relative overflow-hidden rounded-4 p-4 mb-9">
                             <div class="row">
                               <div class="col-6">
-                                <h5 class="fs-4 mb-3 w-50 fw-semibold text-dark">Unlimited Access</h5>
-                                <button class="btn btn-primary text-white">Upgrade</button>
+                                <h5 class="fs-4 mb-3 w-50 fw-semibold text-dark">Edit Profil</h5>
+                                <a href="/profil" class="btn btn-primary text-white">Edit</a>
                               </div>
                               <div class="col-6">
                                 <div class="m-n4">
@@ -210,7 +210,16 @@
                               </div>
                             </div>
                           </div>
-                          <a href="authentication-login.html" class="btn btn-outline-primary">Log Out</a>
+                          <a  href="{{ route('logout') }}"
+                          onclick="event.preventDefault();
+                                        document.getElementById('logout-form').submit();"><span>
+                                         </span>
+                                         <span  class="btn btn-outline-primary">Logout</span>
+                       </a>
+
+                       <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                           @csrf
+                       </form>
                         </div>
                       </div>
                     </div>

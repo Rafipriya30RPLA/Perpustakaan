@@ -50,7 +50,7 @@ Route::resource('review', ReviewController::class);
 Route::get('/dashboard',[HomeController::class,'dashboard']);
 Route::get('/daftarbuku',[TambahbukuController::class,'daftarbuku']);
 Route::get('/daftarbuku/preview/{id}',[TambahbukuController::class,'preview'])->name('daftarbuku-preview');
-Route::post('/preview/post/review', [TambahBukuController::class, 'postreview'])->name('daftarbuku');
+Route::post('/preview/post/review', [TambahBukuController::class, 'postreview'])->name('daftarbuku-review');
 Route::get('profil', [HomeController::class, 'profil']);
 Route::post('simpanprofil/{id}', [HomeController::class, 'simpanprofil'])->name('simpanprofil');
 Route::post('/tambahbuku/borrow/{id}', [TambahbukuController::class,'borrowBook'])->name('tambahbuku.borrow');

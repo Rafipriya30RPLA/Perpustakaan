@@ -51,6 +51,7 @@
                   <div class="form-group">
                     <div class="col-lg-offset-3 col-lg-8">
                       <button type="submit"class="btn btn-outline-primary">Simpan Profil</button>
+                      <a href="/daftarbuku" type="button"class="btn btn-outline-danger">Kembali</a>
                     </div>
                   </div>
                 </form>
