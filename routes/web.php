@@ -31,20 +31,7 @@ Route::resource('penerbit', PenerbitController::class);
 Route::resource('penulis', PenulisController::class);
 Route::resource('karyawan', KaryawanController::class);
 Route::get('dashboard', [PenerbitController::class, 'dashboard'])->name('dashboard');
-});
 
-Route::middleware(['User'])->group(function () {
-Route::resource('review', ReviewController::class);
-// daftarbuku
-Route::get('/dashboard',[HomeController::class,'dashboard']);
-Route::get('/daftarbuku',[TambahbukuController::class,'daftarbuku']);
-Route::get('/daftarbuku/preview/{id}',[TambahbukuController::class,'preview'])->name('daftarbuku');
-Route::post('/preview/post/review', [TambahBukuController::class, 'postreview']);
-Route::get('profil', [HomeController::class, 'profil']);
-Route::post('simpanprofil/{id}', [HomeController::class, 'simpanprofil'])->name('simpanprofil');
-Route::post('/tambahbuku/borrow/{id}', [TambahbukuController::class,'borrowBook'])->name('tambahbuku.borrow');
-Route::post('/nav-side-admin/{id}', [HomeController::class,'lihatprofil'])->name('nav-side-admin');
-// Route::get('/daftarbuku/preview/{id}', 'TambahbukuController@preview')->name('daftarbuku.preview');
 
 // peminjam
 Route::get('/peminjam', [PeminjamController::class, 'index'])->name('peminjam.index');
@@ -54,6 +41,22 @@ Route::get('/peminjam/{peminjam}', [PeminjamController::class, 'show'])->name('p
 Route::get('/peminjam/{peminjam}/edit', [PeminjamController::class, 'edit'])->name('peminjam.edit');
 Route::post('/peminjam/{peminjam}', [PeminjamController::class, 'update'])->name('peminjam.update');
 Route::delete('/peminjam/{peminjam}/destroy', [PeminjamController::class, 'destroy'])->name('peminjam.destroy');
+
+});
+
+Route::middleware(['User'])->group(function () {
+Route::resource('review', ReviewController::class);
+// daftarbuku
+Route::get('/dashboard',[HomeController::class,'dashboard']);
+Route::get('/daftarbuku',[TambahbukuController::class,'daftarbuku']);
+Route::get('/daftarbuku/preview/{id}',[TambahbukuController::class,'preview'])->name('daftarbuku-preview');
+Route::post('/preview/post/review', [TambahBukuController::class, 'postreview'])->name('daftarbuku');
+Route::get('profil', [HomeController::class, 'profil']);
+Route::post('simpanprofil/{id}', [HomeController::class, 'simpanprofil'])->name('simpanprofil');
+Route::post('/tambahbuku/borrow/{id}', [TambahbukuController::class,'borrowBook'])->name('tambahbuku.borrow');
+Route::post('/nav-side-admin/{id}', [HomeController::class,'lihatprofil'])->name('nav-side-admin');
+// Route::get('/daftarbuku/preview/{id}', 'TambahbukuController@preview')->name('daftarbuku.preview');
+
 
 });
 

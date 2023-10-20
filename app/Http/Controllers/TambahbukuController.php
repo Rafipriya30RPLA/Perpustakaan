@@ -154,6 +154,10 @@ public function update(Request $request, $id)
     {
         $tambahbuku = Tambahbuku::find($id);
 
+        if (Peminjam::where('id_tambahbuku',$id)->exists()){
+            return redirect ()->route('tambahbuku.index')->with('error','Data Masih Dipeminjam');
+        }
+
         if ($tambahbuku) {
             // Hapus foto jika ada
             if ($tambahbuku->foto) {
@@ -238,5 +242,5 @@ public function update(Request $request, $id)
             return redirect()->back()->with('error', 'Stok buku ' . $buku->nama_buku . ' Sudah Habis.');
         }
     }
-   
+
 }

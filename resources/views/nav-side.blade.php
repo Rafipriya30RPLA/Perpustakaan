@@ -74,7 +74,7 @@
               <li class="sidebar-item">
                 <a class="sidebar-link  {{ request()->routeIs('penerbit.edit') || request()->routeIs('penerbit.create') ? 'active' : ''}}" href="{{route('penerbit.index')}}" aria-expanded="false">
                   <span>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="currentColor" d="M6.4 20q-1 0-1.7-.7T4 17.6v-1.175q0-.95.688-1.763q.687-.812 1.812-1.4q1.125-.587 2.538-.925Q10.45 12 11.9 12q1.45 0 2.9.337q1.45.338 2.6.938q1.15.6 1.875 1.413Q20 15.5 20 16.45v1.15q0 1-.7 1.7t-1.7.7Zm5.5-9q-1.45 0-2.475-1.025Q8.4 8.95 8.4 7.5q0-1.45 1.025-2.475Q10.45 4 11.9 4q1.475 0 2.487 1.025Q15.4 6.05 15.4 7.5q0 1.45-1.025 2.475Q13.35 11 11.9 11Z"/></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="currentColor" d="M13.4 21c-.2-.6-.4-1.3-.4-2c0-1.5.6-2.9 1.5-4H13v-2h2v1.5c.6-.5 1.3-.9 2-1.2V3H3v18h6v-3.5h2V21h2.4M13 5h2v2h-2V5m0 4h2v2h-2V9M7 19H5v-2h2v2m0-4H5v-2h2v2m0-4H5V9h2v2m0-4H5V5h2v2m2-2h2v2H9V5m0 4h2v2H9V9m0 6v-2h2v2H9m11 0v3h3v2h-3v3h-2v-3h-3v-2h3v-3h2Z"/></svg>
                   </span>
                   <span class="hide-menu">Penerbit</span>
                 </a>
@@ -82,7 +82,7 @@
               <li class="sidebar-item">
                 <a class="sidebar-link {{ request()->routeIs('penulis.edit') || request()->routeIs('penulis.create') ? 'active' : ''  }}" href="{{route('penulis.index')}}" aria-expanded="false">
                   <span>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="currentColor" d="M6.4 20q-1 0-1.7-.7T4 17.6v-1.175q0-.95.688-1.763q.687-.812 1.812-1.4q1.125-.587 2.538-.925Q10.45 12 11.9 12q1.45 0 2.9.337q1.45.338 2.6.938q1.15.6 1.875 1.413Q20 15.5 20 16.45v1.15q0 1-.7 1.7t-1.7.7Zm5.5-9q-1.45 0-2.475-1.025Q8.4 8.95 8.4 7.5q0-1.45 1.025-2.475Q10.45 4 11.9 4q1.475 0 2.487 1.025Q15.4 6.05 15.4 7.5q0 1.45-1.025 2.475Q13.35 11 11.9 11Z"/></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="currentColor" d="m21.7 13.35l-1 1l-2.05-2.05l1-1a.55.55 0 0 1 .77 0l1.28 1.28c.21.21.21.56 0 .77M12 18.94l6.06-6.06l2.05 2.05L14.06 21H12v-2.06M12 14c-4.42 0-8 1.79-8 4v2h6v-1.89l4-4c-.66-.08-1.33-.11-2-.11m0-10a4 4 0 0 0-4 4a4 4 0 0 0 4 4a4 4 0 0 0 4-4a4 4 0 0 0-4-4Z"/></svg>
                   </span>
                   <span class="hide-menu">Penulis</span>
                 </a>
@@ -93,13 +93,21 @@
                   <span>
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="currentColor" d="M13 19c0 1.1.3 2.12.81 3H6c-1.11 0-2-.89-2-2V4a2 2 0 0 1 2-2h1v7l2.5-1.5L12 9V2h6a2 2 0 0 1 2 2v9.09c-.33-.05-.66-.09-1-.09c-3.31 0-6 2.69-6 6m7-1v-3h-2v3h-3v2h3v3h2v-3h3v-2h-3Z"/></svg>
                  </span>
-                  <span class="hide-menu">Tambah Buku</span>
+                  <span class="hide-menu">List Buku</span>
+                </a>
+              </li>
+              <li class="sidebar-item">
+                <a class="sidebar-link {{ request()->routeIs('peminjam.edit') || request()->routeIs('peminjam.create') ? 'active' : '' }}" href="{{route('peminjam.index')}}" aria-expanded="false">
+                  <span>
+                    <i class="ti ti-aperture"></i>
+                  </span>
+                  <span class="hide-menu">Peminjam</span>
                 </a>
               </li>
               <li class="sidebar-item">
                 <a class="sidebar-link  {{ request()->routeIs('karyawan.edit') || request()->routeIs('karyawan.create') ? 'active' : ''}}" href="{{route('karyawan.index')}}" aria-expanded="false">
                   <span>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="currentColor" d="M6.4 20q-1 0-1.7-.7T4 17.6v-1.175q0-.95.688-1.763q.687-.812 1.812-1.4q1.125-.587 2.538-.925Q10.45 12 11.9 12q1.45 0 2.9.337q1.45.338 2.6.938q1.15.6 1.875 1.413Q20 15.5 20 16.45v1.15q0 1-.7 1.7t-1.7.7Zm5.5-9q-1.45 0-2.475-1.025Q8.4 8.95 8.4 7.5q0-1.45 1.025-2.475Q10.45 4 11.9 4q1.475 0 2.487 1.025Q15.4 6.05 15.4 7.5q0 1.45-1.025 2.475Q13.35 11 11.9 11Z"/></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="currentColor" d="m22.9 21.2l-4.1-4.1c.4-1 .2-2.3-.7-3.1c-.9-.9-2.2-1.1-3.3-.6l1.9 1.9l-1.4 1.4l-2-2c-.5 1.1-.3 2.4.6 3.4c.9.9 2.1 1.1 3.1.7l4.1 4.1c.2.2.5.2.6 0l1-1c.3-.3.3-.6.2-.7M13 20H2v-2c0-2.2 3.6-4 8-4c.5 0 1 0 1.4.1c-.3.6-.4 1.2-.4 1.9c0 1.6.8 3.1 2 4M10 4C7.8 4 6 5.8 6 8s1.8 4 4 4s4-1.8 4-4s-1.8-4-4-4"/></svg>
                   </span>
                   <span class="hide-menu">Karyawan</span>
                 </a>
@@ -173,7 +181,7 @@
                     <a class="nav-link pe-0" href="javascript:void(0)" id="drop1" data-bs-toggle="dropdown" aria-expanded="false">
                       <div class="d-flex align-items-center">
                         <div class="user-profile-img">
-                          <img src="{{ asset('storage/img/fotoprofil/' . Auth::user()->fotoprofil) }}" " class="rounded-circle" width="35" height="35" alt="" />
+                          <img src="../../dist/images/profile/user-1.jpg" class="rounded-circle" width="35" height="35" alt="" />
                         </div>
                       </div>
                     </a>
@@ -183,7 +191,7 @@
                           <h5 class="mb-0 fs-5 fw-semibold">User Profile</h5>
                         </div>
                         <div class="d-flex align-items-center py-9 mx-7 border-bottom">
-                          <img src="{{ asset('storage/img/fotoprofil/' . Auth::user()->fotoprofil) }}"  class="rounded-circle" width="80" height="80" alt="" />
+                          <img src="{{ asset('storage/img/fotoprofil/' . Auth::user()->fotoprofil) }}"   class="rounded-circle" width="80" height="80" alt="" />
                           <div class="ms-3">
                             <h5 class="mb-1 fs-3">Mathew Anderson</h5>
                             <span class="mb-1 d-block text-dark">Designer</span>
@@ -195,7 +203,7 @@
                         <div class="message-body">
                           <a href="page-user-profile.html" class="py-8 px-7 mt-8 d-flex align-items-center">
                             <span class="d-flex align-items-center justify-content-center bg-light rounded-1 p-6">
-                              <img src="https://demos.adminmart.com/premium/bootstrap/modernize-bootstrap/package/dist/images/svgs/icon-account.svg" alt="" width="24" height="24">
+                              <img src="{{ asset('storage/img/fotoprofil/' . Auth::user()->fotoprofil) }}"    alt="" width="24" height="24">
                             </span>
                             <div class="w-75 d-inline-block v-middle ps-3">
                               <h6 class="mb-1 bg-hover-primary fw-semibold"> My Profile </h6>
