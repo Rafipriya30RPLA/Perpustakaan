@@ -48,7 +48,16 @@ class HomeController extends Controller
 
         $user->save();
 
-        return redirect()->back();
+        return redirect()->back()->with('success','Profil Berhasil Di edit');
+    }
+    public function lihatprofil()
+    {
+        $user = User::all();
+        return view('profil');
+    }
+    public function dashboard()
+    {
+        return view('dashboard.dashboard-user');
     }
 
 
