@@ -78,7 +78,7 @@ class TambahbukuController extends Controller
 
         $datatambahbuku->save();
 
-        return redirect()->route('tambahbuku.index')->with('success', 'Data Berhasil Ditambahkan');
+        return redirect()->route('tambahbuku.index')->with('success', 'Data Berhasil Di Tambahkan');
     }
     public function edit($id)
 {
@@ -141,7 +141,7 @@ public function update(Request $request, $id)
 
     $datatambahbuku->save();
 
-    return redirect()->route('tambahbuku.index')->with('success', 'Data daftar berhasil diupdate.');
+    return redirect()->route('tambahbuku.index')->with('success', 'Data Daftar Berhasil Di Perbarui.');
 }
     public function show($id)
     {
@@ -163,9 +163,9 @@ public function update(Request $request, $id)
             // Hapus data buku
             $tambahbuku->delete();
 
-            return redirect()->route('tambahbuku.index')->with('success', 'Data buku berhasil dihapus beserta fotonya.');
+            return redirect()->route('tambahbuku.index')->with('success', 'Data Buku Berhasil Di Hapus Beserta Fotonya.');
         } else {
-            return redirect()->route('tambahbuku.index')->with('error', 'Data buku tidak ditemukan.');
+            return redirect()->route('tambahbuku.index')->with('error', 'Data Buku Tidak Di Temukan.');
         }
     }
 
@@ -204,7 +204,7 @@ public function update(Request $request, $id)
             'review' => $request->review,
         ]);
 
-        return redirect()->back()->with('success', 'Berhasil menambahkan review pada buku yang bernama ' . $Buku->nama_buku);
+        return redirect()->back()->with('success', 'Berhasil Menambahkan Review Pada Buku Yang Bernama ' . $Buku->nama_buku);
     }
     public function borrowBook(Request $request, $id)
     {
@@ -233,9 +233,9 @@ public function update(Request $request, $id)
             $datapeminjam->tenggat = now()->addDays(7); // Tenggat seminggu kemudian
             $datapeminjam->save();
 
-            return redirect()->back()->with('success', 'Buku ' . $buku->nama_buku . ' berhasil dipinjam.');
+            return redirect()->back()->with('success', 'Buku ' . $buku->nama_buku . ' Berhasil Di Pinjam.');
         } else {
-            return redirect()->back()->with('error', 'Stok buku ' . $buku->nama_buku . ' sudah habis.');
+            return redirect()->back()->with('error', 'Stok buku ' . $buku->nama_buku . ' Sudah Habis.');
         }
     }
    

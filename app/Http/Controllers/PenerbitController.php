@@ -4,10 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\penerbit;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
-use App\Http\Requests\StorepenerbitRequest;
-use App\Http\Requests\UpdatepenerbitRequest;
 use App\Models\penulis;
 
 class PenerbitController extends Controller
@@ -64,7 +61,7 @@ class PenerbitController extends Controller
 
         $data->save();
 
-        return redirect()->route('penerbit.index')->with('success', 'Data Berhasil Ditambahkan');
+        return redirect()->route('penerbit.index')->with('success', 'Data Berhasil Di Tambahkan');
     }
     public function edit($id)
 {
@@ -79,7 +76,7 @@ class PenerbitController extends Controller
             'alamat' => 'required|max:255'
 
         ], [
-            'nama_penerbit.required' => 'Nama Perusahaan harus diisi',
+            'nama_penerbit.required' => 'Nama Penerbit harus diisi',
             'no_telepon.required' => 'No Telepon harus diisi',
             'no_telepon.min' => 'No Telepon Minimal 12 digit',
             'no_telepon.gt' => 'No Telepon tidak boleh minus',
@@ -102,7 +99,10 @@ class PenerbitController extends Controller
 
         $data->save();
 
-        return redirect()->route('penerbit.index')->with('success', 'Data penerbit berhasil di perbarui.');
+
+
+        return redirect()->route('penerbit.index')->with('success', 'Data Penerbit Berhasil Di Perbarui.');
+
     }
     public function show($id)
     {
@@ -116,7 +116,7 @@ class PenerbitController extends Controller
     {
         $penulis = penerbit::where('id', $id)->firstOrFail();
         if (penulis::where('id_penerbit', $id)->exists()) {
-            return redirect()->route('penerbit.index')->with('error', "Data " . $penulis->nama_penerbit . " Masih di gunakan di tabel penulis!" );
+            return redirect()->route('penerbit.index')->with('error', "Data " . $penulis->nama_penerbit . " Masih Di Gunakan Di Tabel Penulis!" );
         }
 
         $data = penerbit::find($id);

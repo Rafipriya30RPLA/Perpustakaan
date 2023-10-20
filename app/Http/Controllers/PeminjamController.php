@@ -53,7 +53,7 @@ class PeminjamController extends Controller
 
     $datapeminjam->save();
 
-    return redirect()->route('peminjam.index')->with('success', 'Data Berhasil Ditambahkan');
+    return redirect()->route('peminjam.index')->with('success', 'Data Berhasil Di Tambahkan');
 }
             public function edit($id)
         {
@@ -116,7 +116,7 @@ class PeminjamController extends Controller
         $datapeminjam = peminjam::find($id);
 
         if (!$datapeminjam) {
-            return redirect()->route('peminjam.index')->with('error', 'Data Peminjam tidak ditemukan.');
+            return redirect()->route('peminjam.index')->with('error', 'Data Peminjam Tidak Di Temukan.');
         }
 
         // Temukan buku yang akan dikembalikan
@@ -129,7 +129,7 @@ class PeminjamController extends Controller
         // Hapus data peminjam
         $datapeminjam->delete();
 
-        return redirect()->route('peminjam.index')->with('success', 'Data Peminjam berhasil dihapus dan stok buku dikembalikan.');
+        return redirect()->route('peminjam.index')->with('success', 'Data Peminjam Berhasil Bihapus Dan Stok Buku Di Kembalikan.');
     }
 
 }

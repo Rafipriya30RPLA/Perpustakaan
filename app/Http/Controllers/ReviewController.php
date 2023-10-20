@@ -44,7 +44,7 @@ class ReviewController extends Controller
 
         $data->save();
 
-        return redirect()->route('review.index')->with('success', 'Data Berhasil Ditambahkan');
+        return redirect()->route('review.index')->with('success', 'Data Berhasil Di Tambahkan');
     }
             public function edit($id)
         {
@@ -78,7 +78,7 @@ class ReviewController extends Controller
 
         $data->save();
 
-        return redirect()->route('review.index')->with('success', 'Data penerbit berhasil diupdate.');
+        return redirect()->route('review.index')->with('success', 'Data Penerbit Berhasil Di Perbarui.');
     }
     public function show($id)
     {
@@ -92,7 +92,7 @@ class ReviewController extends Controller
     {
         $data = review::find($id);
         $data->delete();
-        return redirect()->route('review.index')->with('success', 'Data Berhasil Di Delete');
+        return redirect()->route('review.index')->with('success', 'Data Berhasil Di Hapus');
     }
 public function index2()
 {

@@ -54,7 +54,7 @@ class KaryawanController extends Controller
 
         $data->save();
 
-        return redirect()->route('karyawan.index')->with('success', 'Data Berhasil Ditambahkan');
+        return redirect()->route('karyawan.index')->with('success', 'Data Berhasil Di Tambahkan');
     }
             public function edit($id)
         {
@@ -96,8 +96,8 @@ class KaryawanController extends Controller
         $data->alamat = $request->input('alamat');
 
         $data->save();
+        return redirect()->route('karyawan.index')->with('success', 'Data Karyawan Berhasil Di Perbarui.');
 
-        return redirect()->route('karyawan.index')->with('success', 'Data karyawan berhasil di perbarui.');
     }
     public function show($id)
     {

@@ -47,7 +47,7 @@ class PenulisController extends Controller
 
         $datapenulis->save();
 
-        return redirect()->route('penulis.index')->with('success', 'Data Berhasil Ditambahkan');
+        return redirect()->route('penulis.index')->with('success', 'Data Berhasil Di Tambahkan');
     }
             public function edit($id)
         {
@@ -81,7 +81,9 @@ class PenulisController extends Controller
 
         $datapenulis->save();
 
-        return redirect()->route('penulis.index')->with('success', 'Data penerbit berhasil diperbarui.');
+
+        return redirect()->route('penulis.index')->with('success', 'Data Penerbit Berhasil Di Perbarui.');
+
     }
     public function show($id)
     {
@@ -95,7 +97,7 @@ class PenulisController extends Controller
     {
         $tambahbuku = penulis::where('id', $id)->firstOrFail();
         if (tambahbuku::where('id_penulis', $id)->exists()) {
-            return redirect()->route('penulis.index')->with('error', "Data" . $tambahbuku->nama_penulis . " Masih di gunakan di tabel tambah buku!" );
+            return redirect()->route('penulis.index')->with('error', "Data" . $tambahbuku->nama_penulis . " Masih Di Gunakan Di Tabel Tambah Buku!" );
         }
 
         $datapenulis = penulis::find($id);

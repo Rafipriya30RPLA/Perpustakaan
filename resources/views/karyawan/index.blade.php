@@ -54,7 +54,7 @@
                         <td>
                           <div class="d-flex">
                             {{-- <a href="{{route( 'pegawai.destroy',$row->id) }}"class="btn btn-danger">Delete</a> --}}
-                            <a href=" {{ route('karyawan.edit', $row->id) }}" class="btn btn-primary mr-1">Edit</a>
+                            <a href=" {{ route('karyawan.edit', $row->id) }}" class="btn btn-outline-primary" mr-1">Edit</a>
                             <form action="{{ route('karyawan.destroy', $row->id) }}" method="post">
                               @method('DELETE')
                               @csrf

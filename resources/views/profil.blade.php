@@ -13,7 +13,7 @@
             <div class="text-center">
                 <img src="{{ asset('storage/img/fotoprofil/' . Auth::user()->fotoprofil) }}" class="avatar img-circle img-thumbnail"
                     alt="avatar">
-                <h6>Upload a different photo...</h6>
+                <h6>Tambah Kan Foto Profil</h6>
             </div>
         </div>
 

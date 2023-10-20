@@ -22,14 +22,14 @@ class SesiController extends Controller
         if (Auth::attempt($credentials)) {
 
             if (Auth::user()->role === 'user') {
-                return redirect('/daftarbuku')->with('success', 'Berhasil Login');
+                return redirect('/daftarbuku')->with('success', 'Anda Berhasil Login');
             } elseif (Auth::user()->role === 'admin') {
-                return redirect('penerbit')->with('success','Berhasil Login');
+                return redirect('penerbit')->with('success',' Anda Berhasil Login');
             }
 
 
         } else {
-            return redirect('login')->with('error', 'Email atau password salah. Silakan coba lagi.');
+            return redirect('login')->with('error', 'Email Atau Password Salah. Silakan Coba Lagi.');
         }
     }
     public function register(){
@@ -42,19 +42,19 @@ class SesiController extends Controller
 
         if ($existingUser) {
             return redirect('/register')
-                ->with('error', 'Email sudah terdaftar. Silakan gunakan email lain.');
+                ->with('error', 'Email Sudah Terdaftar. Silakan Gunakan Email Yang Lain.');
         }
 
         // Check if the password is at least 9 characters
         if (strlen($request->password) < 9) {
             return redirect('/register')
-                ->with('error', 'Password harus memiliki minimal 9 karakter.');
+                ->with('error', 'Password Harus Memiliki Minimal 9 Karakter.');
         }
 
         // Check if password and password confirmation match
         if ($request->password !== $request->password_confirmation) {
             return redirect('/register')
-                ->with('error', 'Konfirmasi password tidak cocok. Silakan coba lagi.');
+                ->with('error', 'Konfirmasi Password Tidak Cocok. Silakan Coba lagi.');
         }
 
         $user = User::create([
@@ -65,10 +65,10 @@ class SesiController extends Controller
         ]);
 
 
-        return redirect('/login')->with('success', 'Berhasil Register, Harap Login terlebih dahulu');
+        return redirect('/login')->with('success', 'Berhasil Register, Harap Login Terlebih Dahulu');
     }
     public function logout(){
         Auth::logout();
-        return redirect('/login')->with('success', 'Berhasil Logout');
+        return redirect('/login')->with('success', ' Anda Berhasil Logout');
     }
 }
