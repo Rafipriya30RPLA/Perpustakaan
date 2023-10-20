@@ -31,9 +31,9 @@ class LoginController extends Controller
     protected function redirectTo()
     {
         if (auth()->user()->role=='admin'){
-            return'/penerbit';
+            return'home';
         }else{
-            return'daftarbuku'; //ini ketika user login
+            return'home'; //ini ketika user login
         }
     }
 
