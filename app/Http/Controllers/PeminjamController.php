@@ -13,10 +13,21 @@ class PeminjamController extends Controller
     public function index()
     {
         $datatambahbuku = tambahbuku::all();
-        $datapeminjam = peminjam::all();
+        $datapeminjam = peminjam::where('status', 'pending')->get(); // Mengambil hanya data peminjam dengan status 'acc'
         return view('peminjam.index', compact('datapeminjam','datatambahbuku'))->with('row');
     }
-
+    public function index2()
+    {
+        $datatambahbuku = tambahbuku::all();
+        $datapeminjam = peminjam::where('status', 'acc')->get(); // Mengambil hanya data peminjam dengan status 'acc'
+        return view('pengembalian.index', compact('datapeminjam','datatambahbuku'))->with('row');
+    }
+    public function dashboard()
+    {
+        $datatambahbuku = tambahbuku::all();
+        $datapeminjam = peminjam::all(); // Mengambil hanya data peminjam dengan status 'acc'
+        return view('dashboard.index', compact('datapeminjam','datatambahbuku'))->with('row');
+    }
     public function create()
     {
         $datatambahbuku = tambahbuku::all();
@@ -63,43 +74,17 @@ class PeminjamController extends Controller
         }
     public function update(Request $request, $id)
     {
-        $validator = Validator::make($request->all(), [
-            'nama_peminjam' => 'required',
-            'id_tambahbuku' => 'required',
-            'kode_buku' => 'required',
-            'tanggal_pinjam' => 'required',
-            'tenggat' => 'required'
-
-
-
-        ], [
-            'nama_peminjam.required' => 'Nama Peminjam harus diisi',
-            'id_tambahbuku.required' => 'Nama Buku harus diisi',
-            'kode_buku.required' => 'kode_buku harus diisi',
-            'tanggal_pinjam.required' => 'tanggal_pinjam harus diisi',
-            'tenggat.required' => 'tenggat harus diisi'
-
-
-        ]);
-
-        if ($validator->fails()) {
-            return redirect()->back()->withErrors($validator)->withInput();
-        }
 
         $datapeminjam = peminjam::find($id);
 
         // Update data lainnya
-        $datapeminjam->nama_peminjam = $request->input('nama_peminjam');
-        $datapeminjam->id_tambahbuku = $request->input('id_tambahbuku');
-        $datapeminjam->kode_buku = $request->input('kode_buku');
-        $datapeminjam->tanggal_pinjam = $request->input('tanggal_pinjam');
-        $datapeminjam->tenggat = $request->input('tenggat');
-
+            $datapeminjam->status = 'acc'; // Ubah status menjadi "acc"
+            $datapeminjam->save();
 
 
         $datapeminjam->save();
 
-        return redirect()->route('peminjam.index')->with('success', 'Data penerbit berhasil di perbarui.');
+        return redirect()->route('peminjam.index')->with('success', 'Buku Berhasil Disetujui,Silahkan Cek Halaman Histori Anda.');
     }
     public function show($id)
     {
@@ -130,6 +115,27 @@ class PeminjamController extends Controller
         $datapeminjam->delete();
 
         return redirect()->route('peminjam.index')->with('success', 'Data Peminjam Berhasil Bihapus Dan Stok Buku Di Kembalikan.');
+    }
+    public function destroy2($id)
+    {
+        // Temukan data peminjam
+        $datapeminjam = peminjam::find($id);
+
+        if (!$datapeminjam) {
+            return redirect()->route('pengembalian.index')->with('error', 'Data Pengembalian Tidak Di Temukan.');
+        }
+
+        // Temukan buku yang akan dikembalikan
+        $tambahbuku = tambahbuku::find($datapeminjam->id_tambahbuku);
+
+        // Tambahkan stok buku sesuai jumlah yang dikembalikan
+        $tambahbuku->stok += 1;
+        $tambahbuku->save();
+
+        // Hapus data peminjam
+        $datapeminjam->delete();
+
+        return redirect()->route('pengembalian.index')->with('success', 'Data Pengembalian Berhasil Bihapus Dan Stok Buku Di Kembalikan.');
     }
 
 }

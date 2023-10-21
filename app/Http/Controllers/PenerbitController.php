@@ -9,10 +9,6 @@ use App\Models\penulis;
 
 class PenerbitController extends Controller
 {
-    public function dashboard()
-    {
-        return view('penerbit.dashboard');
-    }
 
     public function index()
     {

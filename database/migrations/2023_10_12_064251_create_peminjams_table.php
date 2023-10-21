@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('kode_buku');
             $table->string('tanggal_pinjam');
             $table->string('tenggat');
+            $table->string('status');
             $table->timestamps();
 
             $table->foreign('id_tambahbuku')->references('id')->on('tambahbukus')->onDelete('cascade');

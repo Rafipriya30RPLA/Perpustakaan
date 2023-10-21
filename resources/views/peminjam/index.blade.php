@@ -26,10 +26,6 @@
             <div class="col-10 ">
                 <div class="card">
                     <div class="card-body">
-
-                        <button type="button" data-bs-toggle="modal" data-bs-target="#modaltambah"
-                            class="btn btn-success">Tambah
-                            +</button>
                         <div class="row" style="padding-top:10px;">
                             <table class="table">
                                 <thead>
@@ -55,10 +51,12 @@
 
                                             <td>
                                                 <div class="d-flex">
-                                                    {{-- <a href="{{route( 'pegawai.destroy',$row->id) }}"class="btn btn-danger">Delete</a> --}}
-                                                    {{-- <button type="button" data-bs-toggle="modal"
-                                                        data-bs-target="#raffi{{ $row->id }}"
-                                                        class="btn btn-outline-primary mr-1">Edit</button> --}}
+                                                    <form action="{{ route('peminjam.update', $row->id) }}"method="POST" enctype="multipart/form-data">
+                                                        @csrf
+                                                        @method('POST')
+                                                    <button type="submit"
+                                                        class="btn btn-outline-success mr-1">Setujui</button>
+                                                    </form>
                                                     <form action="{{ route('peminjam.destroy', $row->id) }}"
                                                         method="post">
                                                         @method('DELETE')
@@ -215,10 +213,8 @@
     </div>
 </div>
 <!-- Modal Edit -->
-{{-- @foreach ($datapeminjam as $key => $row)
-    <form action="{{ route('peminjam.update', $row->id) }}"method="POST" enctype="multipart/form-data">
-        @csrf
-        @method('PUT')
+@foreach ($datapeminjam as $key => $row)
+
         <div class="modal fade" id="raffi{{ $row->id }}" tabindex="-1">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -229,59 +225,6 @@
                     </div>
                     <div class="modal-body">
 
-                        <div class="mb-3">
-                            <label for="exampleInputText" class="form-label">Nama Peminjam</label>
-                            <input type="text" name="nama_peminjam"
-                                class="form-control @error('nama_peminjam')is-invalid
-        @enderror"
-                                id=""value="{{ $row->nama_peminjam }}">
-                        </div>
-                        @error('nama_peminjam')
-                        @enderror
-
-                        <div class="mb-3">
-                            <label for="exampleInputText" class="form-label">Nama Buku</label>
-                            <select name="id_tambahbuku" id="" class="form-select">
-                                <option value=""disabled selected>Pilih Nama Buku</option>
-                                @foreach ($datatambahbuku as $tambahbuku)
-                                    <option value="{{ $tambahbuku->id }}">{{ $tambahbuku->nama_buku }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                        @error('id_tambahbuku')
-                        @enderror
-
-                        <div class="mb-3">
-                            <label for="exampleInputText" class="form-label">Kode Buku</label>
-                            <input type="number" name="kode_buku"
-                                class="form-control @error('kode_buku')is-invalid
-        @enderror"
-                                id=""value="{{ $row->kode_buku }}">
-                        </div>
-                        @error('kode_buku')
-                        @enderror
-
-                        <div class="mb-3">
-                            <label for="exampleInputText" class="form-label">Tanggal Pinjam</label>
-                            <input type="date" name="tanggal_pinjam"
-                                class="form-control @error('tanggal_pinjam')is-invalid
-        @enderror"
-                                id=""value="{{ $row->tanggal_pinjam }}">
-                        </div>
-                        @error('tanggal_pinjam')
-                        @enderror
-
-                        <div class="mb-3">
-                            <label for="exampleInputText" class="form-label">Tenggat</label>
-                            <input type="date" name="tenggat"
-                                class="form-control @error('tenggat')is-invalid
-        @enderror"
-                                id=""value="{{ $row->tenggat }}">
-                        </div>
-                        @error('tenggat')
-                        @enderror
-
-                    </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kembali</button>
                        <button type="submit" class="btn btn-primary">Simpan</button>
@@ -291,5 +234,5 @@
         </div>
         </div>
     </form>
-@endforeach --}}
+@endforeach
 </body>

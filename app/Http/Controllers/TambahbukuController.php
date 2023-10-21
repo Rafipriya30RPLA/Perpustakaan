@@ -235,6 +235,7 @@ public function update(Request $request, $id)
             $datapeminjam->kode_buku = $buku->kode_buku;
             $datapeminjam->tanggal_pinjam = now();
             $datapeminjam->tenggat = now()->addDays(7); // Tenggat seminggu kemudian
+            $datapeminjam->status = 'pending';
             $datapeminjam->save();
 
             return redirect()->back()->with('success', 'Buku ' . $buku->nama_buku . ' Berhasil Di Pinjam.');

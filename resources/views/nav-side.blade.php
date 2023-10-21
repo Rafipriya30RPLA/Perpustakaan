@@ -14,8 +14,9 @@
     <meta name="author" content="" />
     <meta name="keywords" content="Mordenize" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    @yield('css')
+
     <!--  Favicon -->
+    @yield('css')
     <link rel="shortcut icon" type="image/png" href="https://demos.adminmart.com/premium/bootstrap/modernize-bootstrap/package/dist/images/logos/favicon.ico" />
     <!-- Owl Carousel  -->
     <link rel="stylesheet" href="../../dist/libs/owl.carousel/dist/assets/owl.carousel.min.css">
@@ -72,6 +73,15 @@
               </li> --}}
 
               <li class="sidebar-item">
+                <a class="sidebar-link" href="{{route('dashboard.index')}}" aria-expanded="false">
+                  <span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="currentColor" d="M13.4 21c-.2-.6-.4-1.3-.4-2c0-1.5.6-2.9 1.5-4H13v-2h2v1.5c.6-.5 1.3-.9 2-1.2V3H3v18h6v-3.5h2V21h2.4M13 5h2v2h-2V5m0 4h2v2h-2V9M7 19H5v-2h2v2m0-4H5v-2h2v2m0-4H5V9h2v2m0-4H5V5h2v2m2-2h2v2H9V5m0 4h2v2H9V9m0 6v-2h2v2H9m11 0v3h3v2h-3v3h-2v-3h-3v-2h3v-3h2Z"/></svg>
+                  </span>
+                  <span class="hide-menu">Dashboard</span>
+                </a>
+              </li>
+
+              <li class="sidebar-item">
                 <a class="sidebar-link  {{ request()->routeIs('penerbit.edit') || request()->routeIs('penerbit.create') ? 'active' : ''}}" href="{{route('penerbit.index')}}" aria-expanded="false">
                   <span>
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="currentColor" d="M13.4 21c-.2-.6-.4-1.3-.4-2c0-1.5.6-2.9 1.5-4H13v-2h2v1.5c.6-.5 1.3-.9 2-1.2V3H3v18h6v-3.5h2V21h2.4M13 5h2v2h-2V5m0 4h2v2h-2V9M7 19H5v-2h2v2m0-4H5v-2h2v2m0-4H5V9h2v2m0-4H5V5h2v2m2-2h2v2H9V5m0 4h2v2H9V9m0 6v-2h2v2H9m11 0v3h3v2h-3v3h-2v-3h-3v-2h3v-3h2Z"/></svg>
@@ -96,12 +106,21 @@
                   <span class="hide-menu">List Buku</span>
                 </a>
               </li>
+
               <li class="sidebar-item">
                 <a class="sidebar-link {{ request()->routeIs('peminjam.edit') || request()->routeIs('peminjam.create') ? 'active' : '' }}" href="{{route('peminjam.index')}}" aria-expanded="false">
                   <span>
                     <i class="ti ti-aperture"></i>
                   </span>
                   <span class="hide-menu">Peminjam</span>
+                </a>
+              </li>
+              <li class="sidebar-item">
+                <a class="sidebar-link"href="{{route('pengembalian.index')}}" aria-expanded="false">
+                  <span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="32" viewBox="0 0 16 16"><path fill="currentColor" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"/></svg>
+                  </span>
+                  <span class="hide-menu">Pengembalian</span>
                 </a>
               </li>
               <li class="sidebar-item">
