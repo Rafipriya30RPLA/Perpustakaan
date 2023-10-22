@@ -17,7 +17,7 @@
 </head>
 
 <body>
-    @include('swal')
+@include('swal')
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"
     integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 @section('content')
@@ -46,16 +46,19 @@
                                             <td>{{ $row->nama_peminjam }} </td>
                                             <td>{{ $row->tambahbuku->nama_buku }} </td>
                                             <td>{{ $row->kode_buku }} </td>
-                                            <td>{{ $row->tanggal_pinjam }} </td>
-                                            <td>{{ $row->tenggat }} </td>
+                                            <td>{{ Carbon\Carbon::parse($row->tanggal_pinjam)->translatedFormat('d F Y') }}
+                                            </td>
+                                            <td>{{ Carbon\Carbon::parse($row->tenggat)->translatedFormat('d F Y') }}
+                                            </td>
 
                                             <td>
                                                 <div class="d-flex">
-                                                    <form action="{{ route('peminjam.update', $row->id) }}"method="POST" enctype="multipart/form-data">
+                                                    <form action="{{ route('peminjam.update', $row->id) }}"method="POST"
+                                                        enctype="multipart/form-data">
                                                         @csrf
                                                         @method('POST')
-                                                    <button type="submit"
-                                                        class="btn btn-outline-success mr-1">Setujui</button>
+                                                        <button type="submit"
+                                                            class="btn btn-outline-success mr-1">Setujui</button>
                                                     </form>
                                                     <form action="{{ route('peminjam.destroy', $row->id) }}"
                                                         method="post">
@@ -65,18 +68,17 @@
                                                             style="margin-left: 10px;"
                                                             data-id="{{ $row->id }}">Hapus</button>
                                                     </form>
+                                                </div>
+                                            </td>
+                                        </tr>
                                     @endforeach
+                                </tbody>
+                            </table>
                         </div>
-                        </td>
-
-                        </tr>
-                        </tbody>
-                        </table>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
     </div>
 @endsection
 <script src="
@@ -111,7 +113,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Tambah Peminjam</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -214,25 +216,24 @@
 </div>
 <!-- Modal Edit -->
 @foreach ($datapeminjam as $key => $row)
-
-        <div class="modal fade" id="raffi{{ $row->id }}" tabindex="-1">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel">Edit</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                            aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
+    <div class="modal fade" id="raffi{{ $row->id }}" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Edit</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kembali</button>
-                       <button type="submit" class="btn btn-primary">Simpan</button>
+                        <button type="submit" class="btn btn-primary">Simpan</button>
+                    </div>
                 </div>
-                </div>
+            </div>
         </div>
-        </div>
-        </div>
+    </div>
     </form>
 @endforeach
 </body>
