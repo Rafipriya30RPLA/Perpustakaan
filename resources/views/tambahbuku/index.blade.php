@@ -11,7 +11,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap demo</title>
+    <title>List Buku</title>
     @section('css')
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     @endsection
@@ -113,7 +113,7 @@
                                                             </div>
                                                             <div class="mb-3">
                                                                 <label for="tanggal_buat" class="form-label">Tanggal Dibuat</label>
-                                                                <input type="number" class="form-control" id="tanggal_dibuat" name="tanggal_buat" value="{{ Carbon\Carbon::parse($row->tanggal_terbit)->translatedFormat('d F Y') }}">
+                                                                <input type="text" class="form-control" id="tanggal_dibuat" name="tanggal_buat" value="{{ Carbon\Carbon::parse($row->tanggal_terbit)->translatedFormat('d F Y') }}">
                                                             </div>
                                                             <div class="mb-3">
                                                                 <label for="deskripsi" class="form-label">Deskripsi</label>
