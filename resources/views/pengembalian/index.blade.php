@@ -15,6 +15,17 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 @endsection
+<link rel="stylesheet" href="vendors/feather/feather.css">
+<link rel="stylesheet" href="vendors/ti-icons/css/themify-icons.css">
+<link rel="stylesheet" href="vendors/css/vendor.bundle.base.css">
+<!-- endinject -->
+<!-- Plugin css for this page -->
+<link rel="stylesheet" href="vendors/datatables.net-bs4/dataTables.bootstrap4.css">
+<link rel="stylesheet" href="vendors/ti-icons/css/themify-icons.css">
+<link rel="stylesheet" type="text/css" href="js/select.dataTables.min.css">
+<!-- End plugin css for this page -->
+<!-- inject:css -->
+<link rel="stylesheet" href="css/vertical-layout-light/style.css">
 </head>
 
 <body>
@@ -22,64 +33,73 @@
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"
     integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 @section('content')
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-10 ">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="row" style="padding-top:10px;">
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">#</th>
-                                        <th scope="col">Nama Peminjam</th>
-                                        <th scope="col">Nama Buku</th>
-                                        <th scope="col">Kode Buku</th>
-                                        <th scope="col">Tanggal Pinjam</th>
-                                        <th scope="col">Tenggat</th>
-                                        <th scope="col">Aksi</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($datapeminjam as $key => $row)
-                                        <tr>
-                                            <td>{{ $key + 1 }}</td>
-                                            <td>{{ $row->nama_peminjam }} </td>
-                                            <td>{{ $row->tambahbuku->nama_buku }} </td>
-                                            <td>{{ $row->kode_buku }} </td>
-                                            <td>{{ $row->tanggal_pinjam }} </td>
-                                            <td>{{ $row->tenggat }} </td>
+    <div class="row">
+        <div class="col-md-12 grid-margin stretch-card">
+          <div class="card">
 
-                                            <td>
-                                                <div class="d-flex">
-                                                    {{-- <form action="{{ route('peminjam.update', $row->id) }}"method="POST" enctype="multipart/form-data">
-                                                        @csrf
-                                                        @method('POST')
-                                                    <button type="submit"
-                                                        class="btn btn-outline-success mr-1">Setujui</button>
-                                                    </form> --}}
-                                                    <form action="{{ route('pengembalian.destroy', $row->id) }}"
-                                                        method="post">
-                                                        @method('DELETE')
-                                                        @csrf
-                                                        <button type="button"
-                                                            class="btn btn-outline-success delete-btn"
-                                                            style="margin-left: 10px;"
-                                                            data-id="{{ $row->id }}">Kembalikan</button>
-                                                    </form>
-                                    @endforeach
-                        </div>
-                        </td>
+            <div class="card-body">
+              <p class="card-title">Daftar Pengembalian</p>
+              <div class="row">
 
+                <div class="col-12">
+                  <div class="table-responsive">
+                    <table id="example" class="display expandable-table" style="width:100%">
+                      <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Nama Peminjam</th>
+                            <th scope="col">Nama Buku</th>
+                            <th scope="col">Kode Buku</th>
+                            <th scope="col">Tanggal Pinjam</th>
+                            <th scope="col">Tenggat</th>
+                            <th scope="col">Aksi</th>
                         </tr>
-                        </tbody>
-                        </table>
-                    </div>
+                      </thead>
+                      <tbody>
+                        @if(count($datapeminjam) == 0)
+                        <tr>
+                          <td colspan="6" class="text-center data-empty">Data Kosong</td>
+                        </tr>
+                      @else
+                        @foreach ($datapeminjam as $key => $row)
+                        <tr>
+                            <td>{{ $key + 1 }}</td>
+                            <td>{{ $row->nama_peminjam }} </td>
+                            <td>{{ $row->tambahbuku->nama_buku }} </td>
+                            <td>{{ $row->kode_buku }} </td>
+                            <td>{{ $row->tanggal_pinjam }} </td>
+                            <td>{{ $row->tenggat }} </td>
+
+                            <td>
+                                <div class="d-flex">
+                                    {{-- <form action="{{ route('peminjam.update', $row->id) }}"method="POST" enctype="multipart/form-data">
+                                        @csrf
+                                        @method('POST')
+                                    <button type="submit"
+                                        class="btn btn-outline-success mr-1">Setujui</button>
+                                    </form> --}}
+                                    <form action="{{ route('pengembalian.destroy', $row->id) }}"
+                                        method="post">
+                                        @method('DELETE')
+                                        @csrf
+                                        <button type="button"
+                                            class="btn btn-outline-success delete-btn"
+                                            style="margin-left: 10px;"
+                                            data-id="{{ $row->id }}">Kembalikan</button>
+                                    </form>
+                    @endforeach
+                    @endif
+                        <!-- end row -->
+
+                      </tbody>
+                    </table>
+                  </div>
                 </div>
+              </div>
             </div>
+          </div>
         </div>
-    </div>
-    </div>
+      </div>
 @endsection
 <script src="
         https://cdn.jsdelivr.net/npm/sweetalert2@11.7.28/dist/sweetalert2.all.min.js"></script>
@@ -105,9 +125,9 @@
     });
 </script>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+{{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
-</script>
+</script> --}}
 {{-- Modal Tambah --}}
 <div class="modal fade" id="modaltambah" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
