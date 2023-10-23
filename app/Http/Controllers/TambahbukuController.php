@@ -203,7 +203,7 @@ public function update(Request $request, $id)
         $Buku = tambahbuku::findOrFail($request->id_buku);
 
         Komentar::create([
-            'id_user' => Auth::user(),
+            'id_user' => Auth::id(),
             'id_buku' => $Buku->id,
             'review' => $request->review,
         ]);
