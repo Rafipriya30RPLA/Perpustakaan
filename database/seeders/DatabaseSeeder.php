@@ -15,7 +15,6 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
       DB::table('users')->insert([
-        'fotoprofil'=>'logo.jpg',
         'name'=>'admin',
         'email'=>'admin@gmail.com',
         'email_verified_at'=>'2023-10-16 07:15:16',
@@ -23,7 +22,6 @@ class DatabaseSeeder extends Seeder
         'role'=> 'admin'
       ]);
       DB::table('users')->insert([
-        'fotoprofil'=>'logo.jpg',
         'name'=>'rafi',
         'email'=>'rafi@gmail.com',
         'email_verified_at'=>'2023-10-16 07:15:16',

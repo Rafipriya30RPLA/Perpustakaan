@@ -47,7 +47,7 @@
                                             <td>{{ $row->nama_peminjam }} </td>
                                             <td>{{ $row->tambahbuku->nama_buku }} </td>
                                             <td>{{ $row->kode_buku }} </td>
-                                            <td>{{ $row->tanggal_pinjam }} </td>
+                                            <td>{{Carbon\Carbon::parse($row->tanggal_pinjam)->translatedFormat('d F Y') }} </td>
                                             <td>{{ $row->tenggat }} </td>
 
                                             <td>

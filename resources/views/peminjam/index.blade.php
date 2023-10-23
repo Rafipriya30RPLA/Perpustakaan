@@ -66,7 +66,7 @@
                                                         @csrf
                                                         <button type="button" class="btn btn-outline-danger delete-btn"
                                                             style="margin-left: 10px;"
-                                                            data-id="{{ $row->id }}">Hapus</button>
+                                                            data-id="{{ $row->id }}">Tolak</button>
                                                     </form>
                                                 </div>
                                             </td>
