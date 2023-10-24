@@ -190,7 +190,7 @@ public function update(Request $request, $id)
     }
     public function preview($id){
         $Buku = tambahbuku::findOrFail($id);
-        $Komentar = Komentar::where('id_buku', $id)->orderBy('created_at', 'desc')->get();
+        $Komentar = Komentar::with('user')->where('id_buku', $id)->orderBy('created_at', 'desc')->get();
         return view('daftarbuku.preview', compact('Buku','Komentar'));
     }
     public function postreview(Request $request)

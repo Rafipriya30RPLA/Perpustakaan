@@ -126,7 +126,10 @@
             </div>
             <div>
                 @foreach ($Komentar as $review)
-                    <p>{{ $review->review }}</p>
+                    <div class="comment">
+                        <strong>{{ $review->user->name }}</strong>
+                        <p>{{ $review->review }}</p>
+                    </div>
                 @endforeach
             </div>
         </form>
