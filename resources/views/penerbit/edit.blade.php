@@ -58,11 +58,8 @@
                             </div>
                         @enderror
                         <div class="mb-3">
-                            <label for="exampleInputText" class="form-label">Alamat</label>
-                            <input type="text" name="alamat"
-                              class="form-control @error('alamat')is-invalid
-                            @enderror"
-                            id=""value="{{ $data->alamat }}">
+                            <label for="exampleInputTextarea" class="form-label">Alamat</label>
+                            <textarea name="alamat" class="form-control @error('alamat') is-invalid @enderror" id="exampleInputTextarea" rows="4">{{ $data->alamat }}</textarea>
                         </div>
                         @error('alamat')
                             <div class="alert alert-danger mt-2">

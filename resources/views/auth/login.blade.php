@@ -43,22 +43,38 @@
               </div>
             </div>
             <div class="col-xl-5 col-xxl-4">
-              <div class="authentication-login min-vh-100 bg-body row justify-content-center align-items-center p-4">
-                <div class="col-sm-8 col-md-6 col-xl-9">
-                  <h2 class="mb-3 fs-6 fw-bolder">Selamat Datang Di Blue-Book</h2>
-                  <p class=" mb-9">Web Perpustakaan Terbaik Se Indonesia</p>
-                  <div class="row">
+                <div class="authentication-login min-vh-100 bg-body row justify-content-center align-items-center p-4">
+                    <div class="col-sm-8 col-md-6 col-xl-9">
+                        <h2 class="mb-3 fs-6 fw-bolder">Selamat Datang Di Blue-Book</h2>
+                        <p class=" mb-9">Web Perpustakaan Terbaik Se Indonesia</p>
+                        <div class="row">
 
 
                   <form method="POST" action="{{ route('login') }}">
                     @csrf
                     <div class="mb-3">
-                      <label for="exampleInputEmail1" class="form-label">Email</label>
-                      <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                        <label class="form-control-label">Alamat Email</label>
+                                <input id="email" type="email"
+                                    class="form-control @error('email') is-invalid @enderror" name="email"
+                                    value="{{ old('email') }}" autocomplete="email" autofocus />
+
+                                @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                     </div>
                     <div class="mb-4">
                       <label for="exampleInputPassword1" class="form-label">Password</label>
-                      <input type="password" name="password" class="form-control" id="exampleInputPassword1">
+                      <input id="email" type="password"
+                      class="form-control @error('password') is-invalid @enderror" name="password"
+                      value="{{ old('password') }}" autocomplete="password" autofocus />
+
+                  @error('password')
+                      <span class="invalid-feedback" role="alert">
+                          <strong>{{ $message }}</strong>
+                      </span>
+                  @enderror
                     </div>
                     {{-- <div class="d-flex align-items-center justify-content-between mb-4">
                       <div class="form-check">

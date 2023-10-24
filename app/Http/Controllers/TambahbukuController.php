@@ -43,7 +43,8 @@ class TambahbukuController extends Controller
          ], [
              'nama_buku.required' => 'Nama harus diisi',
              'deskripsi.required' => 'Deskripsi harus diisi',
-             'deskripsi.max' => 'Deskripsi Maksimal 5000',
+             'deskripsi.max' => 'Deskripsi Maksimal 255',
+             'kode_buku.required' => 'Kode Buku Harus di isi',
              'kode_buku.unique' => 'Kode Buku Telah digunakan',
              'kode_buku.gt' => 'Kode Buku tidak boleh minus',
              'stok.required' => 'stok harus di isi',
@@ -95,11 +96,12 @@ public function update(Request $request, $id)
             'stok' => 'required|gt:-0',
             'id_penulis' => 'required',
             'tanggal_terbit' => 'required',
-            'foto' => 'required|image|mimes:jpeg,png,gif|max:2048', // Sesuaikan dengan kebutuhan Anda
+            'foto' => 'image|mimes:jpeg,png,gif|max:2048', // Sesuaikan dengan kebutuhan Anda
         ], [
             'nama_buku.required' => 'Nama harus diisi',
             'deskripsi.required' => 'Deskripsi harus diisi',
             'deskripsi.max' => 'Deskripsi Maksimal 5000',
+            'kode_buku.required' => 'Kode buku harus di isi',
             'kode_buku.unique' => 'Kode Buku Telah digunakan',
             'kode_buku.gt' => 'Kode Buku tidak boleh minus',
             'stok.required' => 'stok harus di isi',
@@ -197,7 +199,7 @@ public function update(Request $request, $id)
             'review' => 'required|max:5000'
         ],[
             'review.required' => 'Review Harus di isi',
-            'review.max' => 'Review Maksimal 5000 Kata',
+            'review.max' => 'Review Maksimal 255 Kata',
         ]);
 
         $Buku = tambahbuku::findOrFail($request->id_buku);

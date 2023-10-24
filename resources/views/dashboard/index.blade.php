@@ -147,8 +147,10 @@
                             <td>{{ $row->nama_peminjam }} </td>
                             <td>{{ $row->tambahbuku->nama_buku }} </td>
                             <td>{{ $row->kode_buku }} </td>
-                            <td>{{ $row->tanggal_pinjam }} </td>
-                            <td>{{ $row->tenggat }} </td>
+                            <td>{{ Carbon\Carbon::parse($row->tanggal_pinjam)->translatedFormat('d F Y') }}
+                            </td>
+                            <td>{{ Carbon\Carbon::parse($row->tenggat)->translatedFormat('d F Y') }}
+                            </td>
                             <td><div class="d-flex">
                                 @if ($row->status === 'pending')
                                     <button type="button" class="btn btn-outline-danger mr-1 approve-btn"

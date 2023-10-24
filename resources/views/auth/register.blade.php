@@ -55,18 +55,43 @@
                     <div class="mb-2">
                         <label for="exampleInputname" class="form-label">Username</label>
                         <input type="text" name="name" class="form-control" id="exampleInputname" aria-describedby="exampleInputname">
-                      </div>
+                        @error('name')
+                        <span class="invalid-feedback" role="alert">
+                          <strong>{{ $message }}</strong>
+                        </span>
+@enderror
+                    </div>
                     <div class="mb-3">
                       <label for="exampleInputEmail1" class="form-label">Email</label>
-                      <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                      <input id="email" type="email"
+                      class="form-control @error('email') is-invalid @enderror" name="email"
+                      value="{{ old('email') }}" autocomplete="email" autofocus />
+
+                  @error('email')
+                      <span class="invalid-feedback" role="alert">
+                          <strong>{{ $message }}</strong>
+                      </span>
+                  @enderror
                     </div>
                     <div class="mb-4">
                       <label for="exampleInputPassword1" class="form-label">Password</label>
-                      <input type="password" name="password" class="form-control" id="exampleInputPassword1">
+                      <input type="password" name="password" class="form-control  @error('password') is-invalid @enderror" id="exampleInputPassword1">
+                      @error('password')
+                      <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                      </span>
+
+                      @enderror
                     </div>
                     <div class="mb-5">
                         <label for="exampleInputPassword1" class="form-label">Confirmasi Password</label>
-                        <input type="password" name="password_confirmation" class="form-control" id="exampleInputPassword1">
+                        <input type="password" name="password_confirmation" class="form-control  @error('password_confirmation') is-invalid @enderror" id="exampleInputPassword1">
+                        @error('password_confirmation')
+                        <span class="invalid-feedback" role="alert">
+                          <strong>{{ $message }}</strong>
+                        </span>
+
+                        @enderror
                       </div>
                     {{-- <div class="d-flex align-items-center justify-content-between mb-4">
                       <div class="form-check">

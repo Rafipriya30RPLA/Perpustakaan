@@ -17,7 +17,7 @@
               <div class="col-md-3">
                 <div class="text-center">
                   <img src="{{ asset('storage/img/fotoprofil/' . Auth::user()->fotoprofil) }}"
-                    class="avatar img-circle img-thumbnail" alt="avatar">
+                  class="rounded-circle" width="200" height="200" alt=""/>
                   <h6>Tambah Kan Foto Profil</h6>
                 </div>
               </div>
