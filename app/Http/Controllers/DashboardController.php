@@ -34,6 +34,7 @@ public function hitungNamabuku()
 public function hitungPengguna()
 {
     $count = User::distinct('name')->count();
+    $count = User::where('role', '!=', 'admin')->distinct('name')->count();
     return $count;
 }
 }
