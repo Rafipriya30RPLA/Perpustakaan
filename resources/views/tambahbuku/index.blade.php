@@ -151,14 +151,6 @@
     @endsection
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-    <script>
-        @if(session('success'))
-            toastr.success('{{ session('success') }}');
-        @endif
-        @if(session('error'))
-            toastr.error('{{ session('error') }}');
-        @endif
-    </script>
 
     <script>
         $(document).ready(function () {
@@ -182,16 +174,17 @@
         });
     </script>
 
-    <script>
-        document.addEventListener("DOMContentLoaded"), function() {}
-    var descriptionCells = document.querySelectorAll('.description-cell');
-    for (var i = 0; i < descriptionCells.length; i++) {
-        var description = descriptionCells[i].textContent;
-        if (description.length > 10) { // Ganti 40 dengan panjang karakter maksimum yang Anda inginkan
-            var truncatedDescription = description.substring(0, 10) + '...';
-            descriptionCells[i].textContent = truncatedDescription;
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var descCells = document.querySelectorAll('.description-cell');
+        for (var i = 0; i < descCells.length; i++) {
+            var desc = descCells[i].textContent;
+            if (desc.length > 10) {
+                var truncatedDesc = desc.substring(0, 10) + '...';
+                descCells[i].textContent = truncatedDesc;
+            }
         }
-    }
+    });
 </script>
 
 

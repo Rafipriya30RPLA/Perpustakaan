@@ -23,7 +23,7 @@ class KaryawanController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'nama' => 'required',
+            'nama' => 'required|max:225',
             'jenis_kelamin' => 'required',
             'no_telepon' => 'required|min:12|gt:-0',
             'alamat' => 'required|max:5000'
@@ -31,6 +31,7 @@ class KaryawanController extends Controller
 
         ], [
             'nama.required' => 'Nama Peminjam harus diisi',
+            'nama.max' => 'Nama Peminjam Tidak Boleh Diatas 225 Karakter',
             'jenis_kelamin.required' => 'Jenis Kelamin harus di isi',
             'no_telepon.required' => 'Nomer Telpon harus di isi',
             'no_telepon.min' => 'No Telepon Minimal 12 digit',
@@ -65,7 +66,7 @@ class KaryawanController extends Controller
     {
     //    dd($request);
     $validator = Validator::make($request->all(), [
-        'nama' => 'required',
+        'nama' => 'required|max:225',
         'jenis_kelamin' => 'required',
         'no_telepon' => 'required|min:12|gt:-0',
         'alamat' => 'required|max:5000'
@@ -73,12 +74,14 @@ class KaryawanController extends Controller
 
     ], [
         'nama.required' => 'Nama Peminjam harus diisi',
+        'nama.max' => 'Nama Peminjam Tidak Boleh Diatas 225 Karakter',
         'jenis_kelamin.required' => 'Jenis Kelamin harus di isi',
         'no_telepon.required' => 'Nomer Telpon harus di isi',
         'no_telepon.min' => 'No Telepon Minimal 12 digit',
         'no_telepon.gt' => 'No Telepon tidak boleh minus',
         'alamat.required' => 'Alamat harus diisi',
         'alamat.max' => 'Alamat tidak boleh lebih dari 5000 karakter'
+
 
     ]);
 

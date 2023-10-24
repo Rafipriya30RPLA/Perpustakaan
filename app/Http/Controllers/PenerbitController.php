@@ -29,9 +29,9 @@ class PenerbitController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'nama_penerbit' => 'required',
+            'nama_penerbit' => 'required|max:255',
             'no_telepon' => 'required|min:12|gt:-0',
-            'alamat' => 'required|max:255',
+            'alamat' => 'required|max:1000',
 
         ], [
             'nama_penerbit.required' => 'Nama Penerbit harus diisi',
@@ -40,7 +40,7 @@ class PenerbitController extends Controller
             'no_telepon.digits' => 'No Telepon Harus Memiliki 12 karakter',
             'no_telepon.gt' => 'No Telepon Tidak Boleh min',
             'alamat.required' => 'Alamat harus diisi',
-            'alamat.max' => 'Alamat tidak boleh lebih dari 255 karakter',
+            'alamat.max' => 'Alamat tidak boleh lebih dari 1000 karakter',
 
         ]);
 
@@ -67,17 +67,18 @@ class PenerbitController extends Controller
     public function update(Request $request, $id)
     {
         $validator = Validator::make($request->all(), [
-            'nama_penerbit' => 'required',
-            'no_telepon'=>'required|min:12|gt:-0',
-            'alamat' => 'required|max:255'
+            'nama_penerbit' => 'required|max:225',
+            'no_telepon'=>'required|min:12|gt:-0|max:225',
+            'alamat' => 'required|max:1000'
 
         ], [
             'nama_penerbit.required' => 'Nama Penerbit harus diisi',
             'no_telepon.required' => 'No Telepon harus diisi',
             'no_telepon.min' => 'No Telepon Minimal 12 digit',
             'no_telepon.gt' => 'No Telepon tidak boleh minus',
+            'no_telepon.max' => 'No Telepon Tidak Boleh Lebih Dari 225 Karakter',
             'alamat.required' => ' alamat harus diisi',
-            'alamat.max' => 'Alamat tidak boleh lebih dari 225 karakter'
+            'alamat.max' => 'Alamat tidak boleh lebih dari 1000 karakter'
 
         ]);
 

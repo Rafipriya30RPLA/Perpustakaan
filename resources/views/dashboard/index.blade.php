@@ -37,7 +37,7 @@
                 <h3 class="font-weight-bold">Selamat Datang {{ Auth::user()->name }} </h3>
                 <h6 class="font-weight-normal mb-2">Selamat datang di Blue-book</h6>
             </div>
-            <div class="col-12 col-xl-4">
+            {{-- <div class="col-12 col-xl-4">
                 <div class="justify-content-end d-flex">
                     <div class=" flex-md-grow-1 flex-xl-grow-0">
                         <button class="btn btn-sm btn-info  " aria-haspopup="true" aria-expanded="true">
@@ -45,7 +45,7 @@
                         </button>
                     </div>
                 </div>
-            </div>
+            </div> --}}
         </div>
         </div>
         <script>

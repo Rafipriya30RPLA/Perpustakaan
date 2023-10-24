@@ -54,7 +54,7 @@
                     @csrf
                     <div class="mb-2">
                         <label for="exampleInputname" class="form-label">Username</label>
-                        <input type="text" name="name" class="form-control" id="exampleInputname" aria-describedby="exampleInputname">
+                        <input type="text" name="name" class="form-control" value="{{ old('name') }}" id="exampleInputname" aria-describedby="exampleInputname">
                         @error('name')
                         <span class="invalid-feedback" role="alert">
                           <strong>{{ $message }}</strong>

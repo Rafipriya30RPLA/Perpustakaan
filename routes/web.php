@@ -60,7 +60,7 @@ Route::get('profil', [HomeController::class, 'profil']);
 Route::post('simpanprofil/{id}', [HomeController::class, 'simpanprofil'])->name('simpanprofil');
 Route::post('/tambahbuku/borrow/{id}', [TambahbukuController::class,'borrowBook'])->name('tambahbuku.borrow');
 Route::post('/nav-side-admin/{id}', [HomeController::class,'lihatprofil'])->name('nav-side-admin');
-// Route::get('/',[KirimEmailController::class,'index']); 
+// Route::get('/',[KirimEmailController::class,'index']);
 // Route::get('/daftarbuku/preview/{id}', 'TambahbukuController@preview')->name('daftarbuku.preview');
 
 

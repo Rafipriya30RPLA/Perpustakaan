@@ -27,12 +27,13 @@ class PenulisController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'nama_penulis' => 'required',
+            'nama_penulis' => 'required|max:225',
             'id_penerbit' => 'required'
 
 
         ], [
             'nama_penulis.required' => 'Nama Penulis harus diisi',
+            'nama_penulis.max' => 'Nama Penulis Maksimal 225 Karakter',
             'id_penerbit.required' => 'Nama Penerbit harus diisi'
         ]);
 
@@ -58,11 +59,12 @@ class PenulisController extends Controller
     public function update(Request $request, $id)
     {
         $validator = Validator::make($request->all(), [
-            'nama_penulis' => 'required',
+            'nama_penulis' => 'required|max:225',
             'id_penerbit' => 'required'
 
         ], [
             'nama_penulis.required' => ' Nama Penulis harus diisi',
+            'nama_penulis.max' =>  'Nama Penulis Maksimal 225 Karakter',
             'id_penerbit.required' => 'Nama Penerbit harus diisi'
 
         ]);

@@ -53,7 +53,7 @@
                   <form method="POST" action="{{ route('login') }}">
                     @csrf
                     <div class="mb-3">
-                        <label class="form-control-label">Alamat Email</label>
+                        <label for="exampleInputPassword1" class="form-label">Email</label>
                                 <input id="email" type="email"
                                     class="form-control @error('email') is-invalid @enderror" name="email"
                                     value="{{ old('email') }}" autocomplete="email" autofocus />

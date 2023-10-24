@@ -36,16 +36,18 @@ class PeminjamController extends Controller
     }
 
     public function store(Request $request)
-{
-    $validator = Validator::make($request->all(), [
-        'nama_peminjam' => 'required',
-        'id_tambahbuku' => 'required',
-        'kode_buku' => 'required',
-    ], [
-        'nama_peminjam.required' => 'Nama Peminjam harus diisi',
-        'id_tambahbuku.required' => 'Nama buku harus diisi',
-        'kode_buku.required' => 'kode_buku harus diisi',
-    ]);
+{   
+        $validator = Validator::make($request->all(), [
+            'nama_peminjam' => 'required|max:225',
+            'id_tambahbuku' => 'required',
+            'kode_buku' => 'required|unique:tambahbuku,kode_buku', // Validasi kode_buku harus unik
+        ], [
+            'nama_peminjam.required' => 'Nama Peminjam harus diisi',
+            'nama_peminjam.max' => 'Nama Peminjam Tidak Boleh Lebih Dari 225 Karakter',
+            'id_tambahbuku.required' => 'Nama buku harus diisi',
+            'kode_buku.required' => 'kode_buku harus diisi',
+            'kode_buku.unique' => 'Kode buku sudah ada, harap pilih kode buku lain.',
+        ]);
 
     if ($validator->fails()) {
         return redirect()->back()->withErrors($validator)->withInput();

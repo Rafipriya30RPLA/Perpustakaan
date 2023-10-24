@@ -33,7 +33,7 @@ class TambahbukuController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'nama_buku' => 'required',
+            'nama_buku' => 'required|max:225',
              'deskripsi' => 'required|max:5000',
              'kode_buku' => 'required|gt:-0',
              'stok' => 'required|gt:-0',
@@ -42,6 +42,7 @@ class TambahbukuController extends Controller
              'foto' => 'required|image|mimes:jpeg,png,gif|max:2048', // Sesuaikan dengan kebutuhan Anda
          ], [
              'nama_buku.required' => 'Nama harus diisi',
+             'nama_buku.max' => 'Nama Tidak Boleh Lebih Dari 225 Karakter',
              'deskripsi.required' => 'Deskripsi harus diisi',
              'deskripsi.max' => 'Deskripsi Maksimal 255',
              'kode_buku.required' => 'Kode Buku Harus di isi',
@@ -90,7 +91,7 @@ class TambahbukuController extends Controller
 public function update(Request $request, $id)
 {
     $validator = Validator::make($request->all(), [
-           'nama_buku' => 'required',
+           'nama_buku' => 'required|max:225',
             'deskripsi' => 'required|max:5000',
             'kode_buku' => 'required|gt:-0',
             'stok' => 'required|gt:-0',
@@ -99,6 +100,7 @@ public function update(Request $request, $id)
             'foto' => 'image|mimes:jpeg,png,gif|max:2048', // Sesuaikan dengan kebutuhan Anda
         ], [
             'nama_buku.required' => 'Nama harus diisi',
+            'nama_buku.max' => 'Nama Buku Tidak Boleh Lebih Dari 225 Karakter',
             'deskripsi.required' => 'Deskripsi harus diisi',
             'deskripsi.max' => 'Deskripsi Maksimal 5000',
             'kode_buku.required' => 'Kode buku harus di isi',
