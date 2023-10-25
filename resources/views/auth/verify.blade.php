@@ -4,7 +4,7 @@
 <!-- Mirrored from demos.adminmart.com/premium/bootstrap/modernize-bootstrap/package/html/main/authentication-two-steps2.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 10 Oct 2023 05:02:23 GMT -->
 <head>
     <!--  Title -->
-    <title>Mordenize</title>
+    <title>Blue-Book</title>
     <!--  Required Meta Tag -->
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />

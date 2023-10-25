@@ -54,12 +54,12 @@
                     @csrf
                     <div class="mb-2">
                         <label for="exampleInputname" class="form-label">Username</label>
-                        <input type="text" name="name" class="form-control" value="{{ old('name') }}" id="exampleInputname" aria-describedby="exampleInputname">
+                        <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" value="{{ old('name') }}" id="exampleInputname" aria-describedby="exampleInputname">
                         @error('name')
                         <span class="invalid-feedback" role="alert">
                           <strong>{{ $message }}</strong>
                         </span>
-@enderror
+                        @enderror
                     </div>
                     <div class="mb-3">
                       <label for="exampleInputEmail1" class="form-label">Email</label>
@@ -84,7 +84,7 @@
                       @enderror
                     </div>
                     <div class="mb-5">
-                        <label for="exampleInputPassword1" class="form-label">Confirmasi Password</label>
+                        <label for="exampleInputPassword1" class="form-label">Konfirmasi Password</label>
                         <input type="password" name="password_confirmation" class="form-control  @error('password_confirmation') is-invalid @enderror" id="exampleInputPassword1">
                         @error('password_confirmation')
                         <span class="invalid-feedback" role="alert">

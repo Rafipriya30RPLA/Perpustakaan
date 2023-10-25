@@ -131,12 +131,11 @@ public function update(Request $request, $id)
 
 
     if ($request->hasFile('foto')) {
-        // Hapus foto lama jika ada
         if ($datatambahbuku->foto) {
             Storage::disk('public')->delete('tambahbuku/' . $datatambahbuku->foto);
         }
 
-        // Upload foto yang baru
+
         $file = $request->file('foto');
         $fileName = time() . '.' . $file->getClientOriginalExtension();
         Storage::disk('public')->putFileAs('tambahbuku', $file, $fileName);
@@ -236,8 +235,8 @@ public function update(Request $request, $id)
             $datapeminjam = new peminjam();
             $datapeminjam->nama_peminjam = Auth::user()->name; // Menggunakan nama peminjam dari pengguna yang login
             $datapeminjam->id_tambahbuku = $buku->id;
-            $datapeminjam->kode_buku = $buku->kode_buku;
-            $datapeminjam->tanggal_pinjam = now();
+            $datapeminjam->kode_buku = $buku->kode_buku;//mengambil data kode buku dari tabel tambahbuku
+            $datapeminjam->tanggal_pinjam = now();//mengambil tanggal hari ini
             $datapeminjam->tenggat = now()->addDays(7); // Tenggat seminggu kemudian
             $datapeminjam->status = 'pending';
             $datapeminjam->save();

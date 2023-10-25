@@ -1,5 +1,4 @@
 <?php
-use App\Http\Controllers\KirimEmailController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
@@ -9,6 +8,8 @@ use App\Http\Controllers\KaryawanController;
 use App\Http\Controllers\PeminjamController;
 use App\Http\Controllers\PenerbitController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\KirimEmailController;
 use App\Http\Controllers\TambahbukuController;
 
 
@@ -50,7 +51,7 @@ Route::delete('/pengembalian/{pengembalian}/destroy', [PeminjamController::class
 
 });
 
-Route::middleware(['User'])->group(function () {
+Route::middleware(['User','verified'])->group(function () {
 Route::resource('review', ReviewController::class);
 // daftarbuku
 Route::get('/daftarbuku',[TambahbukuController::class,'daftarbuku']);
@@ -65,7 +66,7 @@ Route::post('/nav-side-admin/{id}', [HomeController::class,'lihatprofil'])->name
 
 
 });
-
+Route::post('/logout',[LoginController::class,'logout'])->name('logout')->middleware('verified');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('verified');
 Auth::routes(['verify'=>true]);

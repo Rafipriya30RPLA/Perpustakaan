@@ -68,4 +68,13 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+    public function showLoginForm()
+{
+    if (auth()->check()) {
+        // Pengguna sudah masuk, arahkan mereka ke halaman lain atau tampilkan pesan validasi.
+        return redirect('/home')->with('error', 'Anda sudah masuk. Logout terlebih dahulu.');
+    }
+
+    return view('auth.login');
+}
 }

@@ -45,7 +45,7 @@
                 <!--end container-->
             </nav>
             <!--end navbar-->
-
+@include('swal')
             <!--HERO CONTENT ****************************************************************************************-->
             <div class="container align-self-center align-items-center">
                 <div class="row">

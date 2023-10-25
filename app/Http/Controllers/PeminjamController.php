@@ -36,7 +36,7 @@ class PeminjamController extends Controller
     }
 
     public function store(Request $request)
-{   
+{
         $validator = Validator::make($request->all(), [
             'nama_peminjam' => 'required|max:225',
             'id_tambahbuku' => 'required',
@@ -137,7 +137,7 @@ class PeminjamController extends Controller
         // Hapus data peminjam
         $datapeminjam->delete();
 
-        return redirect()->route('pengembalian.index')->with('success', 'Data Pengembalian Berhasil Bihapus Dan Stok Buku Di Kembalikan.');
+        return redirect()->route('pengembalian.index')->with('success', 'Data Pengembalian Berhasil Dihapus Dan Stok Buku Di Kembalikan.');
     }
 
 }
