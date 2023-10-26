@@ -67,62 +67,64 @@
                                                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="currentColor" d="m20 22.09l2.45 1.49l-.65-2.81l2.2-1.88l-2.89-.25L20 16l-1.13 2.64l-2.87.25l2.18 1.88l-.68 2.81l2.5-1.49M14.08 21H2a2.074 2.074 0 0 1-2-2V5c.04-1.09.91-1.96 2-2h20c1.09.04 1.96.91 2 2v10.53c-.58-.53-1.25-.92-2-1.19V5H2v14h12.08c-.05.33-.08.66-.08 1c0 .34.03.68.08 1M14 17H4v-1.25c0-1.66 3.34-2.5 5-2.5c1.66 0 5 .84 5 2.5V17m0-6h4v1h-4v-1M9 7C7.63 7 6.5 8.13 6.5 9.5S7.63 12 9 12s2.5-1.13 2.5-2.5S10.37 7 9 7m5 2h6v1h-6V9m0-2h6v1h-6V7Z"/></svg>
                                                  </button>
 
-                                                 <!-- Modal -->
-                                                 <div class="modal fade" id="exampleModal{{ $row->id }}" tabindex="-1"
-                                                     aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                     <div class="modal-dialog">
-                                                         <div class="modal-content">
-                                                             <div class="modal-header">
-                                                                 <h1 class="modal-title fs-5" id="exampleModalLabel">
-                                                                     Detail</h1>
-                                                             </div>
-                                                             <div class="modal-body">
-                                                             <div class="mb-3">
-                                                                <label for="" class="form-label">Nama Buku</label>
-                                                                <br>
-                                                                {{ $row->nama_buku }}
-                                                            </div>
-                                                            <div class="mb-3">
-                                                                <label for="kode_buku" class="form-label">Kode Buku</label>
-                                                                <br>
-                                                                {{ $row->kode_buku }}
-                                                            </div>
-
-                                                            <div class="mb-3">
-                                                                <label for="stok" class="form-label">Stok</label>
-                                                                <br>
-                                                                 {{ $row->stok }}
-                                                            </div>
-                                                            <div class="mb-3">
-                                                                <label for="nama_penulis" class="form-label">Nama Penulis</label>
-                                                                <br>
-                                                               {{ $row->penulis->nama_penulis }}
-                                                            </div>
-                                                            <div class="mb-3">
-                                                                <label for="nama_penerbit" class="form-label">Nama Penerbit</label>
-                                                                <br>
-                                                                {{ $row->penulis->penerbit->nama_penerbit }}
-                                                            </div>
-                                                            <div class="mb-3">
-                                                                <label for="tanggal_buat" class="form-label">Tanggal Dibuat</label>
-                                                                <br>
-                                                                {{ Carbon\Carbon::parse($row->tanggal_terbit)->translatedFormat('d F Y') }}
-                                                            </div>
-                                                            <div class="mb-3">
-                                                                <label for="deskripsi" class="form-label">Deskripsi</label>
-                                                                <br>
-                                                                {{ $row->deskripsi }}"
+                                                 <div class="modal fade" id="exampleModal{{ $row->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog modal-lg">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h4 class="modal-title" id="exampleModalLabel">Detail Buku</h4>
+                                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                             </div>
                                                             <div class="modal-body">
-                                                                <label for="foto" class="form-label">Foto</label>
-                                                                <br>
-                                                                <img src="{{ asset('storage/tambahbuku/' . $row->foto) }}" alt="" style="max-width: 100%; height: auto; border: 2px solid #3498db;  border-radius: 10px;">
+                                                                <div class="row">
+                                                                    <div class="col-md-6">
+                                                                        <div class="mb-3">
+                                                                            <label for="" class="form-label"><strong>Nama Buku :</strong></label>
+                                                                            <br>
+                                                                            {{ $row->nama_buku }}
+                                                                        </div>
+                                                                        <div class="mb-3">
+                                                                            <label for="kode_buku" class="form-label"><strong>Kode Buku :</strong></label>
+                                                                            <br>
+                                                                            {{ $row->kode_buku }}
+                                                                        </div>
+                                                                        <div class="mb-3">
+                                                                            <label for="stok" class="form-label"><strong>Stok :</strong></label>
+                                                                            <br>
+                                                                            {{ $row->stok }}
+                                                                        </div>
+                                                                        <div class="mb-3">
+                                                                            <label for="nama_penulis" class="form-label"><strong>Nama Penulis :</strong></label>
+                                                                            <br>
+                                                                            {{ $row->penulis->nama_penulis }}
+                                                                        </div>
+                                                                        <div class="mb-3">
+                                                                            <label for="nama_penerbit" class="form-label"><strong>Nama Penerbit :</strong></label>
+                                                                            <br>
+                                                                            {{ $row->penulis->penerbit->nama_penerbit }}
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <div class="mb-3">
+                                                                            <label for="tanggal_buat" class="form-label"><strong>Tanggal Dibuat :</strong></label>
+                                                                            <br>
+                                                                            {{ Carbon\Carbon::parse($row->tanggal_terbit)->translatedFormat('d F Y') }}
+                                                                        </div>
+                                                                        <div class="mb-3">
+                                                                            <label for="deskripsi" class="form-label"><strong>Deskripsi :</strong></label>
+                                                                            <br>
+                                                                            {{ $row->deskripsi }}
+                                                                        </div>
+                                                                        <div class="mb-3">
+                                                                            <label for="foto" class="form-label"><strong>Foto :</strong></label>
+                                                                            <br>
+                                                                            <img src="{{ asset('storage/tambahbuku/' . $row->foto) }}" alt="" style="max-width: 100%; height: auto; border: 2px solid #3498db;  border-radius: 10px;">
+                                                                        </div>
+                                                                    </div>
                                                                 </div>
                                                             </div>
-                                                         </div>
                                                         </div>
-                                                     </div>
-                                                 </div>
+                                                    </div>
+                                                </div>
 
                                                 </td>
                                                 <td>
