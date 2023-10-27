@@ -202,7 +202,33 @@
     .modal-body {
         text-align:10px; /* Pusatkan konten dalam modal */
     }
+
+
+    /* CSS untuk mengatur modal di tengah */
+.modal-dialog {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    height: 65% !important;
+}
+
+.modal-content {
+    width: 90% !important; /* Atur lebar modal sesuai keinginan Anda */
+}
+
+.modal-title {
+    border-bottom: 2px solid #000; /* Ganti warna dan ketebalan sesuai keinginan Anda */
+    padding-bottom: 10px; /* Sesuaikan jarak antara teks dan garis bawah sesuai keinginan Anda */
+    width: 100%; /* Atur lebar garis bawah agar panjangnya mencakup lebar elemen */
+    display: inline-block; /* Untuk mengubah elemen menjadi blok sehingga garis bawah mengisi lebar penuh */
+}
+
+.btn-close {
+    position: absolute;
+    top: 3 0px; /* Sesuaikan tinggi (dalam piksel) sesuai keinginan Anda */
+    right: 30px; /* Sesuaikan posisi horizontal (dalam piksel) sesuai keinginan Anda */
+}
+
+
+
 </style>
-
-
-
