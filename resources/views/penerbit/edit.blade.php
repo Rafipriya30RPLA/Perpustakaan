@@ -48,7 +48,7 @@
                         <div class="mb-3">
                             <label for="exampleInputText" class="form-label">No Telepon</label>
                             <input type="number" name="no_telepon"
-                             min="0" class="form-control @error('no_telepon')is-invalid
+                              class="form-control @error('no_telepon')is-invalid
                             @enderror"
                             id=""value="{{ $data->no_telepon }}">
                         </div>
