@@ -19,7 +19,7 @@ class TambahbukuController extends Controller
     {
         $datapenulis = penulis::all();
         $datatambahbuku = tambahbuku::all();
-        return view('tambahbuku.index', compact('datatambahbuku','datapenulis'))-> with('row');
+        return view('tambahbuku.index', compact('datatambahbuku','datapenulis'));
     }
 
 
@@ -27,7 +27,7 @@ class TambahbukuController extends Controller
     {
         $datapenulis = penulis::all();
         $datatambahbuku = tambahbuku::all();
-        return view('tambahbuku.create', compact('datatambahbuku','datapenulis'))-> with('row');
+        return view('tambahbuku.create', compact('datatambahbuku','datapenulis'));
     }
 
     public function store(Request $request)

@@ -14,14 +14,14 @@ class PenulisController extends Controller
     {
         $datapenerbit = penerbit::all();
         $datapenulis = penulis::all();
-        return view('penulis.index', compact('datapenulis','datapenerbit'))-> with('row');
+        return view('penulis.index', compact('datapenulis','datapenerbit'));
     }
 
     public function create()
     {
         $datapenerbit = penerbit::all();
         $datapenulis = penulis::all();
-        return view('penulis.create', compact('datapenulis','datapenerbit'))->with('row');
+        return view('penulis.create', compact('datapenulis','datapenerbit'));
     }
 
     public function store(Request $request)

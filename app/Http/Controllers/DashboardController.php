@@ -14,7 +14,7 @@ class DashboardController extends Controller
     {
         $datatambahbuku = tambahbuku::all();
         $datapeminjam = peminjam::all();        $user = Auth::user();
-        return view('dashboard.index', compact('datapeminjam','datatambahbuku'))->with('row');
+        return view('dashboard.index', compact('datapeminjam','datatambahbuku'));
     }
     public function hitungStok()
 {

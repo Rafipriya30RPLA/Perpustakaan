@@ -14,25 +14,25 @@ class PeminjamController extends Controller
     {
         $datatambahbuku = tambahbuku::all();
         $datapeminjam = peminjam::where('status', 'pending')->get(); // Mengambil hanya data peminjam dengan status 'acc'
-        return view('peminjam.index', compact('datapeminjam','datatambahbuku'))->with('row');
+        return view('peminjam.index', compact('datapeminjam','datatambahbuku'));
     }
     public function index2()
     {
         $datatambahbuku = tambahbuku::all();
         $datapeminjam = peminjam::where('status', 'acc')->get(); // Mengambil hanya data peminjam dengan status 'acc'
-        return view('pengembalian.index', compact('datapeminjam','datatambahbuku'))->with('row');
+        return view('pengembalian.index', compact('datapeminjam','datatambahbuku'));
     }
     public function dashboard()
     {
         $datatambahbuku = tambahbuku::all();
         $datapeminjam = peminjam::all(); // Mengambil hanya data peminjam dengan status 'acc'
-        return view('dashboard.index', compact('datapeminjam','datatambahbuku'))->with('row');
+        return view('dashboard.index', compact('datapeminjam','datatambahbuku'));
     }
     public function create()
     {
         $datatambahbuku = tambahbuku::all();
         $datapeminjam = peminjam::all();
-        return view('peminjam.create', compact('datapeminjam','datatambahbuku'))->with('row');
+        return view('peminjam.create', compact('datapeminjam','datatambahbuku'));
     }
 
     public function store(Request $request)
